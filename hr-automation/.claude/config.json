@@ -1,0 +1,43 @@
+{
+  "name": "HR Automation System",
+  "description": "Automated HR processes using Claude AI agents",
+  "version": "1.0.0",
+  "agents": {
+    "linkedin-poster": {
+      "file": "agents/linkedin-poster.md",
+      "description": "Handles LinkedIn job posting automation"
+    },
+    "message-processor": {
+      "file": "agents/message-processor.md", 
+      "description": "Processes and responds to incoming messages"
+    },
+    "contact-manager": {
+      "file": "agents/contact-manager.md",
+      "description": "Manages contact database and relationships"
+    },
+    "report-generator": {
+      "file": "agents/report-generator.md",
+      "description": "Generates daily and weekly reports"
+    }
+  },
+  "commands": {
+    "post-vacancy": {
+      "file": "commands/post-vacancy.md",
+      "description": "Post a new job vacancy to LinkedIn"
+    },
+    "check-messages": {
+      "file": "commands/check-messages.md", 
+      "description": "Check and process new messages"
+    },
+    "daily-report": {
+      "file": "commands/daily-report.md",
+      "description": "Generate daily HR report"
+    }
+  },
+  "settings": {
+    "database_path": "../database/",
+    "automation_path": "../automation/",
+    "default_timezone": "UTC",
+    "log_level": "INFO"
+  }
+} 

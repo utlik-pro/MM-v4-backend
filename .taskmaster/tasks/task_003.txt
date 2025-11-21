@@ -1,0 +1,11 @@
+# Task ID: 3
+# Title: Design property data model
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Create TypeScript interfaces for property data structure
+# Details:
+Define interfaces for Apartment, type, Quarter, Status, Square, Price_metr, Price_full fields
+
+# Test Strategy:
+Type checking with TypeScript compiler, validate against sample JSON data

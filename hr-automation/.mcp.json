@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "browser-automation": {
+      "command": "python",
+      "args": ["automation/workflows/linkedin_browser_automation.py"],
+      "env": {
+        "LINKEDIN_EMAIL": "${LINKEDIN_EMAIL}",
+        "LINKEDIN_PASSWORD": "${LINKEDIN_PASSWORD}",
+        "CHROME_HEADLESS": "false"
+      }
+    },
+    "email": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-email"],
+      "env": {
+        "EMAIL_SERVER": "${EMAIL_SERVER}",
+        "EMAIL_USERNAME": "${EMAIL_USERNAME}",
+        "EMAIL_PASSWORD": "${EMAIL_PASSWORD}"
+      }
+    },
+    "calendar": {
+      "command": "npx", 
+      "args": ["-y", "@modelcontextprotocol/server-calendar"],
+      "env": {
+        "CALENDAR_API_KEY": "${CALENDAR_API_KEY}",
+        "CALENDAR_CALENDAR_ID": "${CALENDAR_CALENDAR_ID}"
+      }
+    },
+    "database": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite"],
+      "env": {
+        "DATABASE_PATH": "./database/"
+      }
+    }
+  },
+  "settings": {
+    "logLevel": "info",
+    "timeout": 30000,
+    "retryAttempts": 3
+  }
+} 

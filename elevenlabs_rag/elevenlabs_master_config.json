@@ -1,0 +1,38 @@
+{
+  "rag_configuration": {
+    "file_priority": [
+      "00-rag-navigation-index.md",
+      "01-budget-apartments.md",
+      "02-validation-rules.md",
+      "03-empathy-enhancer.md",
+      "00-agent-master-guide.md"
+    ],
+    "settings": {
+      "chunk_size": 800,
+      "chunk_overlap": 400,
+      "retrieval_count": 7,
+      "similarity_threshold": 0.8,
+      "search_type": "hybrid",
+      "reranking": true
+    },
+    "model_settings": {
+      "temperature": 0.2,
+      "max_tokens": 500,
+      "top_p": 0.9
+    }
+  },
+  "test_queries": [
+    {
+      "query": "Мне нужна недорогая квартира",
+      "expected": "Должен начать с 7 квартала, НЕ с София"
+    },
+    {
+      "query": "Что есть до 40 квадратов?",
+      "expected": "7, 21, 30 кварталы, НЕ София 22.7"
+    },
+    {
+      "query": "Какая самая дешевая?",
+      "expected": "Сослаться на навигатор и назвать актуальный минимум"
+    }
+  ]
+}

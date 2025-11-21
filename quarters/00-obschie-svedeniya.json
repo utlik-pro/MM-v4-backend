@@ -1,0 +1,331 @@
+{
+  "title": "ЖК \"Минск Мир\" - Общие сведения",
+  "basic_info": {
+    "name": "ЖК \"Минск Мир\"",
+    "description": "Крупный многофункциональный жилой комплекс в Минске",
+    "quarters_count": 21,
+    "max_floors": 25
+  },
+  "project_scale": {
+    "quarters_total": 21,
+    "buildings_total": 135,
+    "buildings_completed": 131,
+    "max_floors": 25
+  },
+  "developers": [
+    "ИООО \"Дана Астра\"",
+    "ООО \"Дубай Инвестмент\"",
+    "ООО \"Луксудо\""
+  ],
+  "property_types": {
+    "apartments": [
+      {
+        "type": "ready_to_move",
+        "name": "Готовые к заселению",
+        "description": "полностью завершенные объекты"
+      },
+      {
+        "type": "under_construction",
+        "name": "Строящиеся",
+        "description": "объекты в процессе строительства"
+      },
+      {
+        "type": "business_apartments",
+        "name": "Бизнес-апартаменты",
+        "description": "многофункциональная недвижимость для жилья и бизнеса"
+      }
+    ]
+  },
+  "pricing": {
+    "starting_price_per_sqm_eur": 1440,
+    "starting_price_type": "строящиеся объекты",
+    "installment": {
+      "months_range": "24-48",
+      "months_mba": "12-48"
+    },
+    "down_payment": {
+      "under_construction": "от 20%",
+      "ready": "от 30%"
+    },
+    "registration_available": true,
+    "registration_includes_apartments": true
+  },
+  "installment_plans": {
+    "ready_objects": {
+      "complex_name": "Многофункциональный комплекс «Минск-Мир»",
+      "down_payment": "от 30%",
+      "installment_period": "24-48 месяцев",
+      "final_payment": "до 30%",
+      "advantages": [
+        "Чем выше первоначальный взнос, тем ниже цена за квадратный метр",
+        "Живите уже сегодня — платите до четырёх лет",
+        "Рассрочка подстраивается под ваши возможности"
+      ]
+    },
+    "under_construction": {
+      "complex_name": "Многофункциональный комплекс «Минск-Мир»",
+      "down_payment": "от 20%",
+      "installment_period": "24-48 месяцев",
+      "final_payment": "до 30%",
+      "advantages": [
+        "Чем выше первоначальный взнос, тем ниже цена за квадратный метр",
+        "Въезд сразу после сдачи дома",
+        "Рассрочка подстраивается под ваши возможности"
+      ]
+    },
+    "business_apartments": {
+      "complex_name": "Многофункциональный комплекс «Минск-Мир»",
+      "down_payment": "от 20%",
+      "installment_period": "12-48 месяцев",
+      "final_payment": "20%"
+    },
+    "express_installment": {
+      "ready": {
+        "complexes": ["Минск-Мир", "Маяк Минска", "Парк Челюскинцев"],
+        "down_payment": "от 30%",
+        "installment_period": "6-12 месяцев"
+      },
+      "under_construction": {
+        "complexes": ["Минск-Мир", "Маяк Минска", "Парк Челюскинцев"],
+        "down_payment": "от 20%",
+        "installment_period": "6-12 месяцев"
+      }
+    }
+  },
+  "transport": {
+    "metro_stations": [
+      "Аэродромная",
+      "Неморшанский сад",
+      "Слуцкий гостинец"
+    ]
+  },
+  "infrastructure": {
+    "education": {
+      "kindergartens": "действующие и планируемые",
+      "schools": {
+        "operating": 2,
+        "planned": 5
+      },
+      "music_schools": true
+    },
+    "medical": {
+      "polyclinics": "строится в 29 квартале \"Северная Европа\""
+    },
+    "shopping": [
+      {
+        "name": "ТЦ \"Авиа Молл\"",
+        "description": "супермаркет Green и другие магазины"
+      },
+      {
+        "name": "Торговые центры",
+        "area_sqm": 30000
+      }
+    ],
+    "sports": [
+      "Фитнес-центры",
+      "Боулинг",
+      "Спа-центры",
+      "Спортивные площадки в каждом квартале",
+      "Теннисные корты",
+      "Баскетбольные площадки"
+    ]
+  },
+  "management_company": {
+    "name": "Хэппи Планет",
+    "description": "обслуживает все дома в ЖК \"Минск Мир\"",
+    "website": "dpm.by",
+    "phone": "7560"
+  },
+  "contacts": {
+    "sales_office": {
+      "address": "ул. Мстиславца, 9 (м. Восток)",
+      "working_hours": {
+        "weekdays": "8:30-20:30",
+        "weekends": "9:00-20:00"
+      }
+    },
+    "call_center": {
+      "short_number": "7675",
+      "short_number_note": "платный по тарифу A1, МТС, Life:)",
+      "city_number": "+375 (17) 269 61 99"
+    },
+    "credit_managers": {
+      "working_hours": "09:00-18:00",
+      "working_days": "только будние дни"
+    }
+  },
+  "guarantees": {
+    "windows": "2 года",
+    "building": "5 лет"
+  },
+  "construction_features": {
+    "apartment_finishing": {
+      "layout": "Свободная планировка без отделки",
+      "partitions": "Межкомнатные перегородки отсутствуют (можно организовать самостоятельно)"
+    },
+    "parking": {
+      "types": [
+        "Подземные паркинги в цокольных этажах",
+        "Отдельно стоящие паркинги",
+        "Парковка на периферии кварталов"
+      ],
+      "total_capacity": "более 1620 мест"
+    }
+  },
+  "unique_buildings": {
+    "kalemegdan": {
+      "house_number": "27.5",
+      "name": "Калемегдан",
+      "quarter": "Хэппи Плэнет",
+      "architectural_features": {
+        "shape": "дугообразная форма для гармонизации с природой",
+        "facade_colors": "белые и синие тона",
+        "glazing": "тонированное синее",
+        "ceiling_height_m": 5.1,
+        "ceiling_height_zone": "в зоне гостиной"
+      },
+      "apartment_features": {
+        "mezzanines": {
+          "availability": "в каждой квартире",
+          "area_percentage": "до 40% площади помещения"
+        },
+        "duplex_apartments": true,
+        "panoramic_windows": "на парк \"зеленое сердце\" проекта"
+      },
+      "commercial": {
+        "floor": 1,
+        "premises_count": 4,
+        "type": "административно-торговые помещения"
+      }
+    }
+  },
+  "quarters_concept": {
+    "description": "Каждый квартал имеет уникальную тематическую концепцию",
+    "themes": [
+      {
+        "name": "Средиземноморский",
+        "style": "европейский стиль"
+      },
+      {
+        "name": "Тропические острова",
+        "style": "экзотическая атмосфера"
+      },
+      {
+        "name": "Западная Европа",
+        "style": "классическая архитектура"
+      },
+      {
+        "name": "Happy Planet",
+        "style": "современный комфорт"
+      },
+      {
+        "name": "Северная Америка",
+        "style": "американский стиль"
+      }
+    ]
+  },
+  "quarters_statistics": [
+    {
+      "quarter_number": 7,
+      "name": "Средиземноморский",
+      "buildings_count": 8,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 9,
+      "name": "Южная Америка",
+      "buildings_count": 10,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 10,
+      "name": "Тропические острова",
+      "buildings_count": 10,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 11,
+      "name": "Австралия и Океания",
+      "buildings_count": 4,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 12,
+      "name": "Западная Европа",
+      "buildings_count": 10,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 16,
+      "name": "Родная сторона",
+      "buildings_count": null,
+      "status": "Строится"
+    },
+    {
+      "quarter_number": 18,
+      "name": "Чемпионов",
+      "buildings_count": 8,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 19,
+      "name": "Южная Европа",
+      "buildings_count": 8,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 20,
+      "name": "Мировых танцев",
+      "buildings_count": 11,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 21,
+      "name": "Западный",
+      "buildings_count": null,
+      "status": "Строится"
+    },
+    {
+      "quarter_number": 22,
+      "name": "Центральная Европа",
+      "buildings_count": 5,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 23,
+      "name": "Евразия",
+      "buildings_count": 8,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 25,
+      "name": "Азия",
+      "buildings_count": 11,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 26,
+      "name": "Африка",
+      "buildings_count": 6,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 27,
+      "name": "Happy Planet",
+      "buildings_count": 15,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 29,
+      "name": "Северная Европа",
+      "buildings_count": 11,
+      "status": "Сдан"
+    },
+    {
+      "quarter_number": 30,
+      "name": "Северная Америка",
+      "buildings_count": 12,
+      "status": "Сдан"
+    }
+  ]
+}

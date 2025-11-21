@@ -1,0 +1,2936 @@
+[
+  {
+    "version": 1,
+    "timestamp": "2025-09-22T15:48:14.794983",
+    "hash": "d19944cd44de55fa55d3febafadc3278e33ce1e670aa3153caf52dd726d67f6b",
+    "changes": {
+      "timestamp": "2025-09-22T15:48:14.757355",
+      "summary": [
+        "Удалено объектов: 25"
+      ],
+      "details": {
+        "removed": [
+          "12",
+          "28",
+          "00",
+          "7",
+          "02",
+          "16",
+          "22",
+          "30",
+          "20",
+          "25",
+          "9",
+          "04",
+          "27",
+          "19",
+          "05",
+          "18",
+          "29",
+          "11",
+          "03",
+          "23",
+          "26",
+          "Neizvestnyy",
+          "01",
+          "10",
+          "21"
+        ]
+      }
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 2,
+    "timestamp": "2025-09-22T15:56:36.500639",
+    "hash": "e1169474892e5306da560db2a9b39adf429b687c3ffcf01867676795961dc03b",
+    "changes": {
+      "timestamp": "2025-09-22T15:56:36.418137",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 3,
+    "timestamp": "2025-09-22T16:02:23.635898",
+    "hash": "30d5e4bd754a884d2d0525c98210e2258674afb8dc7d557d7e4032bcd42eeda7",
+    "changes": {
+      "timestamp": "2025-09-22T16:02:23.526452",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 4,
+    "timestamp": "2025-09-22T16:09:35.721564",
+    "hash": "67f4fb07d3ce3a707bfa508ecc4900e37b4eb2864c851d03d94bc8b1eb9f4e65",
+    "changes": {
+      "timestamp": "2025-09-22T16:09:35.620670",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 5,
+    "timestamp": "2025-09-22T16:37:11.605275",
+    "hash": "8f5f645c5d65b2441edaf0e593eb916ce2072eff809cedeba186bb09999fb522",
+    "changes": {
+      "timestamp": "2025-09-22T16:37:11.547161",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 6,
+    "timestamp": "2025-09-22T16:48:30.871247",
+    "hash": "14ea654d88dcbf7243a57cdc00cead82c59f2bcee15b85ecc24f5ec7c9a990f0",
+    "changes": {
+      "timestamp": "2025-09-22T16:48:30.813627",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 7,
+    "timestamp": "2025-09-22T17:21:42.277445",
+    "hash": "270a61abc22b70b06e5d4f5ad140cd4af63eaf902021934d106744c0d0694801",
+    "changes": {
+      "timestamp": "2025-09-22T17:21:42.218795",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 8,
+    "timestamp": "2025-09-22T17:26:02.763714",
+    "hash": "d8771ce20ccd1a2e20a64d8c12563def3d22209d282f8682ef50d43b2984edab",
+    "changes": {
+      "timestamp": "2025-09-22T17:26:02.704572",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 9,
+    "timestamp": "2025-09-22T17:38:51.899716",
+    "hash": "281fea77ed61fb134059dac942c46c106d8e61c86db9437ef9c952f7f6feb804",
+    "changes": {
+      "timestamp": "2025-09-22T17:38:51.842017",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 10,
+    "timestamp": "2025-09-22T17:40:56.082540",
+    "hash": "9aa606e6629e8ed0d102744abb052b748ef0805490b3dcce1cbe9726af4dc858",
+    "changes": {
+      "timestamp": "2025-09-22T17:40:55.924975",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 11,
+    "timestamp": "2025-09-22T17:42:35.889118",
+    "hash": "926c537cc9ced207c14c67be3637b14ce76b1b6b2489280562f26edd2a5db8a8",
+    "changes": {
+      "timestamp": "2025-09-22T17:42:35.837888",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 12,
+    "timestamp": "2025-09-22T22:57:47.824129",
+    "hash": "11d7885da5789178d5c8d17712084524f678137e27c5c2239ceca6d66be22a23",
+    "changes": {
+      "timestamp": "2025-09-22T22:57:47.766704",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 13,
+    "timestamp": "2025-09-22T23:25:26.432706",
+    "hash": "45a01433f402e11c42ced69cfa363f91ce0696d7604cc991395a905d939ddcae",
+    "changes": {
+      "timestamp": "2025-09-22T23:25:26.371407",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 14,
+    "timestamp": "2025-09-23T16:23:20.873303",
+    "hash": "bd5bda0ad4cfe8f34df31d5dbb045e5d228c7fa6639fbee576cae75e5ffe4d97",
+    "changes": {
+      "timestamp": "2025-09-23T16:23:20.777466",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 15,
+    "timestamp": "2025-09-23T16:33:26.567862",
+    "hash": "6c99a878ed1d099383201e192c363250fbcdc47a1b5da81899803b4b470875aa",
+    "changes": {
+      "timestamp": "2025-09-23T16:33:26.490164",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 16,
+    "timestamp": "2025-09-26T09:54:07.835725",
+    "hash": "e31dd87463fb6468a3d060532e716f3f202bc9579a5b7601d71c8c5eb6342def",
+    "changes": {
+      "timestamp": "2025-09-26T09:54:07.760212",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 17,
+    "timestamp": "2025-09-26T09:54:53.002421",
+    "hash": "a8156032af64f40b2becc3aa5602c29a37c68948f246212f016d4b4a8eb9083c",
+    "changes": {
+      "timestamp": "2025-09-26T09:54:52.935737",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 18,
+    "timestamp": "2025-10-02T13:25:50.824522",
+    "hash": "3d0b5946d81feb3be48b03b28cdb59448d2e37eebaf60b5ef4a0a23f85a8048d",
+    "changes": {
+      "timestamp": "2025-10-02T13:25:50.788804",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 19,
+    "timestamp": "2025-10-06T13:07:38.506788",
+    "hash": "e8500d27addc4a736204b9d9a5ff0afd0d8e4887c1a95ea0a32be3893d1ab617",
+    "changes": {
+      "timestamp": "2025-10-06T13:07:38.468764",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 20,
+    "timestamp": "2025-10-21T11:50:08.141148",
+    "hash": "d0d6a7a817cb23989c1fa287dd3d589dffdf13bc3c378e537299b480030630b3",
+    "changes": {
+      "timestamp": "2025-10-21T11:50:08.101847",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 21,
+    "timestamp": "2025-10-21T11:57:44.429394",
+    "hash": "25cf5d40e515d078dc897138e5a499710397f253fcea906a08341b5f8b1f0657",
+    "changes": {
+      "timestamp": "2025-10-21T11:57:44.388839",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 22,
+    "timestamp": "2025-10-21T12:00:18.608553",
+    "hash": "7276e4d7ca2c487811fd824701a29f843d8e73b35503e1c4f8da707d4e5f4db0",
+    "changes": {
+      "timestamp": "2025-10-21T12:00:18.460129",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 23,
+    "timestamp": "2025-10-21T13:00:21.767047",
+    "hash": "7da20b6872c0376d4a4e5da13d48d874bc660aed10b5e17e0a1b82976fed62f1",
+    "changes": {
+      "timestamp": "2025-10-21T13:00:21.267980",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 24,
+    "timestamp": "2025-10-21T14:00:18.717165",
+    "hash": "245155bc8c6b4179c39d89c15e5ec838e32141499e37f2363bcc1002b5ba4d60",
+    "changes": {
+      "timestamp": "2025-10-21T14:00:18.574801",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 25,
+    "timestamp": "2025-10-21T15:00:19.488037",
+    "hash": "3a9d986b377e98efd1e4439fba0d7460645e5bd91bf3ae85df13590f77d23017",
+    "changes": {
+      "timestamp": "2025-10-21T15:00:19.363681",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 26,
+    "timestamp": "2025-10-21T16:00:22.485368",
+    "hash": "b1fdf1aa6e34d47ae7a55e44cd990e33e4aff7988ed3daf9ece2942bd0fd790a",
+    "changes": {
+      "timestamp": "2025-10-21T16:00:22.351923",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 27,
+    "timestamp": "2025-10-21T17:00:18.925654",
+    "hash": "3066dc272fb86708febf72e15772137b0756d27ec3bbcced77f09c32e83ecf08",
+    "changes": {
+      "timestamp": "2025-10-21T17:00:18.804914",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 28,
+    "timestamp": "2025-10-21T18:00:05.181460",
+    "hash": "7923e0c56b87d3a5df5bb79468ef4062f5a4e2db5987df0adaddcd8b836f338d",
+    "changes": {
+      "timestamp": "2025-10-21T18:00:05.089013",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 29,
+    "timestamp": "2025-10-22T09:00:05.054521",
+    "hash": "588413c119c5f94c83203c281c3222dd3c03639c641e10740807d1abf27705be",
+    "changes": {
+      "timestamp": "2025-10-22T09:00:04.961598",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 30,
+    "timestamp": "2025-10-22T10:00:05.595008",
+    "hash": "66e686e9d5f325e24cc2999cf00bc1384b28b05ef9caaa9d79438df42922e42c",
+    "changes": {
+      "timestamp": "2025-10-22T10:00:05.510575",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 31,
+    "timestamp": "2025-10-22T11:00:05.873836",
+    "hash": "edb27873b9ce2e2cfda2e35c3e2f71edb5d7df1cc9953432c7ad80c4d4ba843a",
+    "changes": {
+      "timestamp": "2025-10-22T11:00:05.783670",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 32,
+    "timestamp": "2025-10-22T12:00:06.578975",
+    "hash": "53d5654783bec461f505b665ee4ff208381bae0cfe0644acef9887bf25f3da9e",
+    "changes": {
+      "timestamp": "2025-10-22T12:00:06.477042",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 33,
+    "timestamp": "2025-10-22T13:00:09.042594",
+    "hash": "cc6b6e3f57c552a9cef9ddc251ecf34637fbe81b4479e42bf17ab5abbf5c2e95",
+    "changes": {
+      "timestamp": "2025-10-22T13:00:08.940251",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 34,
+    "timestamp": "2025-10-22T14:00:05.509606",
+    "hash": "1393eb41dd043fa7020f4bb5211fc64fa5d43a38ff68ea2df541f114fe094c21",
+    "changes": {
+      "timestamp": "2025-10-22T14:00:05.400062",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 35,
+    "timestamp": "2025-10-22T15:00:05.072140",
+    "hash": "227adbf42eaf3469c2f3348cf9ca9ee314df6ecbeb743816200f4c609a9cf27f",
+    "changes": {
+      "timestamp": "2025-10-22T15:00:04.974016",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 36,
+    "timestamp": "2025-10-22T16:00:04.648481",
+    "hash": "08eb134ad8f18a9010a3529f2e347240d1600ae1f288e08674cc20157686cf39",
+    "changes": {
+      "timestamp": "2025-10-22T16:00:04.549195",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 37,
+    "timestamp": "2025-10-22T17:00:06.781249",
+    "hash": "7402a6e73aa1eb7e6c234e65f34fabce272c360e9b30a8d34ead084ed1fa8090",
+    "changes": {
+      "timestamp": "2025-10-22T17:00:06.670794",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 38,
+    "timestamp": "2025-10-22T18:00:10.160923",
+    "hash": "1c43ede3edf75be76b1e7efc47564a1ac510c46b15ade8afb4cedb7aa6606995",
+    "changes": {
+      "timestamp": "2025-10-22T18:00:09.990081",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 39,
+    "timestamp": "2025-10-23T10:00:05.659417",
+    "hash": "e9ed9e566d6d291bf9e806bfb9488f4ffeaf1a08ca7dca73ccdf0ef5c6961e43",
+    "changes": {
+      "timestamp": "2025-10-23T10:00:05.527006",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 40,
+    "timestamp": "2025-10-23T11:00:05.840820",
+    "hash": "64b7dd99b7ace1cea09f57bf892cd40f3c422cbd39a48392682ab0cce8e6ba83",
+    "changes": {
+      "timestamp": "2025-10-23T11:00:05.741799",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 41,
+    "timestamp": "2025-10-23T12:00:05.947816",
+    "hash": "a9052bd80b92af8e3cf3b12fdd7b7ec82d9137d10ffea1400adc703305fe6966",
+    "changes": {
+      "timestamp": "2025-10-23T12:00:05.856904",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 42,
+    "timestamp": "2025-10-23T13:00:05.469050",
+    "hash": "5e7dbeb23473ae450f05d6139b2225b322cd6254be59b92c06eb64c2ae9bb4b7",
+    "changes": {
+      "timestamp": "2025-10-23T13:00:05.365390",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 43,
+    "timestamp": "2025-10-23T14:00:05.762326",
+    "hash": "4e1788837b0623a244f378a5606adcec1643b4c7071541bafeed67ef73b597a7",
+    "changes": {
+      "timestamp": "2025-10-23T14:00:05.664943",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 44,
+    "timestamp": "2025-10-23T15:00:05.320231",
+    "hash": "63723453c598e36ad124a848f8e1191f2ff97777acf91c824cbdb7c2be535a0d",
+    "changes": {
+      "timestamp": "2025-10-23T15:00:05.232091",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 45,
+    "timestamp": "2025-10-23T16:00:08.796822",
+    "hash": "9aa962a15c827378be700f6e8905b84deece739b74cc9421025f0b0dabd438b4",
+    "changes": {
+      "timestamp": "2025-10-23T16:00:08.233061",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 46,
+    "timestamp": "2025-10-23T17:00:05.616526",
+    "hash": "865f173f6dec15ad356cbfb5814a180322ba71fc214dfd4235dbf3b1d4fd8493",
+    "changes": {
+      "timestamp": "2025-10-23T17:00:05.532070",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 47,
+    "timestamp": "2025-10-23T18:00:08.856131",
+    "hash": "916a2e0c492f82545b7c0b7dee7fab487af34206b34e5f830f8ceabced99fdae",
+    "changes": {
+      "timestamp": "2025-10-23T18:00:08.464412",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 48,
+    "timestamp": "2025-10-24T09:00:04.882766",
+    "hash": "0937d66f6c1c6080716bbdfa38949b2b8534b6f4bd2373362c596d25a043f513",
+    "changes": {
+      "timestamp": "2025-10-24T09:00:04.790271",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 49,
+    "timestamp": "2025-10-24T10:00:05.217681",
+    "hash": "44e1e3933eeac0e997cada8c86f13452534c2c790d20e08228603a5d007af511",
+    "changes": {
+      "timestamp": "2025-10-24T10:00:05.109472",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 50,
+    "timestamp": "2025-10-24T11:00:05.308604",
+    "hash": "b2bf9160c3751d3dd1f57e8cb99d48ef5a2c18b3ab05ecbc06fc2aa0526f46f6",
+    "changes": {
+      "timestamp": "2025-10-24T11:00:05.188458",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 51,
+    "timestamp": "2025-10-24T12:00:04.417088",
+    "hash": "425dc7b2fa12fb5d8520f766fc8ebb1188c69b04f491b8343abaf4ff14aa7b78",
+    "changes": {
+      "timestamp": "2025-10-24T12:00:04.321714",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 52,
+    "timestamp": "2025-10-24T17:00:04.918060",
+    "hash": "5df0151c4fbd8b7c96bbdefb86b4f77fc099c09a86f22f0d958bd04497f2638f",
+    "changes": {
+      "timestamp": "2025-10-24T17:00:04.730944",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 53,
+    "timestamp": "2025-10-24T18:00:05.065699",
+    "hash": "c69be0e76b3a62ebc7ccf6f4dfededd1eaa3c4ed71a2bc57075b9441d1916d34",
+    "changes": {
+      "timestamp": "2025-10-24T18:00:04.972561",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 54,
+    "timestamp": "2025-10-25T09:00:05.185690",
+    "hash": "bdaea90a0122d44a7e55a8c1930d044f9d5c2ebf4f58cd98080493953e4dade2",
+    "changes": {
+      "timestamp": "2025-10-25T09:00:05.081927",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 55,
+    "timestamp": "2025-10-25T10:00:05.873934",
+    "hash": "386f8c7f24e8a126bb6b0f067033306f76618d90424e776d8dc067c4447fcf8e",
+    "changes": {
+      "timestamp": "2025-10-25T10:00:05.793843",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 56,
+    "timestamp": "2025-10-25T11:00:05.538656",
+    "hash": "126f99708b24a5719a102adffc45bd5a71ebceee44fd45a14d73b4ef684b2a24",
+    "changes": {
+      "timestamp": "2025-10-25T11:00:05.443162",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 57,
+    "timestamp": "2025-10-25T12:00:05.747669",
+    "hash": "5e5b7281f085e32d2205fab88f9b5de0ec058b636f6303849154be386d231647",
+    "changes": {
+      "timestamp": "2025-10-25T12:00:05.612545",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 58,
+    "timestamp": "2025-10-25T13:00:05.063433",
+    "hash": "f1ca44f0a87ae9c6492409fb022f626f179dd3cccbfb8297d5a82e8f72c7ce0f",
+    "changes": {
+      "timestamp": "2025-10-25T13:00:04.964103",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 59,
+    "timestamp": "2025-10-25T14:00:05.566117",
+    "hash": "825f5736b8b1b27aaa0ce02ce5e0f468ec70d100eaa0269b7b42559002ceafea",
+    "changes": {
+      "timestamp": "2025-10-25T14:00:05.463520",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 60,
+    "timestamp": "2025-10-25T15:00:05.900275",
+    "hash": "2c223590c52f07ec209c1a0bf533d283a1212b1aaed15d6b1dab04fe66435903",
+    "changes": {
+      "timestamp": "2025-10-25T15:00:05.798711",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 61,
+    "timestamp": "2025-10-25T16:00:06.759604",
+    "hash": "31fedc07ade2e24bd0ebd7d1ae8057996da533f1d60ee3d86fc4587f414e2cf6",
+    "changes": {
+      "timestamp": "2025-10-25T16:00:05.239432",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 62,
+    "timestamp": "2025-10-25T17:00:06.645850",
+    "hash": "0cfa584016ce96f77106b4e8e5e48685e2c0f4ec2395b429ccc34d143efd8c00",
+    "changes": {
+      "timestamp": "2025-10-25T17:00:06.488435",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 63,
+    "timestamp": "2025-10-25T18:00:05.292085",
+    "hash": "202a0f812318323c05ae461c21fe511f443a00ba13f215b80420be37b1bc41fb",
+    "changes": {
+      "timestamp": "2025-10-25T18:00:05.211070",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 64,
+    "timestamp": "2025-10-26T09:00:04.992220",
+    "hash": "831efb2171e61e9a2bbbaaddb96c4fb320e2b889cde008faa1b0daab90a00cb9",
+    "changes": {
+      "timestamp": "2025-10-26T09:00:04.902367",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 65,
+    "timestamp": "2025-10-26T10:00:05.135693",
+    "hash": "33f5d2df6afa0d139c094a664bcb1a5fa3f4dd175cd2ff9ddee53b2a1a5a9c1a",
+    "changes": {
+      "timestamp": "2025-10-26T10:00:05.041095",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 66,
+    "timestamp": "2025-10-26T11:00:05.345213",
+    "hash": "b53ad75e15d2d2ec5d3536be313bf99e682daaae7abc9647e104d591d4d67d31",
+    "changes": {
+      "timestamp": "2025-10-26T11:00:05.254111",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 67,
+    "timestamp": "2025-10-26T12:00:05.791273",
+    "hash": "b5e7e43a4bfde1518f493d22e6496dcde48a9c0880b930cde23f8ffb9477782a",
+    "changes": {
+      "timestamp": "2025-10-26T12:00:05.679353",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 68,
+    "timestamp": "2025-10-26T13:00:04.916062",
+    "hash": "37d26d1d213a74c189844bf306e7dde889c8e5c92bd08d9493024437fa5b467d",
+    "changes": {
+      "timestamp": "2025-10-26T13:00:04.833721",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 69,
+    "timestamp": "2025-10-26T14:00:05.352079",
+    "hash": "0770f1d66fc4414cf7e5f1eaaa600ddcbff3607fa72cb117ff645fecabfabdbb",
+    "changes": {
+      "timestamp": "2025-10-26T14:00:05.255538",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 70,
+    "timestamp": "2025-10-26T15:00:05.090056",
+    "hash": "39350f8c68138adf4e3a2abda675fa46c9ac425e7919767cfd77e854c2e0614a",
+    "changes": {
+      "timestamp": "2025-10-26T15:00:04.961046",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 71,
+    "timestamp": "2025-10-26T16:00:05.181704",
+    "hash": "b5d7f3e8919e0156277ab3b29c851c37fa755f61c664d82d7ae2d765299050a5",
+    "changes": {
+      "timestamp": "2025-10-26T16:00:05.087160",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 72,
+    "timestamp": "2025-10-26T17:00:05.354216",
+    "hash": "66b30fdf30ddbbcb47b5f99651921e44d713b54e56905450763980b0d7dbd4e6",
+    "changes": {
+      "timestamp": "2025-10-26T17:00:05.272181",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 73,
+    "timestamp": "2025-10-26T18:00:05.356980",
+    "hash": "75a95719bbe77f06374b0b0db37d4884aa88382f9cef363d28d74ae3fdcfda43",
+    "changes": {
+      "timestamp": "2025-10-26T18:00:05.265191",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 74,
+    "timestamp": "2025-10-27T09:03:38.401544",
+    "hash": "d75ecf770801aaf742aa8f83fcb0de3005ead6cab85f595ad9fd5e27d74ee1e6",
+    "changes": {
+      "timestamp": "2025-10-27T09:03:38.118837",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 75,
+    "timestamp": "2025-10-27T10:00:07.433382",
+    "hash": "addad98c174e3fcb090daa41c4a233112ecf3140d3326b9704b2d99430eec66e",
+    "changes": {
+      "timestamp": "2025-10-27T10:00:07.349798",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 76,
+    "timestamp": "2025-10-27T11:00:04.983958",
+    "hash": "fe3a3482ad9b0c690eecb3b49b29657faab1ed851053021e4458498319cd1e96",
+    "changes": {
+      "timestamp": "2025-10-27T11:00:04.903193",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 77,
+    "timestamp": "2025-10-27T12:00:06.287166",
+    "hash": "49e6bc0ed35d80e1239140a0949defaccec26346c2cbc07a23881d1486096699",
+    "changes": {
+      "timestamp": "2025-10-27T12:00:05.802025",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 78,
+    "timestamp": "2025-10-27T13:00:05.452063",
+    "hash": "8cd599635a62f4484300b3cba763314513522b91574b8a25bf65614434190ef3",
+    "changes": {
+      "timestamp": "2025-10-27T13:00:05.347952",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 79,
+    "timestamp": "2025-10-27T14:00:06.062406",
+    "hash": "6f2d549c41aa519aa4d48f68246f8eaad1cfc3ed744bf133f03e480e53835702",
+    "changes": {
+      "timestamp": "2025-10-27T14:00:05.948707",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 80,
+    "timestamp": "2025-10-27T15:00:05.178678",
+    "hash": "f795df43e1ec9474a8cc4a74a1deab828ccb641db081cafd9e11d8ba60dc29bd",
+    "changes": {
+      "timestamp": "2025-10-27T15:00:05.071349",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 81,
+    "timestamp": "2025-10-27T16:00:05.911182",
+    "hash": "05c55a3110b9b9d407dbf0bbb17142640a28e59e8179edd9340fafd2e6dd4baa",
+    "changes": {
+      "timestamp": "2025-10-27T16:00:05.752209",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 82,
+    "timestamp": "2025-10-27T17:00:05.758816",
+    "hash": "93c71839f6d2c04c7acedef20c52855c2573a877affb192b8a88cdc29dec17ac",
+    "changes": {
+      "timestamp": "2025-10-27T17:00:05.290971",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 83,
+    "timestamp": "2025-10-27T18:00:05.273519",
+    "hash": "5bd9fbf0786d977542abdcbf4d52286ce086281cf5f239e4fc6c5937517201d4",
+    "changes": {
+      "timestamp": "2025-10-27T18:00:05.146537",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 84,
+    "timestamp": "2025-10-28T09:00:17.299224",
+    "hash": "b4a2a97857444c2ab54d151c6f0174647b469e4f16bc90ef7df4696f2ab995fd",
+    "changes": {
+      "timestamp": "2025-10-28T09:00:17.201891",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 85,
+    "timestamp": "2025-10-28T10:00:18.945395",
+    "hash": "8017b4ae464c4d7d1893001d5210934d713c52bbaf7edfd2461052059f5aca9c",
+    "changes": {
+      "timestamp": "2025-10-28T10:00:18.857592",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 86,
+    "timestamp": "2025-10-28T11:00:17.653757",
+    "hash": "5f669b5399cb9d6649795fafb55113df21c1d6361cbd59b9359c3c2da84e340b",
+    "changes": {
+      "timestamp": "2025-10-28T11:00:17.564128",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 87,
+    "timestamp": "2025-10-28T12:00:18.448568",
+    "hash": "e482f5c8f4d334e9c4a823d8a0f786f2abf7701d6d2488d27ec251233a4c8ae2",
+    "changes": {
+      "timestamp": "2025-10-28T12:00:18.321515",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 88,
+    "timestamp": "2025-10-28T13:00:17.832372",
+    "hash": "56582648a8e9a5a3e5982b2c9b9f30fd942d14f3ff239a9105d4effa8fd789e3",
+    "changes": {
+      "timestamp": "2025-10-28T13:00:17.754985",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 89,
+    "timestamp": "2025-10-28T14:00:17.846291",
+    "hash": "3d67ceb85347b3e273e23a854eb5a208db045fce88b4d65baa0b07ae230daed0",
+    "changes": {
+      "timestamp": "2025-10-28T14:00:17.727527",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 90,
+    "timestamp": "2025-10-28T15:00:18.452986",
+    "hash": "f9e83ab0a3c85ef7b176986ee927465dbd8b4498c08dd1c5cc28da72f2e32857",
+    "changes": {
+      "timestamp": "2025-10-28T15:00:18.342830",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 91,
+    "timestamp": "2025-10-28T16:00:06.118572",
+    "hash": "2f6eed3e1a61ca98d4f87ea2e6bc075df57a0f74cf525f76ca2d4bc1ee377419",
+    "changes": {
+      "timestamp": "2025-10-28T16:00:06.027042",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 92,
+    "timestamp": "2025-10-28T17:00:05.283556",
+    "hash": "08ab3656e066028ebc1fbd525866575d3c4af73a6855087212bb777f01cc232d",
+    "changes": {
+      "timestamp": "2025-10-28T17:00:05.195487",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 93,
+    "timestamp": "2025-10-28T18:00:04.288385",
+    "hash": "cbbfc1f04bcf3436a6e071bf3df3bf9224ee52f5fbf829a246951a3905a3bb08",
+    "changes": {
+      "timestamp": "2025-10-28T18:00:04.189926",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 94,
+    "timestamp": "2025-10-29T09:00:36.121909",
+    "hash": "f613a8f587b717cbcd6a1ae555e1a809b6c5257480ab935ec091f8444e019cba",
+    "changes": {
+      "timestamp": "2025-10-29T09:00:36.030393",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 95,
+    "timestamp": "2025-10-29T13:00:05.677577",
+    "hash": "56296335b6ae3e1e3a217c29c6066d3f617f170dc83e06e372ad9bb26fde5587",
+    "changes": {
+      "timestamp": "2025-10-29T13:00:05.569611",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 96,
+    "timestamp": "2025-10-29T14:00:05.710577",
+    "hash": "48a83470de666be95e148c66125d3c5ca254036459967f29a4c2bc4841d6be57",
+    "changes": {
+      "timestamp": "2025-10-29T14:00:05.611104",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 97,
+    "timestamp": "2025-10-29T15:00:05.406746",
+    "hash": "99e580d4e470fd6b10a6b531b3b303f6ac980a3ef0f66be5a07d3bd3da1ddcf1",
+    "changes": {
+      "timestamp": "2025-10-29T15:00:05.319106",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 98,
+    "timestamp": "2025-10-29T16:00:07.188351",
+    "hash": "3c1d618c0596780f68aaa0a02cd1840230c94ec54dc359a449dccfc31cff2f5f",
+    "changes": {
+      "timestamp": "2025-10-29T16:00:06.988825",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 99,
+    "timestamp": "2025-10-29T18:00:04.890567",
+    "hash": "b5d5c28c69c57fa5b23316ca69a763acd1ac4b28f0233f393f4a15e72f958c68",
+    "changes": {
+      "timestamp": "2025-10-29T18:00:04.793531",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 100,
+    "timestamp": "2025-10-30T14:00:05.260796",
+    "hash": "21841cb210c51c7ef3345666f4a3403409f2bb0e489ee0d07797bc3ce94781a7",
+    "changes": {
+      "timestamp": "2025-10-30T14:00:05.171115",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 101,
+    "timestamp": "2025-10-30T15:00:05.433358",
+    "hash": "62f36cab86588e374c7fdcd9112cf5bd69984ddce2695ccbc324ecf58a4073e3",
+    "changes": {
+      "timestamp": "2025-10-30T15:00:05.352111",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 102,
+    "timestamp": "2025-10-30T16:00:04.031252",
+    "hash": "ab8741a36e79a1ca7627880512ea9ceb43912a36fc555a341c96dd0eb7681c8a",
+    "changes": {
+      "timestamp": "2025-10-30T16:00:03.914534",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 103,
+    "timestamp": "2025-10-30T17:00:09.509195",
+    "hash": "4f6e4aa6a634b0518552541e64848dd00826e4b4470c41e1a278d8a00e321338",
+    "changes": {
+      "timestamp": "2025-10-30T17:00:09.399241",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 104,
+    "timestamp": "2025-10-30T18:00:06.528114",
+    "hash": "0d9a1b2444143823eea7909c6b5b757aa29586113b2d625235ecfa58c6cc0e70",
+    "changes": {
+      "timestamp": "2025-10-30T18:00:05.619722",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 105,
+    "timestamp": "2025-10-31T10:00:05.674832",
+    "hash": "cb77e2ff83121b6f9276de4350749cfb6e669e848f94d7fdaf9d956c0a3a8209",
+    "changes": {
+      "timestamp": "2025-10-31T10:00:05.579617",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 106,
+    "timestamp": "2025-10-31T13:00:05.131737",
+    "hash": "26352470993a84df72642a754f908e8461585da6655e2c7ffb82588f3bc349f2",
+    "changes": {
+      "timestamp": "2025-10-31T13:00:05.046001",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 107,
+    "timestamp": "2025-10-31T14:00:06.175922",
+    "hash": "524cbfdee8966e636ee8dd71ab70ea822a92a85c253c1187ddff2de17c2ac53d",
+    "changes": {
+      "timestamp": "2025-10-31T14:00:06.083370",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 108,
+    "timestamp": "2025-10-31T15:00:05.057511",
+    "hash": "8873f80f95c69ce3e8b18f4900ab7b77edfea344b8da4a94438cd846a1cf27e2",
+    "changes": {
+      "timestamp": "2025-10-31T15:00:04.942457",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 109,
+    "timestamp": "2025-10-31T16:00:06.315077",
+    "hash": "f67a5663befc9c9574e32656d7d5596809b7399c5c632ae7a04a1907e9c7296f",
+    "changes": {
+      "timestamp": "2025-10-31T16:00:06.231841",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 110,
+    "timestamp": "2025-10-31T17:00:04.776241",
+    "hash": "08da8d5c54ab6eee577a3d4348c1727b4bcdb6f7694762116062547a2bce320d",
+    "changes": {
+      "timestamp": "2025-10-31T17:00:04.679222",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 111,
+    "timestamp": "2025-10-31T18:00:05.148778",
+    "hash": "624c1fad8b536402b183356a3ab1dc40e4fe6e11eddfe36c5cc6cdc86091c59b",
+    "changes": {
+      "timestamp": "2025-10-31T18:00:05.045987",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 112,
+    "timestamp": "2025-11-01T09:00:05.402483",
+    "hash": "8bead88ce64de74a5f4837bf753ed870aa0476854d9cd26c6f5e5b7df7a92ea1",
+    "changes": {
+      "timestamp": "2025-11-01T09:00:05.323964",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 113,
+    "timestamp": "2025-11-01T10:00:04.955661",
+    "hash": "109266bd976edf05b05c478792e29ea36489b4767d60e3a79e35356c5993a504",
+    "changes": {
+      "timestamp": "2025-11-01T10:00:04.867184",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 114,
+    "timestamp": "2025-11-01T11:00:05.288718",
+    "hash": "489ed4b3c24fc0b2a1e8a0e77878af8eaaa07aa37e43501ff588c6dc8b65db0f",
+    "changes": {
+      "timestamp": "2025-11-01T11:00:05.208808",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 115,
+    "timestamp": "2025-11-01T12:00:05.485500",
+    "hash": "171f3f236e0eb2d223bd15c18e84a289adb9736609d491a950b7be4fb6ca32dd",
+    "changes": {
+      "timestamp": "2025-11-01T12:00:05.409731",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 116,
+    "timestamp": "2025-11-01T13:00:05.421516",
+    "hash": "f7f0d927a05e953812895aeb5abc1556ed3adfb4a9265bafdb638bedb864dac4",
+    "changes": {
+      "timestamp": "2025-11-01T13:00:05.301839",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 117,
+    "timestamp": "2025-11-01T14:00:05.228930",
+    "hash": "18aef5e4db0d3f6cac55e09403d9097482a63651777ff47bbb1dbe6f07f2e0a0",
+    "changes": {
+      "timestamp": "2025-11-01T14:00:05.127776",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 118,
+    "timestamp": "2025-11-02T14:00:05.325301",
+    "hash": "83c72e111a34c03ebfbe3ce87ab0b7cbf37358ef344dedf4a42008c16d047fec",
+    "changes": {
+      "timestamp": "2025-11-02T14:00:05.233340",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 119,
+    "timestamp": "2025-11-02T15:00:05.036026",
+    "hash": "72a1f016764f9b1decc72c689f121824105d8b312c8510cc4bce711040eefe5d",
+    "changes": {
+      "timestamp": "2025-11-02T15:00:04.942080",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 120,
+    "timestamp": "2025-11-02T16:00:05.153957",
+    "hash": "119b3daf122119475e3961b35d870de7a39d1a0cd73f3800b733d37b85b4a83f",
+    "changes": {
+      "timestamp": "2025-11-02T16:00:05.019838",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 121,
+    "timestamp": "2025-11-02T17:00:06.044529",
+    "hash": "35921d4be61f027dcd2f024b20b8ef97de3a6f0b844db430e2558d72c79ad3b8",
+    "changes": {
+      "timestamp": "2025-11-02T17:00:05.952257",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 122,
+    "timestamp": "2025-11-02T18:00:05.077457",
+    "hash": "cc99b96d0a1cbcb6ba5cf2ecc69807a26ed88bd5ae7f232700d6bc8281349dd2",
+    "changes": {
+      "timestamp": "2025-11-02T18:00:04.979767",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 123,
+    "timestamp": "2025-11-03T09:00:05.391023",
+    "hash": "04bc93e114977272c33f4c07f958ba1079d3bf0ea550f3ac389736d7e786f01c",
+    "changes": {
+      "timestamp": "2025-11-03T09:00:05.312183",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 124,
+    "timestamp": "2025-11-03T12:00:04.870647",
+    "hash": "ed52bb6052e94aa92619ba574bb6de2204d38d2aa4295694f0c460650d9e53f1",
+    "changes": {
+      "timestamp": "2025-11-03T12:00:04.760727",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 125,
+    "timestamp": "2025-11-03T13:00:05.395412",
+    "hash": "9a17b3432511bfd2cbaa725361690280b884908a6785366156811ef149ffdf12",
+    "changes": {
+      "timestamp": "2025-11-03T13:00:05.300419",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 126,
+    "timestamp": "2025-11-03T14:00:05.739773",
+    "hash": "dbf8340786ebdfd92c984049b53b9bbadc5a14fef0528255ba4b94d7377f9453",
+    "changes": {
+      "timestamp": "2025-11-03T14:00:05.652183",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 127,
+    "timestamp": "2025-11-03T15:00:05.861148",
+    "hash": "59d0e90a8a767ba1e92da0a707d7eb064c61cbe48afd7e6f61168dae7aeb5c10",
+    "changes": {
+      "timestamp": "2025-11-03T15:00:05.750985",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 128,
+    "timestamp": "2025-11-03T16:00:07.282555",
+    "hash": "1f906db38995428a23aac34ec7ca124478c62070f7d85157e45569983fd37a4a",
+    "changes": {
+      "timestamp": "2025-11-03T16:00:07.085920",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 129,
+    "timestamp": "2025-11-03T17:00:06.541936",
+    "hash": "40d9c45b2e43c06c659b6221fa0dcee972fd8cced9d36c4c405cf28ea244893a",
+    "changes": {
+      "timestamp": "2025-11-03T17:00:06.440684",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 130,
+    "timestamp": "2025-11-03T18:02:59.912188",
+    "hash": "23568c9c33e40a945b571fce30dea017592d0b03ab1e23c65c235bfa52fc2e7a",
+    "changes": {
+      "timestamp": "2025-11-03T18:02:59.787352",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 131,
+    "timestamp": "2025-11-05T17:00:20.329620",
+    "hash": "12b9c9c266f4ef8919e75a9aa821fbb172cec27bf086d7ac7fa6f6f73a17fc5b",
+    "changes": {
+      "timestamp": "2025-11-05T17:00:20.214931",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 132,
+    "timestamp": "2025-11-05T18:00:23.170097",
+    "hash": "e61e27473cc6a6f1cf22657575cd76568c304eb5a7cac0d3962ab2966e751b63",
+    "changes": {
+      "timestamp": "2025-11-05T18:00:22.901151",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 133,
+    "timestamp": "2025-11-06T09:00:15.678877",
+    "hash": "174cf641aec56276d7a9658297600939dc56a5ca4a3a5a026e0d812839558aed",
+    "changes": {
+      "timestamp": "2025-11-06T09:00:15.591219",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 134,
+    "timestamp": "2025-11-06T10:00:04.706229",
+    "hash": "5fa3372e658e991910e069d3119c1e460587734142359b2035000a23b9c8aa34",
+    "changes": {
+      "timestamp": "2025-11-06T10:00:04.617169",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 135,
+    "timestamp": "2025-11-06T11:00:05.824970",
+    "hash": "73ec7f5c7446ff14455d82641a1b0554b0117030e9adb3990e21ad5279688210",
+    "changes": {
+      "timestamp": "2025-11-06T11:00:05.722240",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 136,
+    "timestamp": "2025-11-06T12:00:05.655380",
+    "hash": "e2ae3329bd97cea3021a32e36dbf1b4f44259a5972ee85c6b65873733a18edd4",
+    "changes": {
+      "timestamp": "2025-11-06T12:00:05.558078",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 137,
+    "timestamp": "2025-11-06T13:00:06.200536",
+    "hash": "539d0b168bac43a2cc927ac72f29cb0de57fe66efe6a233b3a9d014d8e972538",
+    "changes": {
+      "timestamp": "2025-11-06T13:00:06.105862",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 138,
+    "timestamp": "2025-11-06T14:00:06.411906",
+    "hash": "6833c4c7f14c3c9846083aff544a47fd0e85222fb03884e3a62a3b479fa74d5b",
+    "changes": {
+      "timestamp": "2025-11-06T14:00:06.328221",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 139,
+    "timestamp": "2025-11-06T15:00:05.457614",
+    "hash": "13160067a281e9360a3ca1f6c4b9948f46f2b931012a8e2dcadba62e23dde6ac",
+    "changes": {
+      "timestamp": "2025-11-06T15:00:05.360599",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 140,
+    "timestamp": "2025-11-06T16:00:05.074656",
+    "hash": "6a3df0dcd914725c9d980f39805d07fea112a7d735464f83a5ab1032f060fc1e",
+    "changes": {
+      "timestamp": "2025-11-06T16:00:04.990358",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 141,
+    "timestamp": "2025-11-06T17:00:05.243765",
+    "hash": "fb50107d88148c9004f705685df863996d4247b5ff4025b79ad0717f0e3f392a",
+    "changes": {
+      "timestamp": "2025-11-06T17:00:05.139199",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 142,
+    "timestamp": "2025-11-06T18:00:20.304094",
+    "hash": "5fd9910ba61326bc1952345e1881b38d4d9042758f46fdf7a1d7a9913d387b9a",
+    "changes": {
+      "timestamp": "2025-11-06T18:00:20.211119",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 143,
+    "timestamp": "2025-11-07T09:00:21.448909",
+    "hash": "7bda1ddd5bcaa1e6d9e4ef70c3bef5675d3d2a05b5cdded1f34b1821ab3a00d8",
+    "changes": {
+      "timestamp": "2025-11-07T09:00:21.353600",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 144,
+    "timestamp": "2025-11-07T11:00:18.314695",
+    "hash": "cf8393da8fa2de79c6a0db6eb7ced949f20400f8c5ad1ae764b600de7f94feca",
+    "changes": {
+      "timestamp": "2025-11-07T11:00:18.223781",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 145,
+    "timestamp": "2025-11-07T12:00:17.814718",
+    "hash": "ace32b64f85a3217a4774083dd74d55ee84487198f1d61c12d07ba83d63af57b",
+    "changes": {
+      "timestamp": "2025-11-07T12:00:17.725565",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 146,
+    "timestamp": "2025-11-07T13:00:03.055030",
+    "hash": "70fb1daabfedcb040506bef36eb77e1fc54e652eb4d30b9e709aeea80bb5231b",
+    "changes": {
+      "timestamp": "2025-11-07T13:00:02.959438",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 147,
+    "timestamp": "2025-11-07T14:00:17.056787",
+    "hash": "4430bc01bf672e15ba1d2650743adcef9a12d793de18092f849c996fc0acece7",
+    "changes": {
+      "timestamp": "2025-11-07T14:00:16.950640",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 148,
+    "timestamp": "2025-11-07T15:00:21.437553",
+    "hash": "094e938abd74eb2ade697a2c7b773820db0ff5af1080815787a4c8b9ca3fd606",
+    "changes": {
+      "timestamp": "2025-11-07T15:00:21.257211",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 149,
+    "timestamp": "2025-11-07T16:00:18.491164",
+    "hash": "0b0ab603c86e6424d1f6a322a364aa8d24c2cbe35214a95e9855036bc72d31e7",
+    "changes": {
+      "timestamp": "2025-11-07T16:00:18.373902",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 150,
+    "timestamp": "2025-11-07T17:00:17.177177",
+    "hash": "67528111adbbedb9da9cb72a0e2736df8a46f8682b21fa2aefebfad15577c845",
+    "changes": {
+      "timestamp": "2025-11-07T17:00:17.088801",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 151,
+    "timestamp": "2025-11-08T11:00:20.769056",
+    "hash": "32199886e3481510629c89cf821e020c17b2634b5c26770889af8dc74c8993f3",
+    "changes": {
+      "timestamp": "2025-11-08T11:00:20.589552",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 152,
+    "timestamp": "2025-11-08T12:00:17.319178",
+    "hash": "066275675f80ba753da722e5f019c62e65894ff6301d4191c9096c0132880bba",
+    "changes": {
+      "timestamp": "2025-11-08T12:00:17.222723",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 153,
+    "timestamp": "2025-11-08T13:00:17.874462",
+    "hash": "31854a6a318a210a4f90ad1d63fcee8348ebe21cefda591fd8f638abf042f79d",
+    "changes": {
+      "timestamp": "2025-11-08T13:00:17.786614",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 154,
+    "timestamp": "2025-11-08T14:00:17.832239",
+    "hash": "18a7fec38cbfb155af2c3149b44892ed62cddbf91fa1a9586dd2e9f064248dd4",
+    "changes": {
+      "timestamp": "2025-11-08T14:00:17.746778",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 155,
+    "timestamp": "2025-11-09T12:00:06.054173",
+    "hash": "eefd91321f32630c812dc45f8106c0a9c818fd7ec3a5927e41730a6c2e83d432",
+    "changes": {
+      "timestamp": "2025-11-09T12:00:05.978964",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 156,
+    "timestamp": "2025-11-09T13:00:05.384022",
+    "hash": "d1a20fe9a81b8a6662dc27139822b4a63a0b5a7798112c0b152511a58c84f78c",
+    "changes": {
+      "timestamp": "2025-11-09T13:00:05.316750",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 157,
+    "timestamp": "2025-11-09T14:00:04.823670",
+    "hash": "de346aa61cbe87d9815e8bc16772199a041c08d1720f67fc0c2d3bb7f5f27de7",
+    "changes": {
+      "timestamp": "2025-11-09T14:00:04.756112",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 158,
+    "timestamp": "2025-11-09T15:00:05.259070",
+    "hash": "6194496065adaa9a0aad391aae0dd02e4c9e5deacfef5955dfe501670f7f6571",
+    "changes": {
+      "timestamp": "2025-11-09T15:00:05.203957",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 159,
+    "timestamp": "2025-11-10T10:04:10.035285",
+    "hash": "4e040118d696f43152b5835251fc45cc5327bfc1b7a257a999042778e734b21d",
+    "changes": {
+      "timestamp": "2025-11-10T10:04:09.876656",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 160,
+    "timestamp": "2025-11-10T13:00:20.812122",
+    "hash": "ff7f3f98072fceb529aaa85e3fb138cc138f8f2191cd8aa73c127506d26f645d",
+    "changes": {
+      "timestamp": "2025-11-10T13:00:20.746113",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 161,
+    "timestamp": "2025-11-10T14:00:23.677945",
+    "hash": "5f4bd53ee8570fefb495bb8e5db31047940a11168c9498d2a82efeac0b3eaed0",
+    "changes": {
+      "timestamp": "2025-11-10T14:00:23.627407",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 162,
+    "timestamp": "2025-11-10T15:00:25.290159",
+    "hash": "1dc136601faa91af0f1709e8340ed6576a78d33965cb6cd8a436753764ab988c",
+    "changes": {
+      "timestamp": "2025-11-10T15:00:25.210179",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 163,
+    "timestamp": "2025-11-10T17:00:21.078175",
+    "hash": "9b0859868523c89e539ea6ded1843ba16eb7770f4ea18d85b28e2ae7af10c168",
+    "changes": {
+      "timestamp": "2025-11-10T17:00:20.984214",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 164,
+    "timestamp": "2025-11-12T09:00:04.198010",
+    "hash": "82db3a6ff21b070e9e41f1e42e116fa5404eb64a6d8ccf010ca57b131567c3be",
+    "changes": {
+      "timestamp": "2025-11-12T09:00:03.994750",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 165,
+    "timestamp": "2025-11-12T15:00:06.214421",
+    "hash": "bc37e9724bf0ca6924d15dc48f38c40f49ffc678319a49e2765ac10d4edd7d13",
+    "changes": {
+      "timestamp": "2025-11-12T15:00:06.145329",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 166,
+    "timestamp": "2025-11-12T17:00:04.867768",
+    "hash": "45062ceb2b4b56160902c1092071c74be786370e0ea9e7582ab8bbc17d5058f7",
+    "changes": {
+      "timestamp": "2025-11-12T17:00:04.794840",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 167,
+    "timestamp": "2025-11-12T18:00:04.623543",
+    "hash": "24eebdfd97fd4a23c93f3657744952f75dfefc1d59d0e1821bc19faccde21560",
+    "changes": {
+      "timestamp": "2025-11-12T18:00:04.540532",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 168,
+    "timestamp": "2025-11-13T10:00:04.819648",
+    "hash": "5a2b1cb198a1a234effbf46cdbb8a789718fe3e5ddde4b5e5d17a3cbb8c707b1",
+    "changes": {
+      "timestamp": "2025-11-13T10:00:04.759313",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 169,
+    "timestamp": "2025-11-13T11:00:05.135977",
+    "hash": "89730c7208d9cc34f1b7da6690ea85d8737b060e425a6d8d74860aa1a92763ab",
+    "changes": {
+      "timestamp": "2025-11-13T11:00:05.057672",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 170,
+    "timestamp": "2025-11-13T12:00:05.457124",
+    "hash": "9ac5a796fbb93d8129d197d956a3a2a00fe91e4bd5428e4b5b0cb358e9564919",
+    "changes": {
+      "timestamp": "2025-11-13T12:00:05.396969",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 171,
+    "timestamp": "2025-11-13T12:18:03.935338",
+    "hash": "c4844d89fd082c4b96f908e81067d2cf26409dd45dc6e7f55e9537f15cba0650",
+    "changes": {
+      "timestamp": "2025-11-13T12:18:03.907416",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 172,
+    "timestamp": "2025-11-13T13:00:06.212203",
+    "hash": "78ef3e995d99fc70bea71253a23c3822dd29ac29be65a2c364e0ed29dd1a8507",
+    "changes": {
+      "timestamp": "2025-11-13T13:00:06.141937",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 173,
+    "timestamp": "2025-11-13T14:00:04.823084",
+    "hash": "7e0b161d7be5208d9b3f828b58875468e2eed42aeecffc813794a1d3e9f5c31a",
+    "changes": {
+      "timestamp": "2025-11-13T14:00:04.709326",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 174,
+    "timestamp": "2025-11-13T14:38:06.490978",
+    "hash": "df28ff9a76817c56dc5d2ca33fdb3c46dd393356e7c41e6601cf66affbe28a76",
+    "changes": {
+      "timestamp": "2025-11-13T14:38:06.469850",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 175,
+    "timestamp": "2025-11-13T15:00:05.168938",
+    "hash": "a4e55d1db315e2e1d9ab29abf8e00cc3c36a03f3b4305c5a85fa7526ef718897",
+    "changes": {
+      "timestamp": "2025-11-13T15:00:05.100248",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 176,
+    "timestamp": "2025-11-13T16:00:05.049153",
+    "hash": "f408bf8591d8eee3aafbf2526368d8edbca7f0da3b7fb55c0620980675e82612",
+    "changes": {
+      "timestamp": "2025-11-13T16:00:04.975513",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 177,
+    "timestamp": "2025-11-13T17:00:04.674335",
+    "hash": "dc9622e40dca50d4a8ac1b570e92cf38d4358851c4c1d99ea913d8dc36ec1b7a",
+    "changes": {
+      "timestamp": "2025-11-13T17:00:04.589896",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 178,
+    "timestamp": "2025-11-13T18:00:05.282670",
+    "hash": "3e1ddc46500dabbe96ce1ef0410e6022dd1cd3b6b5b329a874612377b6e98b18",
+    "changes": {
+      "timestamp": "2025-11-13T18:00:05.223868",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 179,
+    "timestamp": "2025-11-14T09:00:23.701645",
+    "hash": "d63a176f77eea26bc2a94de4529e1aca6e70939e5ee0028e39db2dfc9bdfa9d8",
+    "changes": {
+      "timestamp": "2025-11-14T09:00:23.643623",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 180,
+    "timestamp": "2025-11-14T10:00:19.233078",
+    "hash": "7b20e3296b637c7e801ffd56e4e32ce88321eecc31b6b02172218943b523a9f2",
+    "changes": {
+      "timestamp": "2025-11-14T10:00:19.166297",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 181,
+    "timestamp": "2025-11-14T11:00:26.907269",
+    "hash": "50e752dbf1a1aa0837a6be0e0f349d628189eb42ffb40a61d612e6ae52c28864",
+    "changes": {
+      "timestamp": "2025-11-14T11:00:26.842335",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 182,
+    "timestamp": "2025-11-14T12:00:04.873934",
+    "hash": "0e07a114bad0c23ea57d827c41cb8c75f0857e0fdf9becb308e6554fdcf36d53",
+    "changes": {
+      "timestamp": "2025-11-14T12:00:04.821274",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 183,
+    "timestamp": "2025-11-14T13:00:06.796129",
+    "hash": "9dbf0d6ed74c346498c360477fe64ad8f468a4f33eca9b6767de479776ca5571",
+    "changes": {
+      "timestamp": "2025-11-14T13:00:06.735905",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 184,
+    "timestamp": "2025-11-14T14:00:05.321951",
+    "hash": "1fc998b61c46aae7b425bebaf32dc965bdc4a9215b57ff3dc912e905381c7a90",
+    "changes": {
+      "timestamp": "2025-11-14T14:00:05.260908",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 185,
+    "timestamp": "2025-11-14T15:04:47.923309",
+    "hash": "df6438177e40364e94cb845c1ce0f39cb3ec45588be0abcaf37a29d1f2a46ad3",
+    "changes": {
+      "timestamp": "2025-11-14T15:04:47.781546",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 186,
+    "timestamp": "2025-11-14T15:26:25.401647",
+    "hash": "4d25cf25f93e318ded86435979b01c3c55365fb6fdcf04626672680c8560b275",
+    "changes": {
+      "timestamp": "2025-11-14T15:26:25.377037",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 187,
+    "timestamp": "2025-11-14T18:00:05.086090",
+    "hash": "7daa34b36f7b08dc645868372048e78763bc50bc42cccba2b29a349c64bec2a9",
+    "changes": {
+      "timestamp": "2025-11-14T18:00:05.036856",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 188,
+    "timestamp": "2025-11-15T11:00:23.156906",
+    "hash": "b7121e826977f0d952795d2b9fcdc6f3a95f1bdc432fa7b2dd3b7a83778fa73b",
+    "changes": {
+      "timestamp": "2025-11-15T11:00:21.319652",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 189,
+    "timestamp": "2025-11-15T12:00:05.174850",
+    "hash": "cc8a3175360e4359971e4041bbd4ddf032e69592dbfc6ddf0a5f7b7f370f36c3",
+    "changes": {
+      "timestamp": "2025-11-15T12:00:05.103436",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 190,
+    "timestamp": "2025-11-15T13:00:19.933419",
+    "hash": "da9fe6396f84d2cbfd5441ef21ef8bf641ef9abb9ca259f3c4f591eb940f321c",
+    "changes": {
+      "timestamp": "2025-11-15T13:00:19.871916",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 191,
+    "timestamp": "2025-11-15T14:00:24.263446",
+    "hash": "11b92d2e7dd7a6fd7a11bf2ee781fd08d746e6d101667a552ee551689399dc4f",
+    "changes": {
+      "timestamp": "2025-11-15T14:00:24.208390",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 192,
+    "timestamp": "2025-11-15T15:00:04.486577",
+    "hash": "a7407507e03a59375dbc406735ca254938cbe67f94a706057dfd8664e5d537f5",
+    "changes": {
+      "timestamp": "2025-11-15T15:00:04.430731",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 193,
+    "timestamp": "2025-11-15T16:00:05.314473",
+    "hash": "b03bfb4cf1245d5a9d18b2bb2a097ce20329e0410b9835a7a9915da90c6b97f1",
+    "changes": {
+      "timestamp": "2025-11-15T16:00:05.249710",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 194,
+    "timestamp": "2025-11-15T17:00:04.736991",
+    "hash": "c7123b3d63223227267989635315bb7b878d85a11e422356de277a8d48124682",
+    "changes": {
+      "timestamp": "2025-11-15T17:00:04.678181",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 195,
+    "timestamp": "2025-11-15T18:00:05.169360",
+    "hash": "153d9934f262da7cc38962150d32b48a698be8d86472375ce8eba42512d0846e",
+    "changes": {
+      "timestamp": "2025-11-15T18:00:05.106377",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 196,
+    "timestamp": "2025-11-16T09:00:05.196418",
+    "hash": "21a6c1d8d5af53a98b705a08e15c6df9fcedd3b9d706d45c345f71e5fa64cef5",
+    "changes": {
+      "timestamp": "2025-11-16T09:00:05.117540",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 197,
+    "timestamp": "2025-11-16T10:00:04.953124",
+    "hash": "3ca2576a72ae45d0e9b6cdbb4c12546284a0b4918e057bfcbe9280811599ee64",
+    "changes": {
+      "timestamp": "2025-11-16T10:00:04.889969",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 198,
+    "timestamp": "2025-11-16T11:00:05.046344",
+    "hash": "12e2e78396c113e432b12144a47da52656366123b69108f889bc8c659ea7d010",
+    "changes": {
+      "timestamp": "2025-11-16T11:00:04.992420",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 199,
+    "timestamp": "2025-11-16T13:00:04.489105",
+    "hash": "9b78cdc913ef1e26cbc549e2010579f5b2c4d88bf110c27d233d24de32a9e3ae",
+    "changes": {
+      "timestamp": "2025-11-16T13:00:04.431897",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 200,
+    "timestamp": "2025-11-16T14:00:04.271667",
+    "hash": "dce1cfffb1ca3980c9d00aa1792564942a95ad9d863032bb61a21260c5674d05",
+    "changes": {
+      "timestamp": "2025-11-16T14:00:04.197939",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 201,
+    "timestamp": "2025-11-16T15:00:06.069169",
+    "hash": "3b67ef6b30a2662994474df12a60d3b1a012adab6dbc6cd448786c22d5f64a3b",
+    "changes": {
+      "timestamp": "2025-11-16T15:00:06.004492",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 202,
+    "timestamp": "2025-11-16T16:00:04.517769",
+    "hash": "a7e897c0c3da74e8d2c077e018f695b84b02b884de4e878e87480aa7c60259d4",
+    "changes": {
+      "timestamp": "2025-11-16T16:00:04.460173",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 203,
+    "timestamp": "2025-11-17T07:53:02.780341",
+    "hash": "5c408f34e4dc27f8f6285eb36ecc757f49d1df7cee55da46ff9b5d1af1de372e",
+    "changes": {
+      "timestamp": "2025-11-17T07:53:02.749955",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 204,
+    "timestamp": "2025-11-17T14:00:04.789928",
+    "hash": "eb6238e50747327d7996b85c056a5043f83e61baa78f12fda0250b171113d5da",
+    "changes": {
+      "timestamp": "2025-11-17T14:00:04.703144",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 205,
+    "timestamp": "2025-11-17T15:00:05.091688",
+    "hash": "dc6331843289491d26c9830279a55c1057a10953732bba5498febca91e64f910",
+    "changes": {
+      "timestamp": "2025-11-17T15:00:05.004744",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 206,
+    "timestamp": "2025-11-17T16:00:04.814972",
+    "hash": "fb39f8328b692940e9690ae1b5996f317e98afb5026d9cf2c37279385c333f1c",
+    "changes": {
+      "timestamp": "2025-11-17T16:00:04.755326",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 207,
+    "timestamp": "2025-11-17T17:00:04.771013",
+    "hash": "82b59d47747d933a3013233f09562f5efe1d4469fcbe7985ca64278868b8a124",
+    "changes": {
+      "timestamp": "2025-11-17T17:00:04.683746",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 208,
+    "timestamp": "2025-11-17T18:00:04.523003",
+    "hash": "e899b3feff0044a856fa3708159673e6c54c115eccb9032796d2a85b2bfb83f2",
+    "changes": {
+      "timestamp": "2025-11-17T18:00:04.434305",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 209,
+    "timestamp": "2025-11-18T10:00:04.643689",
+    "hash": "6de50bcf1fbaaba5efeee69b2a12563abe1dbe823678bf4174f8ae4f646c1297",
+    "changes": {
+      "timestamp": "2025-11-18T10:00:04.580474",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 210,
+    "timestamp": "2025-11-18T11:00:04.177104",
+    "hash": "a0a340a983a3d5f268feb38d79c4ddd0f6c46e1fa57e258a96deb76d1e42909f",
+    "changes": {
+      "timestamp": "2025-11-18T11:00:04.118245",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 211,
+    "timestamp": "2025-11-18T12:00:05.378078",
+    "hash": "34472eb8cc23983a61b7a13b4c64b14d749be013bb3a5f332d9f2f5704639a79",
+    "changes": {
+      "timestamp": "2025-11-18T12:00:05.275897",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 212,
+    "timestamp": "2025-11-18T13:00:06.203345",
+    "hash": "af94b14b3c6b46a8f75fe5b916daf75238304bad5ff8f7af73c1b46030ede894",
+    "changes": {
+      "timestamp": "2025-11-18T13:00:06.137261",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 213,
+    "timestamp": "2025-11-18T14:00:04.913879",
+    "hash": "c338a1cb026da355c728ce2acb345e015b5856a3c4f7fa3fcdd9ee09c3ade83a",
+    "changes": {
+      "timestamp": "2025-11-18T14:00:04.849330",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 214,
+    "timestamp": "2025-11-18T15:00:06.238857",
+    "hash": "dc7172e956f9bf0b92fcdd9183fcc85dd81a81487552a9abcc15e4f91edd6f95",
+    "changes": {
+      "timestamp": "2025-11-18T15:00:06.179660",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 215,
+    "timestamp": "2025-11-18T16:00:04.280117",
+    "hash": "d3d6eb74414180b5a1ae4c7d8340d1e3feba11c4fd9576ebd85e5c81b0ab9c9c",
+    "changes": {
+      "timestamp": "2025-11-18T16:00:04.221630",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 216,
+    "timestamp": "2025-11-18T17:00:03.196973",
+    "hash": "a537f980536a2224ffebb9b3fd162b479dc44524a9dc6b07f93454f3f3eb1ca7",
+    "changes": {
+      "timestamp": "2025-11-18T17:00:03.141014",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 217,
+    "timestamp": "2025-11-18T18:00:21.765213",
+    "hash": "b7653f580f0caeedf8e01397014857da715198edcf16f53520e27df7ee28312f",
+    "changes": {
+      "timestamp": "2025-11-18T18:00:21.698922",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 218,
+    "timestamp": "2025-11-19T14:00:16.210676",
+    "hash": "cda1a2da887fd563752608dd0d3c65d319bf111340c0e82999161541a22242cd",
+    "changes": {
+      "timestamp": "2025-11-19T14:00:16.145003",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 219,
+    "timestamp": "2025-11-19T16:00:18.783918",
+    "hash": "9e0b2e3f993586602734f8761d034adc8551724bd3ed568ab6f72ddd2de99588",
+    "changes": {
+      "timestamp": "2025-11-19T16:00:18.724082",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 220,
+    "timestamp": "2025-11-19T17:00:17.626687",
+    "hash": "1ad5ea635e103a7dd08a48ecd5be532722d1a0e04bc153d56621a05b070964cc",
+    "changes": {
+      "timestamp": "2025-11-19T17:00:17.567827",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 221,
+    "timestamp": "2025-11-19T18:00:17.598033",
+    "hash": "25e9939cdc59ca8e67ca4f139780652cff95b5aac8d84ddb6fa11484d3b8ab35",
+    "changes": {
+      "timestamp": "2025-11-19T18:00:17.541421",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 222,
+    "timestamp": "2025-11-20T09:00:03.549900",
+    "hash": "1603bb2ad79b109042fb8e57561f3386bdadc69e045281be3b1754796664e83e",
+    "changes": {
+      "timestamp": "2025-11-20T09:00:03.417956",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 223,
+    "timestamp": "2025-11-20T09:58:26.844900",
+    "hash": "723b1f1bb354d59050a09dd40cb874d1686de2803014cdb756014d61ae9811b1",
+    "changes": {
+      "timestamp": "2025-11-20T09:58:26.816569",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 224,
+    "timestamp": "2025-11-20T10:00:16.449600",
+    "hash": "142e05ede5406ba0191ac95fb64c1afcfcf107cf6598f405113247f3513c008c",
+    "changes": {
+      "timestamp": "2025-11-20T10:00:16.395758",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 225,
+    "timestamp": "2025-11-20T11:00:18.147317",
+    "hash": "8ce86edd12519c471255624bd0c0e5a79ef5c45a7842466b50d1d575def51cd6",
+    "changes": {
+      "timestamp": "2025-11-20T11:00:18.090968",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 226,
+    "timestamp": "2025-11-20T12:00:17.285687",
+    "hash": "66667f4211e2f9d3995a0d48625049838ce5f1c19c3c88153ddc3df78ab82002",
+    "changes": {
+      "timestamp": "2025-11-20T12:00:17.212983",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 227,
+    "timestamp": "2025-11-20T12:27:10.483439",
+    "hash": "acbdd7fbe8b113673e759dd2c214ba36989ea30853344860647a4a05f660a3be",
+    "changes": {
+      "timestamp": "2025-11-20T12:27:10.454812",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 228,
+    "timestamp": "2025-11-20T13:00:19.214785",
+    "hash": "602a80c3465fd75b35b45a470770f90efb206a0d6b3cf29cd6d80dfde96c1ff6",
+    "changes": {
+      "timestamp": "2025-11-20T13:00:19.143305",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 229,
+    "timestamp": "2025-11-20T13:02:56.150149",
+    "hash": "ef1ccbfa4d080d099910d2ffd03b8099058e909b271d38a80987c735c8be7954",
+    "changes": {
+      "timestamp": "2025-11-20T13:02:56.123630",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 230,
+    "timestamp": "2025-11-20T13:28:41.317100",
+    "hash": "e0df0017f11af47cf30f77a8a8ecc18be8c84f2ea3ba193bcae5a1398e417d57",
+    "changes": {
+      "timestamp": "2025-11-20T13:28:41.275341",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 231,
+    "timestamp": "2025-11-20T13:33:20.279031",
+    "hash": "d8b932f0971801f750ccdfa2167d3731698c7e11edbcbcbac4d80df818422138",
+    "changes": {
+      "timestamp": "2025-11-20T13:33:20.231741",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 232,
+    "timestamp": "2025-11-20T13:40:09.046880",
+    "hash": "cb468aad0dc3af966f2248f1eec254ee1feaa5e9f5f5de9ab0d1a2128fdaa37a",
+    "changes": {
+      "timestamp": "2025-11-20T13:40:09.011217",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 233,
+    "timestamp": "2025-11-20T13:40:45.202279",
+    "hash": "efd3416ed09a40a2fa1f52fa5c4aebd2f11692fe3450a6fe4fdfabd8ea8ea758",
+    "changes": {
+      "timestamp": "2025-11-20T13:40:45.173903",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 234,
+    "timestamp": "2025-11-20T13:43:42.274156",
+    "hash": "4e22840e15a7b0efcdd07201223bc1c44e5791a277ea18ea5d11854bf3d6d58d",
+    "changes": {
+      "timestamp": "2025-11-20T13:43:42.229789",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 235,
+    "timestamp": "2025-11-20T13:44:41.676200",
+    "hash": "5c4ff69acdfff7219515aa0e0e6fd7f49a1a386995e49f25075a041c5a7ebe0c",
+    "changes": {
+      "timestamp": "2025-11-20T13:44:41.640156",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 236,
+    "timestamp": "2025-11-20T14:00:21.205856",
+    "hash": "0ad33b01eaaec47964dd55380482ba233e60e3f04049173a454aa0d177ff7673",
+    "changes": {
+      "timestamp": "2025-11-20T14:00:21.043278",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 237,
+    "timestamp": "2025-11-20T14:20:40.145811",
+    "hash": "03db6b73acb99f8b357121f4fea2b2890ef3fc7d4465154cdb42a366c9beac5d",
+    "changes": {
+      "timestamp": "2025-11-20T14:20:40.105396",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 238,
+    "timestamp": "2025-11-20T14:32:13.844853",
+    "hash": "2671e39194fcddb72de0bdc78f0d0265fbccf0870eb2fb7002cb9475db30a371",
+    "changes": {
+      "timestamp": "2025-11-20T14:32:13.800977",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 239,
+    "timestamp": "2025-11-20T15:00:25.714240",
+    "hash": "042590db6c40cd3303bd186ae64063b4670556a4fe766c784008cb5678f01512",
+    "changes": {
+      "timestamp": "2025-11-20T15:00:25.352626",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 240,
+    "timestamp": "2025-11-20T15:08:29.899991",
+    "hash": "810ed838f8449c4d742a8e40ce096e292865871f1e87f933aa025928eb48dee3",
+    "changes": {
+      "timestamp": "2025-11-20T15:08:29.859582",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 241,
+    "timestamp": "2025-11-20T16:00:20.666758",
+    "hash": "b6c644c4df51b7cbfa0529ed326353e1ed9f86c571c64b6ef103169a7d70e15b",
+    "changes": {
+      "timestamp": "2025-11-20T16:00:20.444125",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  },
+  {
+    "version": 242,
+    "timestamp": "2025-11-20T17:00:19.861039",
+    "hash": "ce81d17628754bc05bbbc8b453d46279e15e751899f390696db2e3e2f65f2722",
+    "changes": {
+      "timestamp": "2025-11-20T17:00:19.659094",
+      "summary": [],
+      "details": {}
+    },
+    "total_properties": 0,
+    "total_apartments": 0
+  }
+]

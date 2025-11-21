@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "total_quarters": 17,
+  "total_apartments": 2985,
+  "quarters": [
+    {
+      "name": "10-Тропические-острова",
+      "file": "10-Тропические-острова.json",
+      "total_apartments": 1,
+      "statistics": {
+        "min_price": 104763.0,
+        "max_price": 104763.0,
+        "avg_price": 104763.0,
+        "min_area": 69.9,
+        "max_area": 69.9,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "11-Австралия-и-Океания",
+      "file": "11-Австралия-и-Океания.json",
+      "total_apartments": 502,
+      "statistics": {
+        "min_price": 20000.0,
+        "max_price": 135390.0,
+        "avg_price": 40719.258964143424,
+        "min_area": 12.5,
+        "max_area": 91.48,
+        "available_count": 502
+      }
+    },
+    {
+      "name": "12-Западная-Европа",
+      "file": "12-Западная-Европа.json",
+      "total_apartments": 50,
+      "statistics": {
+        "min_price": 85164.0,
+        "max_price": 116948.0,
+        "avg_price": 104174.54,
+        "min_area": 54.3,
+        "max_area": 72.5,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "16-Родная-страна",
+      "file": "16-Родная-страна.json",
+      "total_apartments": 212,
+      "statistics": {
+        "min_price": 15000.0,
+        "max_price": 133540.0,
+        "avg_price": 23054.764150943396,
+        "min_area": 12.5,
+        "max_area": 90.23,
+        "available_count": 212
+      }
+    },
+    {
+      "name": "18-Чемпионов",
+      "file": "18-Чемпионов.json",
+      "total_apartments": 23,
+      "statistics": {
+        "min_price": 100200.0,
+        "max_price": 209085.0,
+        "avg_price": 125573.47826086957,
+        "min_area": 47.8,
+        "max_area": 95.1,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "19-Южная-Европа",
+      "file": "19-Южная-Европа.json",
+      "total_apartments": 19,
+      "statistics": {
+        "min_price": 65975.0,
+        "max_price": 113727.0,
+        "avg_price": 98571.1052631579,
+        "min_area": 37.7,
+        "max_area": 76.1,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "20-Мировых-танцев",
+      "file": "20-Мировых-танцев.json",
+      "total_apartments": 32,
+      "statistics": {
+        "min_price": 96702.0,
+        "max_price": 159000.0,
+        "avg_price": 109406.78125,
+        "min_area": 66.3,
+        "max_area": 112.9,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "21-Западный",
+      "file": "21-Западный.json",
+      "total_apartments": 1696,
+      "statistics": {
+        "min_price": 7000.0,
+        "max_price": 201454.0,
+        "avg_price": 17023.24233490566,
+        "min_area": 13.75,
+        "max_area": 129.97,
+        "available_count": 1696
+      }
+    },
+    {
+      "name": "22-Центральная-Европа",
+      "file": "22-Центральная-Европа.json",
+      "total_apartments": 115,
+      "statistics": {
+        "min_price": 82627.0,
+        "max_price": 232566.0,
+        "avg_price": 122295.39130434782,
+        "min_area": 31.18,
+        "max_area": 108.17,
+        "available_count": 114
+      }
+    },
+    {
+      "name": "23-Евразия",
+      "file": "23-Евразия.json",
+      "total_apartments": 5,
+      "statistics": {
+        "min_price": 80152.0,
+        "max_price": 106880.0,
+        "avg_price": 91146.4,
+        "min_area": 40.6,
+        "max_area": 59.4,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "25-Азия",
+      "file": "25-Азия.json",
+      "total_apartments": 28,
+      "statistics": {
+        "min_price": 67725.0,
+        "max_price": 118140.0,
+        "avg_price": 97160.67857142857,
+        "min_area": 38.7,
+        "max_area": 74.3,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "26-Африка",
+      "file": "26-Африка.json",
+      "total_apartments": 8,
+      "statistics": {
+        "min_price": 66325.0,
+        "max_price": 153668.0,
+        "avg_price": 105097.875,
+        "min_area": 37.9,
+        "max_area": 84.0,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "27-Happy-Planet",
+      "file": "27-Happy-Planet.json",
+      "total_apartments": 110,
+      "statistics": {
+        "min_price": 89428.0,
+        "max_price": 146846.0,
+        "avg_price": 118321.07272727272,
+        "min_area": 46.3,
+        "max_area": 69.8,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "29-Северная-Европа",
+      "file": "29-Северная-Европа.json",
+      "total_apartments": 18,
+      "statistics": {
+        "min_price": 89976.0,
+        "max_price": 121852.0,
+        "avg_price": 105361.33333333333,
+        "min_area": 53.3,
+        "max_area": 74.0,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "30-Северная-Америка",
+      "file": "30-Северная-Америка.json",
+      "total_apartments": 23,
+      "statistics": {
+        "min_price": 60720.0,
+        "max_price": 114562.0,
+        "avg_price": 102753.56521739131,
+        "min_area": 36.8,
+        "max_area": 73.9,
+        "available_count": 0
+      }
+    },
+    {
+      "name": "7-Средиземноморский",
+      "file": "7-Средиземноморский.json",
+      "total_apartments": 107,
+      "statistics": {
+        "min_price": 79889.0,
+        "max_price": 132892.0,
+        "avg_price": 106279.97663551402,
+        "min_area": 41.18,
+        "max_area": 74.4,
+        "available_count": 98
+      }
+    },
+    {
+      "name": "9-Южная-Америка",
+      "file": "9-Южная-Америка.json",
+      "total_apartments": 36,
+      "statistics": {
+        "min_price": 79002.0,
+        "max_price": 125972.0,
+        "avg_price": 100084.63888888889,
+        "min_area": 40.6,
+        "max_area": 71.0,
+        "available_count": 0
+      }
+    }
+  ]
+}

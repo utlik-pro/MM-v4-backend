@@ -1,0 +1,26 @@
+# Real Estate Data Synchronization Project
+
+## Overview
+Implement synchronization system for real estate property data from bir.by/ai/json_ai.php
+
+## Main Tasks
+
+1. Data Fetching Module
+   - Create HTTP client to fetch JSON data from bir.by/ai/json_ai.php
+   - Implement error handling and retry logic
+   - Add response validation
+
+2. Data Processing Pipeline
+   - Parse and validate JSON structure
+   - Normalize property data fields
+   - Handle missing or invalid values
+
+3. Database Synchronization
+   - Design database schema for property storage
+   - Implement upsert logic for data updates
+   - Track changes and maintain sync history
+
+4. Monitoring & Reporting
+   - Create sync status dashboard
+   - Implement logging system
+   - Add alerting for sync failures

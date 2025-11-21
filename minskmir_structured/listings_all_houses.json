@@ -1,0 +1,385 @@
+[
+  {
+    "id": "26a6ce80-6df1-4ca7-8515-13d5cd6a3212",
+    "complex": "Минск-Мир",
+    "house_number": "30.7",
+    "unit_type": "Квартира",
+    "unit_number": "13",
+    "address": { "street": "улица Белградская", "house": "16" },
+    "entrance": "1с",
+    "floor": 2,
+    "rooms_possible": "3*",
+    "area_m2": 74.9,
+    "status": "Сдано",
+    "price": {
+      "per_m2": { "byn": 5212, "eur": 1440 },
+      "total": { "byn": 390385, "eur": 107856 }
+    },
+    "contract": { "number": "19/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/26a6ce80-6df1-4ca7-8515-13d5cd6a3212/"
+  },
+  {
+    "id": "273aea53-6dcf-4f0b-9345-6961d5bfe79a",
+    "complex": "Минск-Мир",
+    "house_number": "10.6",
+    "unit_type": "Квартира",
+    "unit_number": "4",
+    "address": { "street": "улица Жореса Алфёрова", "house": "10" },
+    "entrance": "1с",
+    "floor": 2,
+    "rooms_possible": "4*",
+    "area_m2": 74.3,
+    "status": "Сдано",
+    "price": {
+      "per_m2": { "byn": 5103, "eur": 1410 },
+      "total": { "byn": 379190, "eur": 104763 }
+    },
+    "contract": { "number": "19/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/273aea53-6dcf-4f0b-9345-6961d5bfe79a/"
+  },
+  {
+    "id": "77dc2290-6aa3-4bc7-b907-2896c3efe525",
+    "complex": "Минск-Мир",
+    "house_number": "27.2",
+    "unit_type": "Квартира",
+    "unit_number": "1",
+    "address": { "street": "улица Леонида Левина", "house": "1" },
+    "entrance": "1с",
+    "floor": 2,
+    "rooms_possible": "3*",
+    "area_m2": 65.5,
+    "status": "Сдано",
+    "price": {
+      "per_m2": { "byn": 5574, "eur": 1540 },
+      "total": { "byn": 365099, "eur": 100870 }
+    },
+    "contract": { "number": "22/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/77dc2290-6aa3-4bc7-b907-2896c3efe525/"
+  },
+  {
+    "id": "314102d0-c5ec-41a5-97fa-039a6fad63e0",
+    "complex": "Минск-Мир",
+    "house_number": "27.1",
+    "unit_type": "Квартира",
+    "unit_number": "7",
+    "address": { "street": "улица Леонида Левина", "house": "7" },
+    "entrance": "1с",
+    "floor": 2,
+    "rooms_possible": "2*",
+    "area_m2": 46.8,
+    "status": "Сдано",
+    "price": {
+      "per_m2": { "byn": 5900, "eur": 1630 },
+      "total": { "byn": 276110, "eur": 76284 }
+    },
+    "contract": { "number": "22/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/314102d0-c5ec-41a5-97fa-039a6fad63e0/"
+  },
+  {
+    "id": "62c51448-952b-4afb-a08c-ddddc0aabfaa",
+    "complex": "Минск-Мир",
+    "house_number": "30.12",
+    "unit_type": "Квартира",
+    "unit_number": "1",
+    "address": { "street": "улица Лейтенанта Кижеватова", "house": "3А" },
+    "entrance": "1с",
+    "floor": 1,
+    "rooms_possible": "2*",
+    "area_m2": 52.6,
+    "status": "Сдано",
+    "price": {
+      "per_m2": { "byn": 6117, "eur": 1690 },
+      "total": { "byn": 321752, "eur": 88894 }
+    },
+    "contract": { "number": "19/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/62c51448-952b-4afb-a08c-ddddc0aabfaa/"
+  },
+  {
+    "id": "27f2573b-8173-4f00-85bf-922aa7215ed5",
+    "complex": "Минск-Мир",
+    "house_number": "21.1",
+    "unit_type": "Апартаменты",
+    "unit_number": "6094",
+    "entrance": "2с",
+    "floor": 6,
+    "rooms_possible": "1*",
+    "area_m2": 29.49,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 6140, "eur": 1700 },
+      "total": { "byn": 181070, "eur": 50133 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/27f2573b-8173-4f00-85bf-922aa7215ed5/"
+  },
+  {
+    "id": "9aa344b9-775b-4547-b1be-ebe5bfe3e601",
+    "complex": "Минск-Мир",
+    "house_number": "21.1",
+    "unit_type": "Апартаменты",
+    "unit_number": "5083",
+    "entrance": "2с",
+    "floor": 5,
+    "rooms_possible": "1*",
+    "area_m2": 45.96,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5996, "eur": 1660 },
+      "total": { "byn": 275559, "eur": 76294 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/9aa344b9-775b-4547-b1be-ebe5bfe3e601/"
+  },
+  {
+    "id": "85d0f151-6038-43d8-8049-4def27a9f348",
+    "complex": "Минск-Мир",
+    "house_number": "21.1",
+    "unit_type": "Апартаменты",
+    "unit_number": "6022",
+    "entrance": "1с",
+    "floor": 6,
+    "rooms_possible": "1*",
+    "area_m2": 30.91,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 6140, "eur": 1700 },
+      "total": { "byn": 189789, "eur": 52547 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/85d0f151-6038-43d8-8049-4def27a9f348/"
+  },
+  {
+    "id": "6f888a23-da63-47e1-a178-107a90ffd8c1",
+    "complex": "Минск-Мир",
+    "house_number": "21.1",
+    "unit_type": "Апартаменты",
+    "unit_number": "4095",
+    "entrance": "2с",
+    "floor": 4,
+    "rooms_possible": "1*",
+    "area_m2": 32.88,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5959, "eur": 1650 },
+      "total": { "byn": 195947, "eur": 54252 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/6f888a23-da63-47e1-a178-107a90ffd8c1/"
+  },
+  {
+    "id": "9f80a368-d044-40ed-9b34-1ad0e15d2ad6",
+    "complex": "Минск-Мир",
+    "house_number": "21.1",
+    "unit_type": "Апартаменты",
+    "unit_number": "6095",
+    "entrance": "2с",
+    "floor": 6,
+    "rooms_possible": "1*",
+    "area_m2": 32.88,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 6140, "eur": 1700 },
+      "total": { "byn": 201885, "eur": 55896 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/9f80a368-d044-40ed-9b34-1ad0e15d2ad6/"
+  },
+  {
+    "id": "34ae00c7-2c99-4962-abe2-4b6ed9709271",
+    "complex": "Минск-Мир",
+    "house_number": "11.4",
+    "unit_type": "Апартаменты",
+    "unit_number": "8.1",
+    "entrance": "1с",
+    "floor": 8,
+    "rooms_possible": "1*",
+    "area_m2": 86.04,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5357, "eur": 1480 },
+      "total": { "byn": 460904, "eur": 127339 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/34ae00c7-2c99-4962-abe2-4b6ed9709271/"
+  },
+  {
+    "id": "5f49b692-7a49-4676-a935-4cded0a87907",
+    "complex": "Минск-Мир",
+    "house_number": "11.6",
+    "unit_type": "Апартаменты",
+    "unit_number": "15.6",
+    "entrance": "1с",
+    "floor": 6,
+    "rooms_possible": "1*",
+    "area_m2": 80.19,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5393, "eur": 1490 },
+      "total": { "byn": 432469, "eur": 119483 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/5f49b692-7a49-4676-a935-4cded0a87907/"
+  },
+  {
+    "id": "7f709adc-349c-4cd1-9d41-a5c0d880f893",
+    "complex": "Минск-Мир",
+    "house_number": "16.38",
+    "unit_type": "Апартаменты",
+    "unit_number": "23",
+    "entrance": "1с",
+    "floor": 3,
+    "rooms_possible": "1*",
+    "area_m2": 90.23,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5357, "eur": 1480 },
+      "total": { "byn": 483348, "eur": 133540 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/7f709adc-349c-4cd1-9d41-a5c0d880f893/"
+  },
+  {
+    "id": "99ba7a96-33d9-4dbb-8e76-1117719c3221",
+    "complex": "Минск-Мир",
+    "house_number": "11.5",
+    "unit_type": "Апартаменты",
+    "unit_number": "4.15",
+    "entrance": "1с",
+    "floor": 4,
+    "rooms_possible": "1*",
+    "area_m2": 84.65,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5393, "eur": 1490 },
+      "total": { "byn": 456524, "eur": 126129 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/99ba7a96-33d9-4dbb-8e76-1117719c3221/"
+  },
+  {
+    "id": "fb30a88a-3316-4a85-99a2-3c5e82256174",
+    "complex": "Минск-Мир",
+    "house_number": "7.12",
+    "unit_type": "Квартира",
+    "unit_number": "25",
+    "entrance": "1с",
+    "floor": 4,
+    "rooms_possible": "2*",
+    "area_m2": 41.45,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 7058, "eur": 1950 },
+      "total": { "byn": 292557, "eur": 80828 }
+    },
+    "contract": { "number": "17/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/fb30a88a-3316-4a85-99a2-3c5e82256174/"
+  },
+  {
+    "id": "98a03658-0fec-4f96-9022-6933c15d686f",
+    "complex": "Минск-Мир",
+    "house_number": "22.7",
+    "unit_type": "Квартира",
+    "unit_number": "99",
+    "entrance": "1с",
+    "floor": 10,
+    "rooms_possible": "1*",
+    "area_m2": 31.6,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 9592, "eur": 2650 },
+      "total": { "byn": 303097, "eur": 83740 }
+    },
+    "contract": { "number": "17/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/98a03658-0fec-4f96-9022-6933c15d686f/"
+  },
+  {
+    "id": "7e48d60b-e3de-42ba-a8ad-5183d195f98a",
+    "complex": "Минск-Мир",
+    "house_number": "25.3",
+    "unit_type": "Квартира",
+    "unit_number": "136",
+    "entrance": "2с",
+    "floor": 1,
+    "rooms_possible": "2*",
+    "area_m2": 49.6,
+    "status": "Сдано",
+    "price": {
+      "per_m2": { "byn": 6189, "eur": 1710 },
+      "total": { "byn": 306992, "eur": 84816 }
+    },
+    "contract": { "number": "19/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/7e48d60b-e3de-42ba-a8ad-5183d195f98a/"
+  },
+  {
+    "id": "e5ab0a2e-7051-44a4-95d0-ac191fd8c3e6",
+    "complex": "Минск-Мир",
+    "house_number": "22.7",
+    "unit_type": "Квартира",
+    "unit_number": "44",
+    "entrance": "1с",
+    "floor": 6,
+    "rooms_possible": "1*",
+    "area_m2": 31.86,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 9592, "eur": 2650 },
+      "total": { "byn": 305591, "eur": 84429 }
+    },
+    "contract": { "number": "17/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/e5ab0a2e-7051-44a4-95d0-ac191fd8c3e6/"
+  },
+  {
+    "id": "98f0368a-44f7-4cb9-a8c3-049b4a9611a4",
+    "complex": "Минск-Мир",
+    "house_number": "21.1",
+    "unit_type": "Апартаменты",
+    "unit_number": "3109",
+    "entrance": null,
+    "floor": 3,
+    "rooms_possible": "1*",
+    "area_m2": 65.98,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5166, "eur": 1480 },
+      "total": { "byn": 340847, "eur": 97650 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/98f0368a-44f7-4cb9-a8c3-049b4a9611a4/"
+  },
+  {
+    "id": "1804eafc-7f1d-4b27-94ae-f47e6d339aa0",
+    "complex": "Минск-Мир",
+    "house_number": "11.4",
+    "unit_type": "Апартаменты",
+    "unit_number": "15.19",
+    "entrance": null,
+    "floor": 15,
+    "rooms_possible": "1*",
+    "area_m2": 64.22,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 5273, "eur": 1510 },
+      "total": { "byn": 338636, "eur": 96972 }
+    },
+    "contract": { "number": "18/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/1804eafc-7f1d-4b27-94ae-f47e6d339aa0/"
+  },
+  {
+    "id": "04981758-1f1b-4754-ae86-84d61f227a8d",
+    "complex": "Минск-Мир",
+    "house_number": "22.7",
+    "unit_type": "Квартира",
+    "unit_number": "82",
+    "entrance": "1с",
+    "floor": 9,
+    "rooms_possible": "1*",
+    "area_m2": 32.37,
+    "status": "Строится",
+    "price": {
+      "per_m2": { "byn": 9592, "eur": 2650 },
+      "total": { "byn": 310484, "eur": 85781 }
+    },
+    "contract": { "number": "17/1", "date": "01.04.2025" },
+    "url": "https://bir.by/object/04981758-1f1b-4754-ae86-84d61f227a8d/"
+  }
+]

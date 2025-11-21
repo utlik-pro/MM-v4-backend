@@ -1,0 +1,437 @@
+{
+  "update_timestamp": "2025-10-02T11:25:51.112365",
+  "data_source": "https://bir.by/ai/json_ai.php",
+  "total_apartments": 951,
+  "total_quarters": 18,
+  "quarters": {
+    "25 Азия": {
+      "total_apartments": 28,
+      "by_status": {
+        "Статус: Сдано": 28
+      },
+      "by_rooms": {
+        "2-комн": 10,
+        "4-комн": 5,
+        "3-комн": 10,
+        "1-комн": 3
+      },
+      "price_range": {
+        "min_per_sqm": 1410,
+        "max_per_sqm": 2040,
+        "avg_per_sqm": 1640.0,
+        "min_total": 67725,
+        "max_total": 118140,
+        "avg_total": 97160.68
+      },
+      "area_range": {
+        "min": 38.7,
+        "max": 74.3,
+        "avg": 54.42
+      }
+    },
+    "26 Африка": {
+      "total_apartments": 8,
+      "by_status": {
+        "Статус: Сдано": 8
+      },
+      "by_rooms": {
+        "2-комн": 2,
+        "1-комн": 2,
+        "3-комн": 2,
+        "4-комн": 2
+      },
+      "price_range": {
+        "min_per_sqm": 1640,
+        "max_per_sqm": 1750,
+        "avg_per_sqm": 1685.0,
+        "min_total": 66325,
+        "max_total": 153668,
+        "avg_total": 105097.88
+      },
+      "area_range": {
+        "min": 37.9,
+        "max": 84.0,
+        "avg": 58.61
+      }
+    },
+    "27 Happy Planet": {
+      "total_apartments": 184,
+      "by_status": {
+        "Статус: Сдано": 107,
+        "Статус: Строящаяся квартира": 77
+      },
+      "by_rooms": {
+        "3-комн": 63,
+        "2-комн": 120,
+        "4-комн": 1
+      },
+      "price_range": {
+        "min_per_sqm": 1540,
+        "max_per_sqm": 2540,
+        "avg_per_sqm": 2309.46,
+        "min_total": 91324,
+        "max_total": 146846,
+        "avg_total": 122808.88
+      },
+      "area_range": {
+        "min": 46.3,
+        "max": 69.8,
+        "avg": 52.18
+      }
+    },
+    "9 Южная Америка": {
+      "total_apartments": 33,
+      "by_status": {
+        "Статус: Сдано": 33
+      },
+      "by_rooms": {
+        "2-комн": 5,
+        "1-комн": 2,
+        "3-комн": 23,
+        "4-комн": 3
+      },
+      "price_range": {
+        "min_per_sqm": 1400,
+        "max_per_sqm": 1710,
+        "avg_per_sqm": 1498.48,
+        "min_total": 79002,
+        "max_total": 123717,
+        "avg_total": 98385.82
+      },
+      "area_range": {
+        "min": 40.6,
+        "max": 71.0,
+        "avg": 60.76
+      }
+    },
+    "29 Северная Европа": {
+      "total_apartments": 19,
+      "by_status": {
+        "Статус: Сдано": 19
+      },
+      "by_rooms": {
+        "4-комн": 9,
+        "3-комн": 10
+      },
+      "price_range": {
+        "min_per_sqm": 1450,
+        "max_per_sqm": 1690,
+        "avg_per_sqm": 1587.89,
+        "min_total": 89976,
+        "max_total": 121852,
+        "avg_total": 105846.63
+      },
+      "area_range": {
+        "min": 53.3,
+        "max": 74.0,
+        "avg": 64.4
+      }
+    },
+    "Неизвестный квартал": {
+      "total_apartments": 29,
+      "by_status": {
+        "Статус: Сдано": 29
+      },
+      "by_rooms": {
+        "3-комн": 26,
+        "6-комн": 1,
+        "4-комн": 1,
+        "2-комн": 1
+      },
+      "price_range": {
+        "min_per_sqm": 1390,
+        "max_per_sqm": 1540,
+        "avg_per_sqm": 1482.07,
+        "min_total": 95991,
+        "max_total": 175835,
+        "avg_total": 130026.86
+      },
+      "area_range": {
+        "min": 63.1,
+        "max": 126.5,
+        "avg": 85.97
+      }
+    },
+    "21 Западный": {
+      "total_apartments": 162,
+      "by_status": {
+        "Статус: Строящиеся Бизнес-апартаменты": 162
+      },
+      "by_rooms": {
+        "1-комн": 162
+      },
+      "price_range": {
+        "min_per_sqm": 1550,
+        "max_per_sqm": 1700,
+        "avg_per_sqm": 1625.74,
+        "min_total": 47141,
+        "max_total": 201454,
+        "avg_total": 98631.79
+      },
+      "area_range": {
+        "min": 28.57,
+        "max": 129.97,
+        "avg": 61.04
+      }
+    },
+    "16 Родная страна": {
+      "total_apartments": 13,
+      "by_status": {
+        "Статус: Строящиеся Бизнес-апартаменты": 13
+      },
+      "by_rooms": {
+        "1-комн": 13
+      },
+      "price_range": {
+        "min_per_sqm": 1480,
+        "max_per_sqm": 1640,
+        "avg_per_sqm": 1539.23,
+        "min_total": 71291,
+        "max_total": 133540,
+        "avg_total": 101183.23
+      },
+      "area_range": {
+        "min": 43.47,
+        "max": 90.23,
+        "avg": 66.35
+      }
+    },
+    "12 Западная Европа": {
+      "total_apartments": 52,
+      "by_status": {
+        "Статус: Сдано": 52
+      },
+      "by_rooms": {
+        "3-комн": 10,
+        "4-комн": 42
+      },
+      "price_range": {
+        "min_per_sqm": 1350,
+        "max_per_sqm": 1690,
+        "avg_per_sqm": 1435.58,
+        "min_total": 98820,
+        "max_total": 116948,
+        "avg_total": 104851.13
+      },
+      "area_range": {
+        "min": 56.7,
+        "max": 72.5,
+        "avg": 69.07
+      }
+    },
+    "19 Южная Европа": {
+      "total_apartments": 18,
+      "by_status": {
+        "Статус: Сдано": 18
+      },
+      "by_rooms": {
+        "1-комн": 3,
+        "2-комн": 4,
+        "3-комн": 11
+      },
+      "price_range": {
+        "min_per_sqm": 1400,
+        "max_per_sqm": 1740,
+        "avg_per_sqm": 1617.22,
+        "min_total": 72906,
+        "max_total": 113727,
+        "avg_total": 98973.89
+      },
+      "area_range": {
+        "min": 40.3,
+        "max": 76.1,
+        "avg": 59.72
+      }
+    },
+    "22 Центральная Европа": {
+      "total_apartments": 115,
+      "by_status": {
+        "Статус: Строящаяся квартира": 114,
+        "Статус: Сдано": 1
+      },
+      "by_rooms": {
+        "3-комн": 49,
+        "2-комн": 27,
+        "4-комн": 1,
+        "1-комн": 38
+      },
+      "price_range": {
+        "min_per_sqm": 2150,
+        "max_per_sqm": 2700,
+        "avg_per_sqm": 2489.3,
+        "min_total": 82627,
+        "max_total": 232566,
+        "avg_total": 122295.39
+      },
+      "area_range": {
+        "min": 31.18,
+        "max": 108.17,
+        "avg": 50.19
+      }
+    },
+    "18 Чемпионов": {
+      "total_apartments": 23,
+      "by_status": {
+        "Статус: Сдано": 23
+      },
+      "by_rooms": {
+        "3-комн": 13,
+        "4-комн": 3,
+        "2-комн": 3,
+        "1-комн": 4
+      },
+      "price_range": {
+        "min_per_sqm": 1420,
+        "max_per_sqm": 1670,
+        "avg_per_sqm": 1569.35,
+        "min_total": 94815,
+        "max_total": 209085,
+        "avg_total": 122160.65
+      },
+      "area_range": {
+        "min": 47.8,
+        "max": 95.1,
+        "avg": 68.27
+      }
+    },
+    "23 Евразия": {
+      "total_apartments": 5,
+      "by_status": {
+        "Статус: Сдано": 5
+      },
+      "by_rooms": {
+        "1-комн": 2,
+        "2-комн": 3
+      },
+      "price_range": {
+        "min_per_sqm": 1670,
+        "max_per_sqm": 1720,
+        "avg_per_sqm": 1690.0,
+        "min_total": 80152,
+        "max_total": 106880,
+        "avg_total": 91146.4
+      },
+      "area_range": {
+        "min": 40.6,
+        "max": 59.4,
+        "avg": 48.52
+      }
+    },
+    "20 Мировых танцев": {
+      "total_apartments": 31,
+      "by_status": {
+        "Статус: Сдано": 31
+      },
+      "by_rooms": {
+        "4-комн": 20,
+        "3-комн": 11
+      },
+      "price_range": {
+        "min_per_sqm": 1390,
+        "max_per_sqm": 1600,
+        "avg_per_sqm": 1408.39,
+        "min_total": 96702,
+        "max_total": 159000,
+        "avg_total": 109635.9
+      },
+      "area_range": {
+        "min": 66.3,
+        "max": 112.9,
+        "avg": 74.5
+      }
+    },
+    "11 Австралия и Океания": {
+      "total_apartments": 102,
+      "by_status": {
+        "Статус: Строящиеся Бизнес-апартаменты": 102
+      },
+      "by_rooms": {
+        "1-комн": 102
+      },
+      "price_range": {
+        "min_per_sqm": 1480,
+        "max_per_sqm": 1510,
+        "avg_per_sqm": 1491.18,
+        "min_total": 92472,
+        "max_total": 135390,
+        "avg_total": 120380.91
+      },
+      "area_range": {
+        "min": 61.24,
+        "max": 91.48,
+        "avg": 80.76
+      }
+    },
+    "7 Средиземноморский": {
+      "total_apartments": 104,
+      "by_status": {
+        "Статус: Сдано": 9,
+        "Статус: Строящаяся квартира": 95
+      },
+      "by_rooms": {
+        "3-комн": 48,
+        "2-комн": 12,
+        "4-комн": 44
+      },
+      "price_range": {
+        "min_per_sqm": 1440,
+        "max_per_sqm": 1950,
+        "avg_per_sqm": 1897.29,
+        "min_total": 79889,
+        "max_total": 132892,
+        "avg_total": 107077.54
+      },
+      "area_range": {
+        "min": 41.18,
+        "max": 74.4,
+        "avg": 56.38
+      }
+    },
+    "30 Северная Америка": {
+      "total_apartments": 24,
+      "by_status": {
+        "Статус: Сдано": 24
+      },
+      "by_rooms": {
+        "3-комн": 8,
+        "2-комн": 1,
+        "4-комн": 15
+      },
+      "price_range": {
+        "min_per_sqm": 1440,
+        "max_per_sqm": 1690,
+        "avg_per_sqm": 1500.83,
+        "min_total": 88894,
+        "max_total": 114562,
+        "avg_total": 103953.79
+      },
+      "area_range": {
+        "min": 48.8,
+        "max": 73.9,
+        "avg": 66.6
+      }
+    },
+    "10 Тропические острова": {
+      "total_apartments": 1,
+      "by_status": {
+        "Статус: Сдано": 1
+      },
+      "by_rooms": {
+        "4-комн": 1
+      },
+      "price_range": {
+        "min_per_sqm": 1410,
+        "max_per_sqm": 1410,
+        "avg_per_sqm": 1410.0,
+        "min_total": 104763,
+        "max_total": 104763,
+        "avg_total": 104763.0
+      },
+      "area_range": {
+        "min": 69.9,
+        "max": 69.9,
+        "avg": 69.9
+      }
+    }
+  }
+}

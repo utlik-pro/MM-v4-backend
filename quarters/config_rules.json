@@ -1,0 +1,45 @@
+{
+  "house_rules": {
+    "Диадема": {
+      "quarter": "02 Эмиратс",
+      "max_apartments": 2,
+      "comment": "Только 2 квартиры в доме Диадема"
+    },
+    "Эмиратс Волна": {
+      "quarter": "02 Эмиратс", 
+      "house_name": "Волна",
+      "comment": "Эмиратс Волна должен иметь название дома Волна, НЕ Диадема"
+    }
+  },
+  "quarter_mappings": {
+    "7 Средиземноморский": "7-Sredizemnomorskiy.md",
+    "9 Южная Америка": "9-Yuzhnaya-Amerika.md",
+    "10 Тропические острова": "10-Tropicheskie-ostrova.md",
+    "11 Австралия и Океания": "11-Avstraliya-i-Okeaniya.md",
+    "12 Западная Европа": "12-Zapadnaya-Evropa.md",
+    "16 Родная страна": "16-Rodnaya-strana.md",
+    "18 Чемпионов": "18-Chempionov.md",
+    "19 Южная Европа": "19-Yuzhnaya-Evropa.md",
+    "20 Мировых танцев": "20-Mirovyh-tantsev.md",
+    "21 Западный": "21-Zapadnyy.md",
+    "22 Центральная Европа": "22-Tsentralnaya-Evropa.md",
+    "23 Евразия": "23-Evraziya.md",
+    "25 Азия": "25-Aziya.md",
+    "26 Африка": "26-Afrika.md",
+    "27 Happy Planet": "27-Happy-Planet.md",
+    "29 Северная Европа": "29-Severnaya-Evropa.md",
+    "30 Северная Америка": "30-Severnaya-Amerika.md",
+    "02 Эмиратс": "02-emirats.md"
+  },
+  "address_to_quarter": {
+    "проспект Мира, дом 1": "02 Эмиратс",
+    "ул. Аэродромная, 32": "02 Эмиратс",
+    "ул. Братская": "02 Эмиратс"
+  },
+  "valid_statuses": [
+    "Статус: Сдано",
+    "Статус: Строится",
+    "Статус: Строящаяся квартира",
+    "Статус: Строящиеся Бизнес-апартаменты"
+  ]
+}

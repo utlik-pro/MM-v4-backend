@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""
+Простое обновление агента - только 18 новых кварталов + 2 общих файла
+"""
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+
+def main():
+    api_key = os.getenv('ELEVENLABS_API_KEY')
+    agent_id = os.getenv('ELEVENLABS_AGENT_ID')
+
+    # Только 18 новых кварталов с правильной кодировкой
+    new_quarter_ids = [
+        'qXtJqqEp0ZkcmJX4gc6v',  # 19-Yuzhnaya-Evropa
+        'YKvNKCYwODU8AwJI7Muc',  # 26-Afrika
+        'wKmcKNykVwd3TFIxmQdc',  # 21-Zapadnyy
+        'DLY9LrhEzIzQzGsDOYlC',  # 10-Tropicheskie-ostrova
+        'UmvXAJUR6N8jFbIQIU9o',  # 30-Severnaya-Amerika
+        'LBIOsPT66B1gdKbHGv2R',  # 27-Happy-Planet
+        'be45mka7XvHxmtbaOKDR',  # 20-Mirovyh-tantsev
+        'Nn84sS7X6Piy9Z1UtTdw',  # 29-Severnaya-Evropa
+        'e4V9Igwsug2omLaivTBc',  # 7-Sredizemnomorskiy
+        'fr3uFF45uBR5uIKDx5aP',  # 12-Zapadnaya-Evropa
+        'VJKupwQM3Ly22RMZj8kO',  # 18-Chempionov
+        'sYnqGkVVXN6U7ScbsP8N',  # 9-Yuzhnaya-Amerika
+        'ebURL7MgqknbKVxkY995',  # 22-Tsentralnaya-Evropa
+        'MQH2CsUQj6IHJAgEiSd3',  # 25-Aziya
+        'NYwYJ0wvDeSLj0BMZJOy',  # 16-Rodnaya-strana
+        'qWSLSMQhjJggi9vmOe5Q',  # 02-Emirats
+        'G9f2bpyZmIEpUPI6EVrx',  # 23-Evraziya
+        'e7XBCzszhGnL4s0eaKmg',  # 11-Avstraliya-i-Okeaniya
+    ]
+
+    # Общие файлы
+    general_ids = [
+        'kL3zNCHbhtptIq25QNPm',  # 04-baza-znaniy-dlya-konsultaciy
+        'rQciMWgeCGRKhgheCzuJ',  # 00-obschie-svedeniya
+    ]
+
+    all_ids = new_quarter_ids + general_ids
+
+    print("=" * 60)
+    print("🔄 Обновление агента ElevenLabs")
+    print("=" * 60)
+    print(f"📊 Кварталов: {len(new_quarter_ids)}")
+    print(f"📄 Общих файлов: {len(general_ids)}")
+    print(f"📝 Всего: {len(all_ids)}")
+
+    agent_url = f'https://api.elevenlabs.io/v1/convai/agents/{agent_id}'
+    headers = {
+        'xi-api-key': api_key,
+        'Content-Type': 'application/json'
+    }
+
+    # Получаем текущую конфигурацию
+    print("\n🔍 Получение конфигурации агента...")
+    try:
+        response = requests.get(agent_url, headers={'xi-api-key': api_key}, timeout=30)
+        if response.status_code != 200:
+            print(f"❌ Ошибка: HTTP {response.status_code}")
+            print(f"   {response.text[:200]}")
+            return False
+
+        agent_data = response.json()
+        print("✅ Конфигурация получена")
+
+        # Обновляем только knowledge_base
+        print("\n🔧 Обновление knowledge_base...")
+        agent_data['conversation_config']['knowledge_base'] = {'ids': all_ids}
+
+        # Отправляем с увеличенным timeout
+        print("📤 Отправка обновления (timeout 120 сек)...")
+        update_response = requests.patch(
+            agent_url,
+            headers=headers,
+            json=agent_data,
+            timeout=120  # 2 минуты
+        )
+
+        if update_response.status_code == 200:
+            print("\n" + "=" * 60)
+            print("✅ УСПЕХ! Агент обновлён")
+            print("=" * 60)
+            print(f"✅ Кварталов: {len(new_quarter_ids)}")
+            print(f"✅ Общих файлов: {len(general_ids)}")
+            print(f"✅ Всего документов: {len(all_ids)}")
+            print("=" * 60)
+            return True
+        else:
+            print(f"\n❌ Ошибка: HTTP {update_response.status_code}")
+            print(f"   {update_response.text[:500]}")
+            return False
+
+    except requests.exceptions.Timeout:
+        print("\n⚠️ Timeout (120 сек)")
+        print("   Проверьте агента вручную - изменения могли быть применены")
+        return False
+    except Exception as e:
+        print(f"\n❌ Ошибка: {str(e)}")
+        return False
+
+
+if __name__ == "__main__":
+    try:
+        success = main()
+        if success:
+            print("\n✨ Готово!")
+        else:
+            print("\n⚠️ Ошибка обновления")
+    except KeyboardInterrupt:
+        print("\n\n⚠️ Прервано")
+    except Exception as e:
+        print(f"\n❌ Критическая ошибка: {e}")
+        import traceback
+        traceback.print_exc()

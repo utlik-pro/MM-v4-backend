@@ -1,0 +1,145 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup project infrastructure",
+        "description": "Initialize Node.js project with TypeScript and necessary dependencies",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [],
+        "details": "Create package.json, configure TypeScript, install axios for HTTP requests, node-cron for scheduling",
+        "testStrategy": "Verify all dependencies installed and TypeScript compiles without errors"
+      },
+      {
+        "id": 2,
+        "title": "Create HTTP client for data fetching",
+        "description": "Implement robust HTTP client to fetch JSON from bir.by/ai/json_ai.php",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "details": "Use axios with retry logic, timeout handling, and response validation. Add exponential backoff for retries",
+        "testStrategy": "Unit tests for HTTP client with mocked responses, test retry logic and error scenarios"
+      },
+      {
+        "id": 3,
+        "title": "Design property data model",
+        "description": "Create TypeScript interfaces for property data structure",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "details": "Define interfaces for Apartment, type, Quarter, Status, Square, Price_metr, Price_full fields",
+        "testStrategy": "Type checking with TypeScript compiler, validate against sample JSON data"
+      },
+      {
+        "id": 4,
+        "title": "Implement JSON parser and validator",
+        "description": "Parse and validate incoming JSON data structure",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          3
+        ],
+        "details": "Use zod or joi for schema validation, handle missing fields gracefully, normalize data formats",
+        "testStrategy": "Test with valid and invalid JSON samples, edge cases with missing fields"
+      },
+      {
+        "id": 5,
+        "title": "Setup database infrastructure",
+        "description": "Create database schema for property storage",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "details": "PostgreSQL or MongoDB schema with properties table, sync_history table, and indexes for performance",
+        "testStrategy": "Database migration tests, verify schema creation and indexes"
+      },
+      {
+        "id": 6,
+        "title": "Implement data synchronization logic",
+        "description": "Create upsert logic for database updates",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          4,
+          5
+        ],
+        "details": "Track changes, implement diff detection, handle conflicts, maintain sync timestamps",
+        "testStrategy": "Integration tests with test database, verify upsert behavior"
+      },
+      {
+        "id": 7,
+        "title": "Create sync scheduler",
+        "description": "Implement automated sync scheduling system",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          6
+        ],
+        "details": "Use node-cron for scheduling, configurable intervals, prevent concurrent syncs",
+        "testStrategy": "Test scheduler triggers, verify no concurrent execution"
+      },
+      {
+        "id": 8,
+        "title": "Implement logging system",
+        "description": "Add comprehensive logging for sync operations",
+        "status": "pending",
+        "priority": "low",
+        "dependencies": [
+          2
+        ],
+        "details": "Use winston or pino, log levels, file rotation, structured logging for monitoring",
+        "testStrategy": "Verify log outputs, test rotation, check log levels"
+      },
+      {
+        "id": 9,
+        "title": "Create monitoring dashboard",
+        "description": "Build status dashboard for sync monitoring",
+        "status": "pending",
+        "priority": "low",
+        "dependencies": [
+          6,
+          8
+        ],
+        "details": "REST API endpoints for status, web UI with React or Vue, display sync history and errors",
+        "testStrategy": "API endpoint tests, UI component tests, integration test"
+      },
+      {
+        "id": 10,
+        "title": "Add alerting system",
+        "description": "Implement alerts for sync failures",
+        "status": "pending",
+        "priority": "low",
+        "dependencies": [
+          8
+        ],
+        "details": "Email or Slack notifications, configurable thresholds, alert on consecutive failures",
+        "testStrategy": "Test alert triggering, verify notification delivery"
+      },
+      {
+        "id": 11,
+        "title": "Update South America data file with 2025 information",
+        "description": "Update the quarters/9-Yuzhnaya-Amerika.md file with current 2025 data on South American countries, including population, economic indicators, political changes, and regional issues.",
+        "details": "This task involves updating the South America data file with comprehensive 2025 information:\n\n1. Research and gather current data for all South American countries:\n   - Population statistics from reliable sources (UN, World Bank)\n   - Economic indicators (GDP, inflation rates, trade balances)\n   - Political changes (recent elections, government shifts)\n   - Environmental issues in the Amazon region (deforestation rates, conservation efforts)\n   - Regional conflicts and security situations\n   - Migration patterns and refugee statistics\n   - Integration initiatives (Mercosur, UNASUR) updates\n\n2. Technical implementation:\n   - Clone the repository and create a feature branch\n   - Update the quarters/9-Yuzhnaya-Amerika.md file using Markdown formatting\n   - Ensure proper structure with headings, tables, and lists\n   - Include data sources as references at the end of the document\n   - Maintain consistent formatting with other regional files\n   - Add appropriate metadata tags if used in the system\n\n3. Data validation:\n   - Cross-check information from multiple sources\n   - Ensure numerical data is accurate and properly formatted\n   - Verify political information reflects current governments\n   - Validate environmental data with recent scientific reports\n\n4. Integration considerations:\n   - Ensure the updated file follows the established data schema\n   - Check for any dependencies on this data in other system components\n   - Update any timestamp or version information in the file metadata\n   - Ensure the file is properly encoded (UTF-8) to support multilingual content\n\nThe update should be comprehensive while maintaining the existing file structure and integration with the synchronization system.",
+        "testStrategy": "1. Content verification:\n   - Review all updated data points against source materials\n   - Verify population figures match latest official estimates\n   - Confirm economic data matches World Bank/IMF reports\n   - Validate political information against official government sources\n   - Check environmental data against recent scientific publications\n   - Ensure migration data matches UNHCR or IOM statistics\n\n2. Technical validation:\n   - Validate Markdown syntax using a linter\n   - Check for broken links or references\n   - Verify UTF-8 encoding to ensure proper display of special characters\n   - Test file rendering in the application's display environment\n   - Ensure file size is reasonable and optimized\n\n3. Integration testing:\n   - Verify the updated file can be properly synchronized using the system's sync logic\n   - Test that the file appears correctly in the monitoring dashboard\n   - Confirm the file passes any validation checks in the system\n   - Verify the file can be properly accessed through any relevant APIs\n\n4. User acceptance testing:\n   - Have subject matter experts review the content for accuracy\n   - Verify the information displays correctly in the user interface\n   - Check that any data visualizations using this information render properly\n\nDocument all test results and any issues found during the testing process.",
+        "status": "pending",
+        "dependencies": [
+          6
+        ],
+        "priority": "medium",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-22T06:19:22.239Z",
+      "updated": "2025-09-26T06:52:39.683Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

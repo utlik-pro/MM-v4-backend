@@ -1,0 +1,39 @@
+{
+  "agent_configuration": {
+    "name": "Менеджер по продаже недвижимости BIR",
+    "description": "AI-агент для консультирования клиентов по недвижимости в Минске",
+    "language": "ru",
+    "voice_settings": {
+      "voice_id": "russian_female_professional",
+      "stability": 0.75,
+      "similarity_boost": 0.85,
+      "speaking_rate": 1.0
+    },
+    "llm_settings": {
+      "model": "gpt-4-turbo",
+      "temperature": 0.3,
+      "max_tokens": 500,
+      "system_prompt": "file:elevenlabs_system_prompt.txt",
+      "knowledge_base": "file:elevenlabs_rag_instructions.txt"
+    },
+    "conversation_settings": {
+      "interruption_sensitivity": 0.7,
+      "silence_detection_ms": 1500,
+      "end_of_turn_detection": true,
+      "filler_words": ["эм", "так", "давайте посмотрим", "одну секунду"]
+    },
+    "knowledge_base_settings": {
+      "chunk_size": 800,
+      "chunk_overlap": 400,
+      "retrieval_count": 7,
+      "similarity_threshold": 0.8
+    }
+  },
+  "upload_instructions": {
+    "step_1": "Загрузите файл 'elevenlabs_system_prompt.txt' как System Prompt",
+    "step_2": "Загрузите файл 'elevenlabs_rag_instructions.txt' как инструкцию для поведения при RAG",
+    "step_3": "Загрузите файлы из папки 'elevenlabs_rag/' (приоритетные) и все файлы из 'quarters/' как Knowledge Base",
+    "step_4": "Установите приоритет: 00-rag-navigation-index.md, 02-validation-rules.md, 01-budget-apartments.md, 03-empathy-enhancer.md, затем 'quarters/00-agent-master-guide.md'",
+    "step_5": "Настройте: chunk_size=800, chunk_overlap=400, retrieval_count=7, similarity_threshold=0.8"
+  }
+}

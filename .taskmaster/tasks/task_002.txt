@@ -1,0 +1,11 @@
+# Task ID: 2
+# Title: Create HTTP client for data fetching
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Implement robust HTTP client to fetch JSON from bir.by/ai/json_ai.php
+# Details:
+Use axios with retry logic, timeout handling, and response validation. Add exponential backoff for retries
+
+# Test Strategy:
+Unit tests for HTTP client with mocked responses, test retry logic and error scenarios

@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "quarter": "10-Тропические-острова",
+  "updated_at": "2025-11-20T17:00:19.724989",
+  "total_apartments": 1,
+  "apartments": [
+    {
+      "id": "5746",
+      "apartment": "Квартира №4",
+      "type": "Квартира",
+      "quarter": "Квартал — 10 Тропические острова",
+      "status": "Статус: Сдано",
+      "address": "улица Жореса Алфёрова, дом 10",
+      "location": "Местоположение: Минск Мир, Дом 10.6",
+      "house_number": "10.6",
+      "house_name": "Фиджи",
+      "floor": "Этаж: 2",
+      "floor_total": "Этажность дома: 25",
+      "area": 69.9,
+      "price_per_sqm": 1410.0,
+      "total_price": 104763.0
+    }
+  ],
+  "statistics": {
+    "min_price": 104763.0,
+    "max_price": 104763.0,
+    "avg_price": 104763.0,
+    "min_area": 69.9,
+    "max_area": 69.9,
+    "available_count": 0
+  }
+}

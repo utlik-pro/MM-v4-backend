@@ -1,0 +1,38 @@
+{
+  "agent_configuration": {
+    "name": "Менеджер по продаже недвижимости BIR (Low Latency)",
+    "description": "AI-агент с настройками, оптимизированными на задержку",
+    "language": "ru",
+    "voice_settings": {
+      "voice_id": "russian_female_professional",
+      "stability": 0.7,
+      "similarity_boost": 0.8,
+      "speaking_rate": 1.1
+    },
+    "llm_settings": {
+      "model": "gpt-4-turbo",
+      "temperature": 0.2,
+      "max_tokens": 350,
+      "system_prompt": "file:elevenlabs_system_prompt.txt",
+      "knowledge_base": "file:elevenlabs_rag_instructions.txt"
+    },
+    "conversation_settings": {
+      "interruption_sensitivity": 0.75,
+      "silence_detection_ms": 900,
+      "end_of_turn_detection": true,
+      "filler_words": ["давайте посмотрим", "секунду"]
+    },
+    "knowledge_base_settings": {
+      "chunk_size": 1000,
+      "chunk_overlap": 200,
+      "retrieval_count": 5,
+      "similarity_threshold": 0.82
+    }
+  },
+  "notes": {
+    "purpose": "Эта конфигурация снижает среднее время ответа за счёт меньшего контекста и более агрессивного VAD",
+    "tradeoffs": "Возможна небольшая потеря полноты извлечения при редких запросах"
+  }
+}
+
+

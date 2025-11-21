@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "quarter": "23-Евразия",
+  "updated_at": "2025-11-20T17:00:19.725597",
+  "total_apartments": 1,
+  "apartments": [
+    {
+      "id": "6425",
+      "apartment": "Квартира №2",
+      "type": "Квартира",
+      "quarter": "Квартал — 23 Евразия",
+      "status": "Статус: Сдано",
+      "address": "улица Николы Теслы, дом 10",
+      "location": "Местоположение: Минск Мир, Дом 23.2",
+      "house_number": "23.2",
+      "house_name": "Тбилиси",
+      "floor": "Этаж: 1",
+      "floor_total": "Этажность дома: 19",
+      "area": 59.4,
+      "price_per_sqm": 1670.0,
+      "total_price": 106212.0
+    }
+  ],
+  "statistics": {
+    "min_price": 106212.0,
+    "max_price": 106212.0,
+    "avg_price": 106212.0,
+    "min_area": 59.4,
+    "max_area": 59.4,
+    "available_count": 0
+  }
+}

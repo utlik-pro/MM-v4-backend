@@ -1,0 +1,20 @@
+{
+  "check_interval_minutes": 60,
+  "force_update_hours": 24,
+  "enable_change_detection": true,
+  "enable_scheduled_updates": true,
+  "enable_notifications": true,
+  "notification_methods": [
+    "log",
+    "file"
+  ],
+  "webhook_url": null,
+  "email_settings": {
+    "enabled": false,
+    "smtp_server": null,
+    "smtp_port": 587,
+    "username": null,
+    "password": null,
+    "to_email": null
+  }
+}
