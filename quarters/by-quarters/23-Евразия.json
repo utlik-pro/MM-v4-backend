@@ -1,11 +1,59 @@
 {
   "version": "1.0",
   "quarter": "23-Евразия",
-  "updated_at": "2025-11-20T17:00:19.725597",
-  "total_apartments": 1,
+  "updated_at": "2025-11-24T12:29:13.231605",
+  "total_apartments": 4,
   "apartments": [
     {
-      "id": "6425",
+      "id": "672",
+      "apartment": "Квартира №1",
+      "type": "Квартира",
+      "quarter": "Квартал — 23 Евразия",
+      "status": "Статус: Сдано",
+      "address": "улица Игоря Лученка, дом 9",
+      "location": "Местоположение: Минск Мир, Дом 23.6",
+      "house_number": "23.6",
+      "house_name": "Екатеринбург",
+      "floor": "Этаж: 1",
+      "floor_total": "Этажность дома: 25",
+      "area": 40.6,
+      "price_per_sqm": 1720.0,
+      "total_price": 80152.0
+    },
+    {
+      "id": "3703",
+      "apartment": "Квартира №1",
+      "type": "Квартира",
+      "quarter": "Квартал — 23 Евразия",
+      "status": "Статус: Сдано",
+      "address": "улица Белградская, дом 6",
+      "location": "Местоположение: Минск Мир, Дом 23.4",
+      "house_number": "23.4",
+      "house_name": "Баку",
+      "floor": "Этаж: 1",
+      "floor_total": "Этажность дома: 25",
+      "area": 40.7,
+      "price_per_sqm": 1720.0,
+      "total_price": 80324.0
+    },
+    {
+      "id": "3704",
+      "apartment": "Квартира №6",
+      "type": "Квартира",
+      "quarter": "Квартал — 23 Евразия",
+      "status": "Статус: Сдано",
+      "address": "улица Белградская, дом 6",
+      "location": "Местоположение: Минск Мир, Дом 23.4",
+      "house_number": "23.4",
+      "house_name": "Баку",
+      "floor": "Этаж: 1",
+      "floor_total": "Этажность дома: 25",
+      "area": 58.0,
+      "price_per_sqm": 1670.0,
+      "total_price": 106880.0
+    },
+    {
+      "id": "7093",
       "apartment": "Квартира №2",
       "type": "Квартира",
       "quarter": "Квартал — 23 Евразия",
@@ -22,10 +70,10 @@
     }
   ],
   "statistics": {
-    "min_price": 106212.0,
-    "max_price": 106212.0,
-    "avg_price": 106212.0,
-    "min_area": 59.4,
+    "min_price": 80152.0,
+    "max_price": 106880.0,
+    "avg_price": 93392.0,
+    "min_area": 40.6,
     "max_area": 59.4,
     "available_count": 0
   }

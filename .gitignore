@@ -62,6 +62,10 @@ cron-update.log
 elevenlabs_sync_log.json
 uploaded_kb_ids.txt
 current_kb_ids.txt
+.elevenlabs_kb_cache.json
+quarters/.changed_files.txt
+quarters/.last_update_hash
+quarters/.quarter_hashes.json
 
 # Test files
 test-*.html
