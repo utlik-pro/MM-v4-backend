@@ -29,6 +29,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.bmad
+.cursor
 
 # Logs and temporary files
 *.log

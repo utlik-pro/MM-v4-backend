@@ -513,20 +513,19 @@ class ElevenLabsAutoSync:
         current_kb = agent_data.get('conversation_config', {}).get('knowledge_base', {})
         existing_ids = current_kb.get('ids', [])
 
-        # Объединяем с новыми
-        all_ids = list(set(existing_ids + ready_doc_ids))
+        # Обновляем агента — ПЕРЕПИСЫВАЕМ knowledge_base.ids на актуальный набор, не объединяем со старыми
+        agent_kb_ids = ready_doc_ids[:50]  # Лимит ElevenLabs — максимум 50
 
-        # Обновляем агента
         update_data = {
             'conversation_config': {
                 'knowledge_base': {
                     'type': 'knowledge_base',
-                    'ids': all_ids[:50]  # Лимит ElevenLabs
+                    'ids': agent_kb_ids
                 }
             }
         }
 
-        print(f"   Документов в агенте: {len(existing_ids)} → {len(all_ids[:50])}")
+        print(f"   Документов в агенте (только новые): {len(agent_kb_ids)}")
 
         # Пытаемся обновить с retry
         for attempt in range(3):
