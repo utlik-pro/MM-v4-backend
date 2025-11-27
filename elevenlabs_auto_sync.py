@@ -19,8 +19,13 @@ from pathlib import Path
 from typing import List, Dict, Optional
 from dotenv import load_dotenv
 from collections import defaultdict
+import sys
 
 load_dotenv()
+
+
+def log(msg):
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}", flush=True)
 
 
 class ElevenLabsAutoSync:
@@ -583,14 +588,14 @@ class ElevenLabsAutoSync:
         else:
             is_incremental = False
             # Шаг 1: Получаем все документы
-            print("\n📚 Шаг 1: Получение списка документов из Knowledge Base...")
+            log("\n📚 Шаг 1: Получение списка документов из Knowledge Base...")
             all_docs = self.get_all_kb_documents_cached(ttl_minutes=60)
-            print(f"   Найдено документов в KB: {len(all_docs)}")
+            log(f"   Найдено документов в KB: {len(all_docs)}")
 
             # Шаг 2: Определяем что удалить
-            print("\n🔍 Шаг 2: Поиск документов для удаления...")
+            log("\n🔍 Шаг 2: Поиск документов для удаления...")
             to_delete = self.identify_documents_to_delete(all_docs, changed_files=changed_files)
-            print(f"   Документов для удаления: {len(to_delete)}")
+            log(f"   Документов для удаления: {len(to_delete)}")
 
         if to_delete:
             print("   Список на удаление (первые 10):")
