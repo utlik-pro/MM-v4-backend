@@ -197,14 +197,20 @@ class ElevenLabsAutoSync:
             versions_with_date = []
 
             for v in versions:
-                # Пытаемся получить дату создания из метаданных
-                created = v.get('metadata', {}).get('created_at_unix_secs')
-
+                doc_id = v.get('id')
+                doc_name = v.get('name', 'unknown')
+                
+                # Пытаемся получить дату создания из метаданных ElevenLabs
+                metadata = v.get('metadata', {})
+                created = metadata.get('created_at_unix_secs')
+                
                 if created:
                     versions_with_date.append((v, created))
+                    if changed_files:
+                        log(f"      ✅ Дата из metadata: {doc_name[:40]} -> {datetime.fromtimestamp(created).strftime('%Y-%m-%d %H:%M:%S')}")
                 else:
-                    # Проверяем лог
-                    doc_id = v.get('id')
+                    # Проверяем локальный лог синхронизаций
+                    found_in_log = False
                     for log_name, log_info in self.sync_log['uploads'].items():
                         if log_info.get('id') == doc_id:
                             upload_date = log_info.get('upload_date', '')
@@ -212,12 +218,25 @@ class ElevenLabsAutoSync:
                                 # Конвертируем ISO дату в unix timestamp
                                 try:
                                     dt = datetime.fromisoformat(upload_date.replace('Z', '+00:00'))
-                                    versions_with_date.append((v, int(dt.timestamp())))
-                                except:
-                                    pass
-                            break
+                                    timestamp = int(dt.timestamp())
+                                    versions_with_date.append((v, timestamp))
+                                    found_in_log = True
+                                    if changed_files:
+                                        log(f"      ✅ Дата из локального лога: {doc_name[:40]} -> {upload_date}")
+                                    break
+                                except Exception as e:
+                                    if changed_files:
+                                        log(f"      ⚠️  Ошибка парсинга даты из лога: {e}")
+                    
+                    if not found_in_log and changed_files:
+                        log(f"      ❌ Не найдена дата для: {doc_name[:40]} (ID: {doc_id[:20]}...)")
+                        # Показываем что есть в метаданных для отладки
+                        if metadata:
+                            log(f"         Метаданные: {json.dumps(metadata, ensure_ascii=False)[:200]}")
 
             if not versions_with_date:
+                if changed_files:
+                    log(f"      ⚠️  Пропуск {base_name}: не удалось определить даты ни для одной версии")
                 continue  # Не смогли определить даты
 
             # Сортируем (новые первые)
