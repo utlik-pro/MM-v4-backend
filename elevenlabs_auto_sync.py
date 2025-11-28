@@ -671,49 +671,6 @@ class ElevenLabsAutoSync:
                     else:
                         log(f"   ❌ Все попытки исчерпаны")
                         return False
-                        
-        wait_times = [15, 30, 60, 120, 180]
-        for attempt in range(5):
-            try:
-                log(f"   🔄 Попытка {attempt + 1}/5...")
-                start_time = time.time()
-                log(f"   🕒 Start PATCH-запроса, отправляю данные агенту...")
-                connect_start = time.time()
-                try:
-                    response = requests.patch(
-                        agent_url,
-                        headers=self.headers,
-                        json=update_data,
-                        timeout=(15, 180)
-                    )
-                    connect_time = time.time() - connect_start
-                    log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
-                except requests.exceptions.ConnectTimeout:
-                    fail_time = time.time() - connect_start
-                    log(f"   ❌ Таймаут на соединении PATCH после {fail_time:.1f}с")
-                    raise
-                except requests.exceptions.ReadTimeout:
-                    fail_time = time.time() - connect_start
-                    log(f"   ❌ Таймаут чтения PATCH после {fail_time:.1f}с")
-                    raise
-                except Exception as e:
-                    fail_time = time.time() - connect_start
-                    log(f"   ❌ Неожиданная ошибка PATCH после {fail_time:.1f}с: {type(e).__name__} - {str(e)}")
-                    raise
-
-                elapsed = time.time() - start_time
-                if response.status_code == 200:
-                    log(f"   ✅ Агент успешно обновлен!")
-                    return True
-                else:
-                    log(f"   ❌ HTTP {response.status_code}: {response.text[:300]}")
-                    if attempt < 4:
-                        wait_time = wait_times[attempt]
-                        log(f"   ⏳ Ожидание {wait_time}с перед попыткой {attempt+2}...")
-                        time.sleep(wait_time)
-                    else:
-                        log(f"   ❌ Все попытки исчерпаны")
-                        return False
 
             except requests.exceptions.ConnectTimeout:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
