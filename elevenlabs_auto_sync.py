@@ -185,6 +185,11 @@ class ElevenLabsAutoSync:
             if changed_files and base_name not in changed_base_names:
                 # Этот файл не изменился, пропускаем
                 continue
+            
+            # Логируем для отладки
+            if changed_files:
+                log(f"   🔍 Анализ: {base_name} ({len(versions)} версий)")
+            
             if len(versions) <= 1:
                 continue  # Только одна версия - ничего не удаляем
 
@@ -221,12 +226,16 @@ class ElevenLabsAutoSync:
             # Все кроме первого (самого нового) - удаляем
             for doc, date in versions_with_date[1:]:
                 newest_date = datetime.fromtimestamp(versions_with_date[0][1]).strftime('%Y-%m-%d')
-
+                doc_name = doc.get('name', 'unknown')
+                
                 to_delete.append({
                     'id': doc.get('id'),
-                    'name': doc.get('name'),
+                    'name': doc_name,
                     'reason': f'старая версия (новейшая от {newest_date})'
                 })
+                
+                if changed_files:
+                    log(f"      🗑️  Найдена старая версия: {doc_name[:50]}")
 
         return to_delete
 
@@ -577,25 +586,21 @@ class ElevenLabsAutoSync:
         if dry_run:
             print("\n⚠️  РЕЖИМ DRY RUN (без реальных изменений)\n")
 
+        # Шаг 1: Получаем все документы (нужно для поиска старых версий даже в инкрементальном режиме)
+        log("\n📚 Шаг 1: Получение списка документов из Knowledge Base...")
+        all_docs = self.get_all_kb_documents_cached(ttl_minutes=60)
+        log(f"   Найдено документов в KB: {len(all_docs)}")
+
+        # Шаг 2: Определяем что удалить
         if changed_files:
             print(f"\n🎯 ИНКРЕМЕНТАЛЬНОЕ ОБНОВЛЕНИЕ: {len(changed_files)} файлов")
             print(f"   Файлы: {', '.join(changed_files)}\n")
-            # В инкрементальном режиме пропускаем получение всех документов и удаление
-            is_incremental = True
-            all_docs = []
-            to_delete = []
-            print("   ⚡ Пропуск шагов 1-2 (инкрементальный режим)")
+            log("\n🔍 Шаг 2: Поиск старых версий обновленных документов...")
         else:
-            is_incremental = False
-            # Шаг 1: Получаем все документы
-            log("\n📚 Шаг 1: Получение списка документов из Knowledge Base...")
-            all_docs = self.get_all_kb_documents_cached(ttl_minutes=60)
-            log(f"   Найдено документов в KB: {len(all_docs)}")
-
-            # Шаг 2: Определяем что удалить
             log("\n🔍 Шаг 2: Поиск документов для удаления...")
-            to_delete = self.identify_documents_to_delete(all_docs, changed_files=changed_files)
-            log(f"   Документов для удаления: {len(to_delete)}")
+        
+        to_delete = self.identify_documents_to_delete(all_docs, changed_files=changed_files)
+        log(f"   Документов для удаления: {len(to_delete)}")
 
         if to_delete:
             print("   Список на удаление (первые 10):")
