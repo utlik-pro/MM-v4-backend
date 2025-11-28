@@ -105,36 +105,52 @@ class ElevenLabsAutoSync:
         """Получить все документы из Knowledge Base с пагинацией"""
         all_docs = []
         page = 0
+        max_pages = 100  # Защита от бесконечного цикла
 
-        while True:
+        log(f"   📥 Начало загрузки документов из KB (таймаут: 60с)")
+        
+        while page < max_pages:
             url = f"{self.base_url}/convai/knowledge-base?page_size=100&page={page}"
-
+            
             try:
-                response = requests.get(url, headers={"xi-api-key": self.api_key}, timeout=30)
+                log(f"   📄 Запрос страницы {page}...")
+                response = requests.get(url, headers={"xi-api-key": self.api_key}, timeout=60)
 
                 if response.status_code != 200:
+                    log(f"   ❌ HTTP {response.status_code} на странице {page}")
                     if page == 0:
-                        print(f"❌ Ошибка получения документов: {response.status_code}")
+                        log(f"   📝 Ответ сервера: {response.text[:500]}")
                     break
 
                 data = response.json()
                 docs = data.get('documents', data.get('knowledge_bases', []))
 
                 if not docs:
+                    log(f"   ℹ️  Страница {page}: документов нет, завершение")
                     break
 
                 all_docs.extend(docs)
+                log(f"   ✅ Страница {page}: получено {len(docs)} документов (всего: {len(all_docs)})")
 
-                if not data.get('has_more', False):
+                has_more = data.get('has_more', False)
+                if not has_more:
+                    log(f"   ✅ Все страницы загружены (has_more=False)")
                     break
 
                 page += 1
-                time.sleep(0.3)  # Пауза между запросами
+                time.sleep(0.5)  # Пауза между запросами
 
+            except requests.exceptions.Timeout:
+                log(f"   ❌ Таймаут запроса на странице {page} (>60 сек)")
+                break
+            except requests.exceptions.RequestException as e:
+                log(f"   ❌ Ошибка сети на странице {page}: {type(e).__name__} - {str(e)[:200]}")
+                break
             except Exception as e:
-                print(f"❌ Ошибка при запросе документов (страница {page}): {e}")
+                log(f"   ❌ Неожиданная ошибка на странице {page}: {type(e).__name__} - {str(e)[:200]}")
                 break
 
+        log(f"   📊 Итого загружено: {len(all_docs)} документов из {page + 1} страниц")
         return all_docs
 
     # ===== ОПРЕДЕЛЕНИЕ ДОКУМЕНТОВ ДЛЯ УДАЛЕНИЯ =====
