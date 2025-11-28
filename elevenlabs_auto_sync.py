@@ -632,22 +632,32 @@ class ElevenLabsAutoSync:
             try:
                 log(f"   🔄 Попытка {attempt + 1}/3...")
                 start_time = time.time()
-                
-                # Добавляем логирование перед отправкой
-                log(f"   📡 Отправка PATCH запроса (данные: {len(agent_kb_ids)} документов)...")
-                
-                # Используем requests с явным таймаутом на подключение и чтение
-                # Уменьшаем таймаут подключения для быстрого определения проблем
-                response = requests.patch(
-                    agent_url, 
-                    headers=self.headers, 
-                    json=update_data, 
-                    timeout=(15, 180)  # 15 сек на подключение, 180 сек (3 мин) на ответ
-                )
+                log(f"   🕒 Start PATCH-запроса, отправляю данные агенту...")
+                connect_start = time.time()
+                try:
+                    response = requests.patch(
+                        agent_url,
+                        headers=self.headers,
+                        json=update_data,
+                        timeout=(15, 180)  # 15 сек на подключение, 180 сек (3 мин) на ответ
+                    )
+                    connect_time = time.time() - connect_start
+                    log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
+                except requests.exceptions.ConnectTimeout:
+                    fail_time = time.time() - connect_start
+                    log(f"   ❌ Таймаут на соединении PATCH после {fail_time:.1f}с")
+                    raise
+                except requests.exceptions.ReadTimeout:
+                    fail_time = time.time() - connect_start
+                    log(f"   ❌ Таймаут чтения PATCH после {fail_time:.1f}с")
+                    raise
+                except Exception as e:
+                    fail_time = time.time() - connect_start
+                    log(f"   ❌ Неожиданная ошибка PATCH после {fail_time:.1f}с: {type(e).__name__} - {str(e)}")
+                    raise
 
                 elapsed = time.time() - start_time
-                log(f"   📡 Ответ получен за {elapsed:.1f}с, HTTP {response.status_code}")
-
+                # Проверка статуса
                 if response.status_code == 200:
                     log(f"   ✅ Агент успешно обновлен!")
                     return True
