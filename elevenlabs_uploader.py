@@ -116,6 +116,20 @@ class ElevenLabsUploader:
             print(f"❌ Ошибка при удалении документа: {e}")
             return False
     
+    def get_knowledge_base(self):
+        """Получает данные Knowledge Base для агента"""
+        url = f"{self.base_url}/convai/agents/{self.agent_id}/knowledge-base"
+        try:
+            response = requests.get(url, headers=self.headers)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                print(f"❌ Ошибка получения Knowledge Base: {response.status_code}, {response.text}")
+                return None
+        except Exception as e:
+            print(f"❌ Ошибка при получении Knowledge Base: {e}")
+            return None
+
     def list_documents(self) -> List[Dict[str, Any]]:
         """Получает список документов в Knowledge Base"""
         knowledge_base = self.get_knowledge_base()
