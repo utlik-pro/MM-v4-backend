@@ -671,7 +671,6 @@ class ElevenLabsAutoSync:
                     else:
                         log(f"   ❌ Все попытки исчерпаны")
                         return False
-=======
         wait_times = [15, 30, 60, 120, 180]
         for attempt in range(5):
             try:
