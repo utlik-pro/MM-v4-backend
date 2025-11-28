@@ -768,12 +768,17 @@ def sync_to_elevenlabs(changed_files: List[str] = None):
 
         # Запускаем автосинхронизацию (выводим stdout/stderr в реальном времени)
         print(f"   🚀 Запуск: {' '.join(cmd)}")
+        print(f"   ⏱️  Таймаут операции: 15 минут (для загрузки и индексации {len(changed_files) if changed_files else 'всех'} файлов)")
+        
+        # Увеличиваем таймаут для больших объемов: ~10 минут на загрузку + ~5 минут на индексацию
+        timeout_seconds = 15 * 60  # 15 минут
+        
         result = subprocess.run(
             cmd,
             stdout=sys.stdout,  # Выводим сразу в лог
             stderr=sys.stderr,
             text=True,
-            timeout=300
+            timeout=timeout_seconds
         )
 
         if result.returncode == 0:
