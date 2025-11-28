@@ -5,6 +5,7 @@
 """
 
 import os
+import sys
 import re
 import json
 import requests
@@ -746,10 +747,10 @@ def sync_to_elevenlabs(changed_files: List[str] = None):
 
         print("\n☁️  Синхронизация с ElevenLabs...")
 
-        # Формируем команду с правильным python из venv
-        venv_python = str(Path(__file__).parent / 'venv' / 'bin' / 'python3')
+        # Используем текущий интерпретатор Python (sys.executable) - работает на Render и локально
+        python_executable = sys.executable
         # Убираем --no-delete чтобы система могла удалять старые версии
-        cmd = [venv_python, 'elevenlabs_auto_sync.py']
+        cmd = [python_executable, 'elevenlabs_auto_sync.py']
 
         # Если есть список измененных файлов, передаем его
         if changed_files:
@@ -765,10 +766,12 @@ def sync_to_elevenlabs(changed_files: List[str] = None):
         else:
             print(f"   📝 Режим: полная синхронизация")
 
-        # Запускаем автосинхронизацию
+        # Запускаем автосинхронизацию (выводим stdout/stderr в реальном времени)
+        print(f"   🚀 Запуск: {' '.join(cmd)}")
         result = subprocess.run(
             cmd,
-            capture_output=True,
+            stdout=sys.stdout,  # Выводим сразу в лог
+            stderr=sys.stderr,
             text=True,
             timeout=300
         )
@@ -777,9 +780,7 @@ def sync_to_elevenlabs(changed_files: List[str] = None):
             print("✅ Синхронизация с ElevenLabs завершена успешно")
             return True
         else:
-            print(f"⚠️  Синхронизация завершилась с ошибками:")
-            if result.stderr:
-                print(result.stderr[:500])
+            print(f"⚠️  Синхронизация завершилась с ошибками (код: {result.returncode})")
             return False
 
     except subprocess.TimeoutExpired:
