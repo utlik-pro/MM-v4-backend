@@ -529,34 +529,35 @@ class ElevenLabsAutoSync:
             return 0
 
         deleted_count = 0
+        batch_size = 1000  # Ограничение на количество удалений за 1 цикл
+        pause_between_batches = 120  # Пауза между батчами (в секундах)
 
-        print(f"\n🗑️  Удаление {len(to_delete)} старых документов...")
+        print(f"\n🗑️  Удаление {len(to_delete)} старых документов... (лимит на удаление 1 в 2 секунды, макс {batch_size} за раз)")
+        for batch_start in range(0, len(to_delete), batch_size):
+            current_batch = to_delete[batch_start:batch_start+batch_size]
+            print(f"\n=== Обработка батча {batch_start//batch_size+1}: {len(current_batch)} документов ===")
+            for j, doc_info in enumerate(current_batch, 1):
+                doc_id = doc_info['id']
+                doc_name = doc_info['name']
+                reason = doc_info.get('reason', 'unknown')
 
-        for i, doc_info in enumerate(to_delete, 1):
-            doc_id = doc_info['id']
-            doc_name = doc_info['name']
-            reason = doc_info.get('reason', 'unknown')
-
-            print(f"  {i}/{len(to_delete)} - {doc_name[:40]}", end=" ")
-
-            if self._delete_document(doc_id):
-                deleted_count += 1
-
-                # Логируем удаление
-                self.sync_log['deletions'].append({
-                    'id': doc_id,
-                    'name': doc_name,
-                    'deletion_date': datetime.now().isoformat(),
-                    'reason': reason
-                })
-
-                self.save_sync_log()
-                print(f"✅")
-            else:
-                print(f"❌")
-
-            time.sleep(0.5)  # Пауза между удалениями
-
+                print(f"  {batch_start + j}/{len(to_delete)} - {doc_name[:40]}", end=" ")
+                if self._delete_document(doc_id):
+                    deleted_count += 1
+                    self.sync_log['deletions'].append({
+                        'id': doc_id,
+                        'name': doc_name,
+                        'deletion_date': datetime.now().isoformat(),
+                        'reason': reason
+                    })
+                    self.save_sync_log()
+                    print(f"✅")
+                else:
+                    print(f"❌")
+                time.sleep(2)  # Больше пауза — 2 секунды между удалениями
+            if batch_start + batch_size < len(to_delete):
+                print(f"  ⏳ Пауза {pause_between_batches//60} мин между батчами...")
+                time.sleep(pause_between_batches)
         return deleted_count
 
     def _delete_document(self, doc_id: str) -> bool:
@@ -628,9 +629,10 @@ class ElevenLabsAutoSync:
         log(f"   🔗 URL: {agent_url}")
 
         # Пытаемся обновить с retry
-        for attempt in range(3):
+        wait_times = [15, 30, 60, 120, 180]
+        for attempt in range(5):
             try:
-                log(f"   🔄 Попытка {attempt + 1}/3...")
+                log(f"   🔄 Попытка {attempt + 1}/5...")
                 start_time = time.time()
                 log(f"   🕒 Start PATCH-запроса, отправляю данные агенту...")
                 connect_start = time.time()
@@ -639,7 +641,7 @@ class ElevenLabsAutoSync:
                         agent_url,
                         headers=self.headers,
                         json=update_data,
-                        timeout=(15, 180)  # 15 сек на подключение, 180 сек (3 мин) на ответ
+                        timeout=(15, 180)
                     )
                     connect_time = time.time() - connect_start
                     log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
@@ -657,15 +659,57 @@ class ElevenLabsAutoSync:
                     raise
 
                 elapsed = time.time() - start_time
-                # Проверка статуса
                 if response.status_code == 200:
                     log(f"   ✅ Агент успешно обновлен!")
                     return True
                 else:
                     log(f"   ❌ HTTP {response.status_code}: {response.text[:300]}")
-                    if attempt < 2:
-                        wait_time = (attempt + 1) * 15  # 15, 30 секунд
-                        log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
+                    if attempt < 4:
+                        wait_time = wait_times[attempt]
+                        log(f"   ⏳ Ожидание {wait_time}с перед попыткой {attempt+2}...")
+                        time.sleep(wait_time)
+                    else:
+                        log(f"   ❌ Все попытки исчерпаны")
+                        return False
+=======
+        wait_times = [15, 30, 60, 120, 180]
+        for attempt in range(5):
+            try:
+                log(f"   🔄 Попытка {attempt + 1}/5...")
+                start_time = time.time()
+                log(f"   🕒 Start PATCH-запроса, отправляю данные агенту...")
+                connect_start = time.time()
+                try:
+                    response = requests.patch(
+                        agent_url,
+                        headers=self.headers,
+                        json=update_data,
+                        timeout=(15, 180)
+                    )
+                    connect_time = time.time() - connect_start
+                    log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
+                except requests.exceptions.ConnectTimeout:
+                    fail_time = time.time() - connect_start
+                    log(f"   ❌ Таймаут на соединении PATCH после {fail_time:.1f}с")
+                    raise
+                except requests.exceptions.ReadTimeout:
+                    fail_time = time.time() - connect_start
+                    log(f"   ❌ Таймаут чтения PATCH после {fail_time:.1f}с")
+                    raise
+                except Exception as e:
+                    fail_time = time.time() - connect_start
+                    log(f"   ❌ Неожиданная ошибка PATCH после {fail_time:.1f}с: {type(e).__name__} - {str(e)}")
+                    raise
+
+                elapsed = time.time() - start_time
+                if response.status_code == 200:
+                    log(f"   ✅ Агент успешно обновлен!")
+                    return True
+                else:
+                    log(f"   ❌ HTTP {response.status_code}: {response.text[:300]}")
+                    if attempt < 4:
+                        wait_time = wait_times[attempt]
+                        log(f"   ⏳ Ожидание {wait_time}с перед попыткой {attempt+2}...")
                         time.sleep(wait_time)
                     else:
                         log(f"   ❌ Все попытки исчерпаны")
