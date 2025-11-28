@@ -641,7 +641,7 @@ class ElevenLabsAutoSync:
                         agent_url,
                         headers=self.headers,
                         json=update_data,
-                        timeout=(15, 600)
+                        timeout=(15, 900)
                     )
                     connect_time = time.time() - connect_start
                     log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
