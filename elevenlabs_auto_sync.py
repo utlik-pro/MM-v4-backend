@@ -645,17 +645,20 @@ class ElevenLabsAutoSync:
                     )
                     connect_time = time.time() - connect_start
                     log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
-                except requests.exceptions.ConnectTimeout:
-                    fail_time = time.time() - connect_start
-                    log(f"   ❌ Таймаут на соединении PATCH после {fail_time:.1f}с")
-                    raise
-                except requests.exceptions.ReadTimeout:
-                    fail_time = time.time() - connect_start
-                    log(f"   ❌ Таймаут чтения PATCH после {fail_time:.1f}с")
-                    raise
                 except Exception as e:
                     fail_time = time.time() - connect_start
-                    log(f"   ❌ Неожиданная ошибка PATCH после {fail_time:.1f}с: {type(e).__name__} - {str(e)}")
+                    log(f"   ❌ PATCH exception ({type(e).__name__}) после {fail_time:.1f}с: {str(e)}")
+                    # log error to file
+                    with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                        errlog.write(f"\n[{datetime.now().isoformat()}] PATCH exception (attempt {attempt+1}/5)\n")
+                        errlog.write(f"URL: {agent_url}\n")
+                        errlog.write(f"Payload IDs (total {len(agent_kb_ids)}): {agent_kb_ids[:5]}\n")
+                        errlog.write(f"Exception: {type(e).__name__}: {str(e)}\n")
+                        import traceback
+                        errlog.write(traceback.format_exc())
+                        errlog.write(f"Elapsed: {fail_time:.2f} sec\n")
+                        errlog.write(f"Payload (truncated): {str(update_data)[:400]}\n")
+                        errlog.write("-"*60+"\n")
                     raise
 
                 elapsed = time.time() - start_time
@@ -663,6 +666,15 @@ class ElevenLabsAutoSync:
                     log(f"   ✅ Агент успешно обновлен!")
                     return True
                 else:
+                    # log error to file
+                    with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                        errlog.write(f"\n[{datetime.now().isoformat()}] PATCH HTTP error (attempt {attempt+1}/5)\n")
+                        errlog.write(f"URL: {agent_url}\n")
+                        errlog.write(f"Status: {response.status_code}, Text: {response.text[:400]}\n")
+                        errlog.write(f"Payload IDs (total {len(agent_kb_ids)}): {agent_kb_ids[:5]}\n")
+                        errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
+                        errlog.write(f"Payload (truncated): {str(update_data)[:400]}\n")
+                        errlog.write("-"*60+"\n")
                     log(f"   ❌ HTTP {response.status_code}: {response.text[:300]}")
                     if attempt < 4:
                         wait_time = wait_times[attempt]
@@ -672,9 +684,15 @@ class ElevenLabsAutoSync:
                         log(f"   ❌ Все попытки исчерпаны")
                         return False
 
-            except requests.exceptions.ConnectTimeout:
+            except requests.exceptions.ConnectTimeout as e:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
-                log(f"   ❌ Таймаут подключения к API (>30 сек)")
+                log(f"   ❌ Таймаут подключения к API (>30 сек): {str(e)}")
+                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH ConnectTimeout (attempt {attempt+1}/5)\n")
+                    errlog.write(f"URL: {agent_url}\n")
+                    errlog.write(f"Error: {str(e)}\n")
+                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
+                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -682,9 +700,15 @@ class ElevenLabsAutoSync:
                 else:
                     log(f"   ❌ Все попытки исчерпаны (таймауты подключения)")
                     return False
-            except requests.exceptions.ReadTimeout:
+            except requests.exceptions.ReadTimeout as e:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
-                log(f"   ❌ Таймаут чтения ответа (прошло {elapsed:.1f}с из 300с)")
+                log(f"   ❌ Таймаут чтения ответа (прошло {elapsed:.1f}с из 300с): {str(e)}")
+                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH ReadTimeout (attempt {attempt+1}/5)\n")
+                    errlog.write(f"URL: {agent_url}\n")
+                    errlog.write(f"Error: {str(e)}\n")
+                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
+                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -692,9 +716,15 @@ class ElevenLabsAutoSync:
                 else:
                     log(f"   ❌ Все попытки исчерпаны (таймауты чтения)")
                     return False
-            except requests.exceptions.Timeout:
+            except requests.exceptions.Timeout as e:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
-                log(f"   ❌ Общий таймаут PATCH запроса (прошло {elapsed:.1f}с)")
+                log(f"   ❌ Общий таймаут PATCH запроса (прошло {elapsed:.1f}с): {str(e)}")
+                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH Timeout (attempt {attempt+1}/5)\n")
+                    errlog.write(f"URL: {agent_url}\n")
+                    errlog.write(f"Error: {str(e)}\n")
+                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
+                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -704,6 +734,12 @@ class ElevenLabsAutoSync:
                     return False
             except requests.exceptions.RequestException as e:
                 log(f"   ❌ Ошибка сети: {type(e).__name__} - {str(e)[:200]}")
+                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH RequestException (attempt {attempt+1}/5)\n")
+                    errlog.write(f"URL: {agent_url}\n")
+                    errlog.write(f"Error: {str(e)}\n")
+                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
+                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -713,6 +749,15 @@ class ElevenLabsAutoSync:
                     return False
             except Exception as e:
                 log(f"   ❌ Неожиданная ошибка: {type(e).__name__} - {str(e)[:200]}")
+                import traceback
+                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
+                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH General Exception (attempt {attempt+1}/5)\n")
+                    errlog.write(f"URL: {agent_url}\n")
+                    errlog.write(f"Error: {type(e).__name__}: {str(e)}\n")
+                    errlog.write(traceback.format_exc())
+                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
+                    errlog.write(f"Payload (truncated): {str(update_data)[:400]}\n")
+                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
