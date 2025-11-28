@@ -560,24 +560,32 @@ class ElevenLabsAutoSync:
         Использует правильную структуру conversation_config
         """
         if not ready_doc_ids:
-            print("ℹ️  Нет новых документов для добавления к агенту")
+            log("ℹ️  Нет новых документов для добавления к агенту")
             return True
 
         agent_url = f"{self.base_url}/convai/agents/{self.agent_id}"
 
-        print(f"\n🤖 Обновление агента...")
+        log(f"\n🤖 Обновление агента...")
+        log(f"   📋 Документов для добавления: {len(ready_doc_ids)}")
 
         # Получаем текущую конфигурацию
+        log(f"   📥 Получение текущей конфигурации агента (таймаут: 60с)...")
         try:
-            response = requests.get(agent_url, headers=self.headers, timeout=30)
+            response = requests.get(agent_url, headers=self.headers, timeout=60)
+            log(f"   📡 HTTP {response.status_code}")
 
             if response.status_code != 200:
-                print(f"❌ Не удалось получить конфигурацию агента: {response.status_code}")
+                log(f"   ❌ Не удалось получить конфигурацию агента: {response.status_code}")
+                log(f"   📝 Ответ: {response.text[:300]}")
                 return False
 
             agent_data = response.json()
+            log(f"   ✅ Конфигурация получена")
+        except requests.exceptions.Timeout:
+            log(f"   ❌ Таймаут получения конфигурации агента (>60 сек)")
+            return False
         except Exception as e:
-            print(f"❌ Ошибка получения конфигурации: {e}")
+            log(f"   ❌ Ошибка получения конфигурации: {type(e).__name__} - {str(e)[:200]}")
             return False
 
         # Получаем текущие ID документов
@@ -596,30 +604,60 @@ class ElevenLabsAutoSync:
             }
         }
 
-        print(f"   Документов в агенте (только новые): {len(agent_kb_ids)}")
+        log(f"   📊 Обновление: {len(existing_ids)} → {len(agent_kb_ids)} документов в KB агента")
+        log(f"   📤 Отправка PATCH запроса (таймаут: 300с)...")
 
         # Пытаемся обновить с retry
         for attempt in range(3):
             try:
-                response = requests.patch(agent_url, headers=self.headers, json=update_data, timeout=180)
+                log(f"   🔄 Попытка {attempt + 1}/3...")
+                start_time = time.time()
+                
+                response = requests.patch(agent_url, headers=self.headers, json=update_data, timeout=300)
+
+                elapsed = time.time() - start_time
+                log(f"   📡 Ответ получен за {elapsed:.1f}с, HTTP {response.status_code}")
 
                 if response.status_code == 200:
-                    print(f"✅ Агент успешно обновлен!")
+                    log(f"   ✅ Агент успешно обновлен!")
                     return True
                 else:
+                    log(f"   ❌ HTTP {response.status_code}: {response.text[:300]}")
                     if attempt < 2:
-                        print(f"   ⚠️  Попытка {attempt + 1}/3 не удалась, повтор...")
-                        time.sleep(10)
+                        wait_time = (attempt + 1) * 15  # 15, 30 секунд
+                        log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
+                        time.sleep(wait_time)
                     else:
-                        print(f"❌ Ошибка обновления агента: {response.status_code}")
+                        log(f"   ❌ Все попытки исчерпаны")
                         return False
 
-            except Exception as e:
+            except requests.exceptions.Timeout:
+                elapsed = time.time() - start_time if 'start_time' in locals() else 0
+                log(f"   ❌ Таймаут PATCH запроса (прошло {elapsed:.1f}с из 300с)")
                 if attempt < 2:
-                    print(f"   ⚠️  Попытка {attempt + 1}/3: {str(e)[:50]}")
-                    time.sleep(10)
+                    wait_time = (attempt + 1) * 15
+                    log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
+                    time.sleep(wait_time)
                 else:
-                    print(f"❌ Ошибка: {e}")
+                    log(f"   ❌ Все попытки исчерпаны (таймауты)")
+                    return False
+            except requests.exceptions.RequestException as e:
+                log(f"   ❌ Ошибка сети: {type(e).__name__} - {str(e)[:200]}")
+                if attempt < 2:
+                    wait_time = (attempt + 1) * 15
+                    log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
+                    time.sleep(wait_time)
+                else:
+                    log(f"   ❌ Все попытки исчерпаны")
+                    return False
+            except Exception as e:
+                log(f"   ❌ Неожиданная ошибка: {type(e).__name__} - {str(e)[:200]}")
+                if attempt < 2:
+                    wait_time = (attempt + 1) * 15
+                    log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
+                    time.sleep(wait_time)
+                else:
+                    log(f"   ❌ Все попытки исчерпаны")
                     return False
 
         return False
