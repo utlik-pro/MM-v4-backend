@@ -737,7 +737,7 @@ class PropertyMonitor:
 
 
 def sync_to_elevenlabs(changed_files: List[str] = None):
-    """Синхронизация обновленных данных с ElevenLabs
+    """Синхронизация обновленных данных с ElevenLabs (v2)
 
     Args:
         changed_files: Список измененных MD-файлов (опционально)
@@ -745,16 +745,14 @@ def sync_to_elevenlabs(changed_files: List[str] = None):
     try:
         import subprocess
 
-        print("\n☁️  Синхронизация с ElevenLabs...")
+        print("\n☁️  Синхронизация с ElevenLabs (v2)...")
 
-        # Используем текущий интерпретатор Python (sys.executable) - работает на Render и локально
+        # Используем новый elevenlabs_sync_v2.py с правильной логикой
         python_executable = sys.executable
-        # Убираем --no-delete чтобы система могла удалять старые версии
-        cmd = [python_executable, 'elevenlabs_auto_sync.py']
+        cmd = [python_executable, 'elevenlabs_sync_v2.py']
 
         # Если есть список измененных файлов, передаем его
         if changed_files:
-            # Сохраняем список в временный файл
             changed_files_path = Path('./quarters/.changed_files.txt')
             with open(changed_files_path, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(changed_files))
@@ -764,18 +762,16 @@ def sync_to_elevenlabs(changed_files: List[str] = None):
 
             print(f"   📝 Изменено файлов: {len(changed_files)}")
         else:
-            print(f"   📝 Режим: полная синхронизация")
+            print(f"   📝 Режим: полная синхронизация (проверка по хешам)")
 
-        # Запускаем автосинхронизацию (выводим stdout/stderr в реальном времени)
         print(f"   🚀 Запуск: {' '.join(cmd)}")
-        print(f"   ⏱️  Таймаут операции: 15 минут (для загрузки и индексации {len(changed_files) if changed_files else 'всех'} файлов)")
         
-        # Увеличиваем таймаут для больших объемов: ~10 минут на загрузку + ~5 минут на индексацию
-        timeout_seconds = 15 * 60  # 15 минут
+        # Таймаут 10 минут (теперь загружаем только изменённые)
+        timeout_seconds = 10 * 60
         
         result = subprocess.run(
             cmd,
-            stdout=sys.stdout,  # Выводим сразу в лог
+            stdout=sys.stdout,
             stderr=sys.stderr,
             text=True,
             timeout=timeout_seconds

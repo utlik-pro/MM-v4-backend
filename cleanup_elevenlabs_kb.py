@@ -24,6 +24,7 @@ load_dotenv()
 
 # Конфигурация
 API_KEY = os.environ.get('ELEVENLABS_API_KEY')
+AGENT_ID = os.environ.get('ELEVENLABS_AGENT_ID')
 BASE_URL = "https://api.elevenlabs.io/v1"
 
 def log(msg):
@@ -136,9 +137,69 @@ def delete_document(doc_id):
             headers={"xi-api-key": API_KEY},
             timeout=30
         )
-        return response.status_code in [200, 204]
+        if response.status_code == 400:
+            # Документ привязан к агенту
+            return False, "dependent"
+        return response.status_code in [200, 204], "ok"
     except Exception as e:
         log(f"❌ Ошибка удаления {doc_id}: {e}")
+        return False, "error"
+
+def update_agent_kb(keep_ids: list) -> bool:
+    """Обновить агента - установить только указанные ID документов"""
+    if not AGENT_ID:
+        log("❌ ELEVENLABS_AGENT_ID не установлен!")
+        return False
+    
+    agent_url = f"{BASE_URL}/convai/agents/{AGENT_ID}"
+    
+    log(f"🤖 Обновление агента {AGENT_ID}...")
+    log(f"   Устанавливаем {len(keep_ids)} документов")
+    
+    # Получаем текущую конфигурацию
+    try:
+        resp = requests.get(agent_url, headers={"xi-api-key": API_KEY}, timeout=60)
+        if resp.status_code != 200:
+            log(f"❌ Не удалось получить агента: {resp.status_code}")
+            return False
+        
+        agent_data = resp.json()
+        current_kb = agent_data.get('conversation_config', {}).get('knowledge_base', {})
+        current_ids = current_kb.get('ids', [])
+        log(f"   Текущих документов в агенте: {len(current_ids)}")
+        
+    except Exception as e:
+        log(f"❌ Ошибка получения агента: {e}")
+        return False
+    
+    # Обновляем агента
+    update_data = {
+        'conversation_config': {
+            'knowledge_base': {
+                'type': 'knowledge_base',
+                'ids': keep_ids[:50]  # Лимит 50
+            }
+        }
+    }
+    
+    try:
+        resp = requests.patch(
+            agent_url,
+            headers={"xi-api-key": API_KEY, "Content-Type": "application/json"},
+            json=update_data,
+            timeout=120
+        )
+        
+        if resp.status_code == 200:
+            log(f"✅ Агент обновлен! Теперь {len(keep_ids[:50])} документов")
+            return True
+        else:
+            log(f"❌ Ошибка обновления агента: {resp.status_code}")
+            log(f"   Ответ: {resp.text[:300]}")
+            return False
+            
+    except Exception as e:
+        log(f"❌ Ошибка обновления агента: {e}")
         return False
 
 def main():
@@ -157,6 +218,11 @@ def main():
     
     if not API_KEY:
         log("❌ ELEVENLABS_API_KEY не установлен!")
+        sys.exit(1)
+    
+    if not AGENT_ID and args.execute:
+        log("❌ ELEVENLABS_AGENT_ID не установлен!")
+        log("   Нужен для отвязки документов от агента перед удалением")
         sys.exit(1)
     
     log("🧹 Очистка ElevenLabs Knowledge Base")
@@ -202,13 +268,15 @@ def main():
     if args.execute:
         log("")
         log("=" * 60)
-        log(f"🗑️  УДАЛЕНИЕ {len(to_delete)} документов...")
+        log(f"🗑️  ПЛАН ОЧИСТКИ:")
+        log(f"   1. Обновить агента - оставить только {len(to_keep)} документов")
+        log(f"   2. Удалить {len(to_delete)} отвязанных документов")
         log("")
         
         # Подтверждение
         if not args.yes:
             try:
-                confirm = input(f"Вы уверены? Будет удалено {len(to_delete)} документов! (yes/no): ")
+                confirm = input(f"Вы уверены? (yes/no): ")
                 if confirm.strip().lower() != 'yes':
                     log("❌ Отменено")
                     return
@@ -218,18 +286,45 @@ def main():
         else:
             log("✅ Автоподтверждение (--yes)")
         
-        log(f"🚀 Начинаем удаление {len(to_delete)} документов...")
+        # ШАГ 1: Обновляем агента
+        log("")
+        log("=" * 60)
+        log("📌 ШАГ 1: Обновление агента")
+        log("=" * 60)
+        
+        keep_ids = [doc['id'] for doc in to_keep]
+        log(f"   ID документов для сохранения: {len(keep_ids)}")
+        for doc in to_keep:
+            log(f"      ✅ {doc['name']}")
+        
+        if not update_agent_kb(keep_ids):
+            log("❌ Не удалось обновить агента!")
+            log("   Удаление документов отменено (они всё ещё привязаны)")
+            return
+        
+        log("")
+        log("⏳ Ждём 5 секунд для применения изменений...")
+        time.sleep(5)
+        
+        # ШАГ 2: Удаляем документы
+        log("")
+        log("=" * 60)
+        log(f"🗑️  ШАГ 2: Удаление {len(to_delete)} документов")
+        log("=" * 60)
         
         deleted = 0
         failed = 0
+        dependent = 0
         
         start_time = time.time()
         
         for i, doc in enumerate(to_delete, 1):
-            success = delete_document(doc['id'])
+            success, status = delete_document(doc['id'])
             
             if success:
                 deleted += 1
+            elif status == "dependent":
+                dependent += 1
             else:
                 failed += 1
             
@@ -238,17 +333,23 @@ def main():
                 elapsed = time.time() - start_time
                 rate = i / elapsed if elapsed > 0 else 0
                 remaining = (len(to_delete) - i) / rate if rate > 0 else 0
-                log(f"   Прогресс: {i}/{len(to_delete)} ({deleted} ✅, {failed} ❌) | {rate:.1f} док/сек | осталось ~{remaining/60:.0f} мин")
-                time.sleep(0.5)  # Короткая пауза каждые 100
+                log(f"   Прогресс: {i}/{len(to_delete)} ({deleted} ✅, {dependent} 🔗, {failed} ❌) | {rate:.1f} док/сек | ~{remaining/60:.0f} мин")
+                time.sleep(0.5)
             else:
-                time.sleep(0.1)  # Минимальная пауза (rate limit ~10/сек)
+                time.sleep(0.1)
         
         log("")
         log("=" * 60)
         log("✅ ГОТОВО!")
         log(f"   Удалено: {deleted}")
+        log(f"   Всё ещё привязаны: {dependent}")
         log(f"   Ошибок: {failed}")
         log(f"   Осталось документов: ~{len(to_keep)}")
+        
+        if dependent > 0:
+            log("")
+            log(f"⚠️  {dependent} документов всё ещё привязаны к агенту")
+            log("   Запустите скрипт ещё раз для повторной попытки")
 
 if __name__ == "__main__":
     main()
