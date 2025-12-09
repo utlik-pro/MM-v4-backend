@@ -529,35 +529,34 @@ class ElevenLabsAutoSync:
             return 0
 
         deleted_count = 0
-        batch_size = 1000  # Ограничение на количество удалений за 1 цикл
-        pause_between_batches = 120  # Пауза между батчами (в секундах)
 
-        print(f"\n🗑️  Удаление {len(to_delete)} старых документов... (лимит на удаление 1 в 2 секунды, макс {batch_size} за раз)")
-        for batch_start in range(0, len(to_delete), batch_size):
-            current_batch = to_delete[batch_start:batch_start+batch_size]
-            print(f"\n=== Обработка батча {batch_start//batch_size+1}: {len(current_batch)} документов ===")
-            for j, doc_info in enumerate(current_batch, 1):
-                doc_id = doc_info['id']
-                doc_name = doc_info['name']
-                reason = doc_info.get('reason', 'unknown')
+        print(f"\n🗑️  Удаление {len(to_delete)} старых документов...")
 
-                print(f"  {batch_start + j}/{len(to_delete)} - {doc_name[:40]}", end=" ")
-                if self._delete_document(doc_id):
-                    deleted_count += 1
-                    self.sync_log['deletions'].append({
-                        'id': doc_id,
-                        'name': doc_name,
-                        'deletion_date': datetime.now().isoformat(),
-                        'reason': reason
-                    })
-                    self.save_sync_log()
-                    print(f"✅")
-                else:
-                    print(f"❌")
-                time.sleep(2)  # Больше пауза — 2 секунды между удалениями
-            if batch_start + batch_size < len(to_delete):
-                print(f"  ⏳ Пауза {pause_between_batches//60} мин между батчами...")
-                time.sleep(pause_between_batches)
+        for i, doc_info in enumerate(to_delete, 1):
+            doc_id = doc_info['id']
+            doc_name = doc_info['name']
+            reason = doc_info.get('reason', 'unknown')
+
+            print(f"  {i}/{len(to_delete)} - {doc_name[:40]}", end=" ")
+
+            if self._delete_document(doc_id):
+                deleted_count += 1
+
+                # Логируем удаление
+                self.sync_log['deletions'].append({
+                    'id': doc_id,
+                    'name': doc_name,
+                    'deletion_date': datetime.now().isoformat(),
+                    'reason': reason
+                })
+
+                self.save_sync_log()
+                print(f"✅")
+            else:
+                print(f"❌")
+
+            time.sleep(0.5)  # Пауза между удалениями
+
         return deleted_count
 
     def _delete_document(self, doc_id: str) -> bool:
@@ -572,22 +571,24 @@ class ElevenLabsAutoSync:
 
     # ===== ОБНОВЛЕНИЕ АГЕНТА =====
 
-    def update_agent_kb(self, ready_doc_ids: List[str]) -> bool:
+    def update_agent_kb(self, ready_doc_ids: List[str], ids_to_remove: List[str] = None) -> bool:
         """
         Обновить Knowledge Base агента
+        
+        КРИТИЧНО: Объединяем существующие ID с новыми, удаляя старые версии!
+        Без этого инкрементальное обновление удалит все документы кроме обновленных.
 
-        Использует правильную структуру conversation_config
+        Args:
+            ready_doc_ids: Список ID новых/обновленных документов
+            ids_to_remove: Список ID старых документов для удаления из агента
         """
-        if not ready_doc_ids:
-            log("ℹ️  Нет новых документов для добавления к агенту")
-            return True
-
         agent_url = f"{self.base_url}/convai/agents/{self.agent_id}"
 
         log(f"\n🤖 Обновление агента...")
-        log(f"   📋 Документов для добавления: {len(ready_doc_ids)}")
+        log(f"   📋 Новых документов: {len(ready_doc_ids)}")
+        log(f"   🗑️  Документов на удаление: {len(ids_to_remove) if ids_to_remove else 0}")
 
-        # Получаем текущую конфигурацию
+        # Получаем текущую конфигурацию агента
         log(f"   📥 Получение текущей конфигурации агента (таймаут: 60с)...")
         try:
             response = requests.get(agent_url, headers=self.headers, timeout=60)
@@ -607,12 +608,34 @@ class ElevenLabsAutoSync:
             log(f"   ❌ Ошибка получения конфигурации: {type(e).__name__} - {str(e)[:200]}")
             return False
 
-        # Получаем текущие ID документов
+        # Получаем текущие ID документов в агенте
         current_kb = agent_data.get('conversation_config', {}).get('knowledge_base', {})
         existing_ids = current_kb.get('ids', [])
+        log(f"   📚 Текущих документов в агенте: {len(existing_ids)}")
 
-        # Обновляем агента — ПЕРЕПИСЫВАЕМ knowledge_base.ids на актуальный набор, не объединяем со старыми
-        agent_kb_ids = ready_doc_ids[:50]  # Лимит ElevenLabs — максимум 50
+        # === КРИТИЧЕСКАЯ ЛОГИКА: Объединение ID ===
+        # 1. Берем существующие ID агента
+        # 2. Удаляем из них старые версии (которые заменяем)
+        # 3. Добавляем новые ID
+        
+        ids_to_remove_set = set(ids_to_remove) if ids_to_remove else set()
+        
+        # Фильтруем существующие ID — убираем те, что заменяются
+        filtered_existing_ids = [
+            doc_id for doc_id in existing_ids 
+            if doc_id not in ids_to_remove_set
+        ]
+        log(f"   🔄 После удаления старых версий: {len(filtered_existing_ids)} документов")
+        
+        # Объединяем: существующие (без удаленных) + новые
+        # Используем dict.fromkeys для сохранения порядка и уникальности
+        combined_ids = list(dict.fromkeys(filtered_existing_ids + ready_doc_ids))
+        
+        # Лимит ElevenLabs — максимум 50 документов в KB агента
+        agent_kb_ids = combined_ids[:50]
+        
+        if len(combined_ids) > 50:
+            log(f"   ⚠️  Превышен лимит! {len(combined_ids)} документов, взяты первые 50")
 
         update_data = {
             'conversation_config': {
@@ -623,76 +646,54 @@ class ElevenLabsAutoSync:
             }
         }
 
-        log(f"   📊 Обновление: {len(existing_ids)} → {len(agent_kb_ids)} документов в KB агента")
-        log(f"   📋 Первые 5 ID для добавления: {agent_kb_ids[:5] if agent_kb_ids else 'нет'}")
+        log(f"   📊 Обновление KB агента:")
+        log(f"      Было: {len(existing_ids)} документов")
+        log(f"      Удалено старых: {len(ids_to_remove_set)}")
+        log(f"      Добавлено новых: {len(ready_doc_ids)}")
+        log(f"      Стало: {len(agent_kb_ids)} документов")
+        
+        if ready_doc_ids:
+            log(f"   📋 Первые 5 новых ID: {ready_doc_ids[:5]}")
         log(f"   📤 Отправка PATCH запроса (таймаут: 300с)...")
         log(f"   🔗 URL: {agent_url}")
 
         # Пытаемся обновить с retry
-        wait_times = [15, 30, 60, 120, 180]
-        for attempt in range(5):
+        for attempt in range(3):
             try:
-                log(f"   🔄 Попытка {attempt + 1}/5...")
+                log(f"   🔄 Попытка {attempt + 1}/3...")
                 start_time = time.time()
-                log(f"   🕒 Start PATCH-запроса, отправляю данные агенту...")
-                connect_start = time.time()
-                try:
-                    response = requests.patch(
-                        agent_url,
-                        headers=self.headers,
-                        json=update_data,
-                        timeout=(15, 900)
-                    )
-                    connect_time = time.time() - connect_start
-                    log(f"   ⏱️ PATCH завершён за {connect_time:.1f}с, HTTP {response.status_code}")
-                except Exception as e:
-                    fail_time = time.time() - connect_start
-                    log(f"   ❌ PATCH exception ({type(e).__name__}) после {fail_time:.1f}с: {str(e)}")
-                    # log error to file
-                    with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                        errlog.write(f"\n[{datetime.now().isoformat()}] PATCH exception (attempt {attempt+1}/5)\n")
-                        errlog.write(f"URL: {agent_url}\n")
-                        errlog.write(f"Payload IDs (total {len(agent_kb_ids)}): {agent_kb_ids[:5]}\n")
-                        errlog.write(f"Exception: {type(e).__name__}: {str(e)}\n")
-                        import traceback
-                        errlog.write(traceback.format_exc())
-                        errlog.write(f"Elapsed: {fail_time:.2f} sec\n")
-                        errlog.write(f"Payload (truncated): {str(update_data)[:400]}\n")
-                        errlog.write("-"*60+"\n")
-                    raise
+                
+                # Добавляем логирование перед отправкой
+                log(f"   📡 Отправка PATCH запроса (данные: {len(agent_kb_ids)} документов)...")
+                
+                # Используем requests с явным таймаутом на подключение и чтение
+                # Уменьшаем таймаут подключения для быстрого определения проблем
+                response = requests.patch(
+                    agent_url, 
+                    headers=self.headers, 
+                    json=update_data, 
+                    timeout=(15, 180)  # 15 сек на подключение, 180 сек (3 мин) на ответ
+                )
 
                 elapsed = time.time() - start_time
+                log(f"   📡 Ответ получен за {elapsed:.1f}с, HTTP {response.status_code}")
+
                 if response.status_code == 200:
                     log(f"   ✅ Агент успешно обновлен!")
                     return True
                 else:
-                    # log error to file
-                    with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                        errlog.write(f"\n[{datetime.now().isoformat()}] PATCH HTTP error (attempt {attempt+1}/5)\n")
-                        errlog.write(f"URL: {agent_url}\n")
-                        errlog.write(f"Status: {response.status_code}, Text: {response.text[:400]}\n")
-                        errlog.write(f"Payload IDs (total {len(agent_kb_ids)}): {agent_kb_ids[:5]}\n")
-                        errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
-                        errlog.write(f"Payload (truncated): {str(update_data)[:400]}\n")
-                        errlog.write("-"*60+"\n")
                     log(f"   ❌ HTTP {response.status_code}: {response.text[:300]}")
-                    if attempt < 4:
-                        wait_time = wait_times[attempt]
-                        log(f"   ⏳ Ожидание {wait_time}с перед попыткой {attempt+2}...")
+                    if attempt < 2:
+                        wait_time = (attempt + 1) * 15  # 15, 30 секунд
+                        log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
                         time.sleep(wait_time)
                     else:
                         log(f"   ❌ Все попытки исчерпаны")
                         return False
 
-            except requests.exceptions.ConnectTimeout as e:
+            except requests.exceptions.ConnectTimeout:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
-                log(f"   ❌ Таймаут подключения к API (>30 сек): {str(e)}")
-                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH ConnectTimeout (attempt {attempt+1}/5)\n")
-                    errlog.write(f"URL: {agent_url}\n")
-                    errlog.write(f"Error: {str(e)}\n")
-                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
-                    errlog.write("-"*60+"\n")
+                log(f"   ❌ Таймаут подключения к API (>30 сек)")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -700,15 +701,9 @@ class ElevenLabsAutoSync:
                 else:
                     log(f"   ❌ Все попытки исчерпаны (таймауты подключения)")
                     return False
-            except requests.exceptions.ReadTimeout as e:
+            except requests.exceptions.ReadTimeout:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
-                log(f"   ❌ Таймаут чтения ответа (прошло {elapsed:.1f}с из 300с): {str(e)}")
-                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH ReadTimeout (attempt {attempt+1}/5)\n")
-                    errlog.write(f"URL: {agent_url}\n")
-                    errlog.write(f"Error: {str(e)}\n")
-                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
-                    errlog.write("-"*60+"\n")
+                log(f"   ❌ Таймаут чтения ответа (прошло {elapsed:.1f}с из 300с)")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -716,15 +711,9 @@ class ElevenLabsAutoSync:
                 else:
                     log(f"   ❌ Все попытки исчерпаны (таймауты чтения)")
                     return False
-            except requests.exceptions.Timeout as e:
+            except requests.exceptions.Timeout:
                 elapsed = time.time() - start_time if 'start_time' in locals() else 0
-                log(f"   ❌ Общий таймаут PATCH запроса (прошло {elapsed:.1f}с): {str(e)}")
-                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH Timeout (attempt {attempt+1}/5)\n")
-                    errlog.write(f"URL: {agent_url}\n")
-                    errlog.write(f"Error: {str(e)}\n")
-                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
-                    errlog.write("-"*60+"\n")
+                log(f"   ❌ Общий таймаут PATCH запроса (прошло {elapsed:.1f}с)")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -734,12 +723,6 @@ class ElevenLabsAutoSync:
                     return False
             except requests.exceptions.RequestException as e:
                 log(f"   ❌ Ошибка сети: {type(e).__name__} - {str(e)[:200]}")
-                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH RequestException (attempt {attempt+1}/5)\n")
-                    errlog.write(f"URL: {agent_url}\n")
-                    errlog.write(f"Error: {str(e)}\n")
-                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
-                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -749,15 +732,6 @@ class ElevenLabsAutoSync:
                     return False
             except Exception as e:
                 log(f"   ❌ Неожиданная ошибка: {type(e).__name__} - {str(e)[:200]}")
-                import traceback
-                with open("elevenlabs_patch_errors.log", "a", encoding="utf-8") as errlog:
-                    errlog.write(f"\n[{datetime.now().isoformat()}] PATCH General Exception (attempt {attempt+1}/5)\n")
-                    errlog.write(f"URL: {agent_url}\n")
-                    errlog.write(f"Error: {type(e).__name__}: {str(e)}\n")
-                    errlog.write(traceback.format_exc())
-                    errlog.write(f"Elapsed: {elapsed:.2f} sec\n")
-                    errlog.write(f"Payload (truncated): {str(update_data)[:400]}\n")
-                    errlog.write("-"*60+"\n")
                 if attempt < 2:
                     wait_time = (attempt + 1) * 15
                     log(f"   ⏳ Ожидание {wait_time}с перед повторной попыткой...")
@@ -868,12 +842,15 @@ class ElevenLabsAutoSync:
             new_docs_ready = True  # Нет новых документов, можно удалять старые
 
         # Шаг 5: Обновляем агента
-        if ready_ids:
+        # Передаем список ID старых документов для удаления из агента
+        ids_to_remove = [doc['id'] for doc in to_delete] if to_delete else []
+        
+        if ready_ids or ids_to_remove:
             print("\n🤖 Шаг 5: Обновление агента...")
-            agent_updated = self.update_agent_kb(ready_ids)
+            agent_updated = self.update_agent_kb(ready_ids, ids_to_remove=ids_to_remove)
             new_docs_ready = agent_updated
         else:
-            print("\n🤖 Шаг 5: Обновление агента не требуется (нет новых документов)")
+            print("\n🤖 Шаг 5: Обновление агента не требуется (нет изменений)")
 
         # Шаг 6: Удаляем старые документы
         deleted_count = 0
