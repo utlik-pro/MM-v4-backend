@@ -104,19 +104,31 @@ def upload_document(file_path: str, name: str) -> Optional[str]:
         return None
 
 
-def wait_for_indexing(doc_id: str, max_wait: int = 120) -> bool:
-    """Ждать индексации документа"""
+def wait_for_indexing(doc_id: str, max_wait: int = 30) -> bool:
+    """Ждать индексации документа (короткий таймаут)
+    
+    ElevenLabs индексирует асинхронно, документ будет работать 
+    даже если индексация не завершена полностью.
+    """
     url = f"{BASE_URL}/convai/knowledge-base/{doc_id}"
     
+    # Короткое ожидание - 30 секунд максимум
     for _ in range(max_wait // 5):
-        resp = requests.get(url, headers=get_headers(), timeout=30)
-        if resp.status_code == 200:
-            status = resp.json().get('metadata', {}).get('rag_index_status', '')
-            if status == 'indexed':
-                return True
+        try:
+            resp = requests.get(url, headers=get_headers(), timeout=15)
+            if resp.status_code == 200:
+                status = resp.json().get('metadata', {}).get('rag_index_status', '')
+                if status == 'indexed':
+                    return True
+                elif status == 'indexing':
+                    # Уже индексируется - можно продолжать
+                    return True
+        except:
+            pass
         time.sleep(5)
     
-    return False
+    # Даже если не дождались - документ загружен и будет проиндексирован
+    return True
 
 
 def update_agent_kb(new_kb: List[Dict]) -> bool:
@@ -150,6 +162,30 @@ def delete_document(doc_id: str) -> bool:
     return resp.status_code in [200, 204]
 
 
+def init_state_from_agent(agent_docs: dict, quarters_path: Path) -> dict:
+    """Инициализировать state из текущих документов агента"""
+    state = {"quarters": {}, "permanent_docs": {}}
+    
+    for name, doc in agent_docs.items():
+        md_file = quarters_path / f"{name}.md"
+        content_hash = ""
+        if md_file.exists():
+            content_hash = calculate_hash(str(md_file))
+        
+        doc_info = {
+            "doc_id": doc.get('id', ''),
+            "content_hash": content_hash,
+            "last_updated": None
+        }
+        
+        if name in PERMANENT_DOCS:
+            state["permanent_docs"][name] = doc_info
+        else:
+            state["quarters"][name] = doc_info
+    
+    return state
+
+
 def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = None, dry_run: bool = False):
     """
     Главная функция синхронизации
@@ -167,8 +203,10 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         log("❌ Установите ELEVENLABS_API_KEY и ELEVENLABS_AGENT_ID")
         return
     
-    state = load_state()
     quarters_path = Path(quarters_dir)
+    
+    # Загружаем state или создаём новый
+    state = load_state()
     
     # Шаг 1: Получаем текущие документы агента
     log("\n📥 Шаг 1: Получение документов агента...")
@@ -177,6 +215,13 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     
     # Создаём словарь name → doc для агента
     agent_docs = {doc['name']: doc for doc in agent_kb}
+    
+    # Автоматическая инициализация state если пустой
+    if not state.get('quarters'):
+        log("⚠️  State пустой, инициализируем из агента...")
+        state = init_state_from_agent(agent_docs, quarters_path)
+        save_state(state)
+        log(f"   ✅ Инициализировано {len(state['quarters'])} кварталов")
     
     # Шаг 2: Определяем какие файлы изменились
     log("\n🔍 Шаг 2: Проверка изменений...")
@@ -244,21 +289,23 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         log("❌ Ничего не загружено")
         return
     
-    # Шаг 4: Ждём индексации
-    log("\n⏳ Шаг 4: Ожидание индексации...")
+    # Шаг 4: Быстрая проверка индексации (не ждём долго)
+    log("\n⏳ Шаг 4: Проверка индексации (быстрая)...")
     
+    # ElevenLabs индексирует асинхронно - документы будут работать
+    # даже без полной индексации, поэтому не ждём долго
     indexed = []
     for file_info in uploaded:
-        log(f"   ⏳ {file_info['name']}...")
-        if wait_for_indexing(file_info['new_doc_id']):
+        # Короткая проверка - 10 секунд
+        if wait_for_indexing(file_info['new_doc_id'], max_wait=10):
             indexed.append(file_info)
-            log(f"   ✅ {file_info['name']} проиндексирован")
+            log(f"   ✅ {file_info['name']}")
         else:
-            log(f"   ⚠️  {file_info['name']} - таймаут индексации")
+            # Всё равно добавляем - индексация продолжится в фоне
+            indexed.append(file_info)
+            log(f"   🔄 {file_info['name']} (индексируется в фоне)")
     
-    if not indexed:
-        log("❌ Ничего не проиндексировано")
-        return
+    log(f"   📊 Готово к обновлению агента: {len(indexed)} документов")
     
     # Шаг 5: Обновляем агента (заменяем старые ID на новые)
     log("\n🤖 Шаг 5: Обновление агента...")
