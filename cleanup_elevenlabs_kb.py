@@ -145,6 +145,7 @@ def main():
     parser = argparse.ArgumentParser(description='Очистка ElevenLabs KB от дубликатов')
     parser.add_argument('--dry-run', action='store_true', help='Только показать что будет удалено')
     parser.add_argument('--execute', action='store_true', help='Выполнить удаление')
+    parser.add_argument('--yes', '-y', action='store_true', help='Автоматическое подтверждение (без input)')
     parser.add_argument('--batch-size', type=int, default=50, help='Размер батча для удаления')
     args = parser.parse_args()
     
@@ -205,10 +206,19 @@ def main():
         log("")
         
         # Подтверждение
-        confirm = input(f"Вы уверены? Будет удалено {len(to_delete)} документов! (yes/no): ")
-        if confirm.lower() != 'yes':
-            log("❌ Отменено")
-            return
+        if not args.yes:
+            try:
+                confirm = input(f"Вы уверены? Будет удалено {len(to_delete)} документов! (yes/no): ")
+                if confirm.strip().lower() != 'yes':
+                    log("❌ Отменено")
+                    return
+            except EOFError:
+                log("❌ Отменено (нет ввода, используйте --yes для автоподтверждения)")
+                return
+        else:
+            log("✅ Автоподтверждение (--yes)")
+        
+        log(f"🚀 Начинаем удаление {len(to_delete)} документов...")
         
         deleted = 0
         failed = 0
