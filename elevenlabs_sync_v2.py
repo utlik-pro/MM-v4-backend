@@ -196,6 +196,11 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         if name in PERMANENT_DOCS:
             continue
         
+        # Пропускаем файлы которые НЕ привязаны к агенту
+        if name not in agent_docs:
+            log(f"   ⏭️  {name} (не в агенте, пропускаем)")
+            continue
+        
         current_hash = calculate_hash(str(md_file))
         saved_hash = state.get('quarters', {}).get(name, {}).get('content_hash', '')
         
