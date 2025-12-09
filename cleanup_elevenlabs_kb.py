@@ -213,6 +213,8 @@ def main():
         deleted = 0
         failed = 0
         
+        start_time = time.time()
+        
         for i, doc in enumerate(to_delete, 1):
             success = delete_document(doc['id'])
             
@@ -221,12 +223,15 @@ def main():
             else:
                 failed += 1
             
-            # Прогресс каждые 50 документов
-            if i % args.batch_size == 0:
-                log(f"   Прогресс: {i}/{len(to_delete)} (удалено: {deleted}, ошибок: {failed})")
-                time.sleep(1)  # Пауза между батчами
+            # Прогресс каждые 100 документов
+            if i % 100 == 0:
+                elapsed = time.time() - start_time
+                rate = i / elapsed if elapsed > 0 else 0
+                remaining = (len(to_delete) - i) / rate if rate > 0 else 0
+                log(f"   Прогресс: {i}/{len(to_delete)} ({deleted} ✅, {failed} ❌) | {rate:.1f} док/сек | осталось ~{remaining/60:.0f} мин")
+                time.sleep(0.5)  # Короткая пауза каждые 100
             else:
-                time.sleep(0.2)  # Пауза между запросами
+                time.sleep(0.1)  # Минимальная пауза (rate limit ~10/сек)
         
         log("")
         log("=" * 60)
