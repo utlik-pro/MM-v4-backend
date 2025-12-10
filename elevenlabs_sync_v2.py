@@ -317,9 +317,17 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     # Создаём новый KB - заменяем старые документы на новые
     new_agent_kb = []
     old_doc_ids = []  # Для удаления
+    seen_names = set()  # Защита от дубликатов
     
     for doc in agent_kb:
         name = doc['name']
+        
+        # Пропускаем дубликаты (оставляем только первый)
+        if name in seen_names:
+            log(f"   ⚠️  {name}: дубликат, пропускаем")
+            old_doc_ids.append(doc['id'])  # Удалим дубликат
+            continue
+        seen_names.add(name)
         
         # Проверяем есть ли обновление для этого документа
         updated = next((f for f in indexed if f['name'] == name), None)
@@ -338,6 +346,8 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         else:
             # Оставляем как есть
             new_agent_kb.append(doc)
+    
+    log(f"   📊 Итого в агенте: {len(new_agent_kb)} документов")
     
     # Обновляем агента
     if not update_agent_kb(new_agent_kb):
