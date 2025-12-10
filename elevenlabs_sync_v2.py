@@ -145,14 +145,35 @@ def update_agent_kb(new_kb: List[Dict]) -> bool:
         }
     }
     
-    resp = requests.patch(
-        url,
-        headers={**get_headers(), "Content-Type": "application/json"},
-        json=update_data,
-        timeout=120
-    )
+    log(f"   📤 PATCH запрос ({len(new_kb)} документов)...")
     
-    return resp.status_code == 200
+    # Retry с увеличенным таймаутом
+    for attempt in range(3):
+        try:
+            resp = requests.patch(
+                url,
+                headers={**get_headers(), "Content-Type": "application/json"},
+                json=update_data,
+                timeout=(30, 300)  # 30s connect, 300s read
+            )
+            
+            if resp.status_code == 200:
+                log(f"   ✅ Агент обновлён успешно")
+                return True
+            else:
+                log(f"   ❌ Ошибка: {resp.status_code} - {resp.text[:200]}")
+                return False
+                
+        except requests.exceptions.Timeout:
+            log(f"   ⚠️  Попытка {attempt + 1}/3: таймаут")
+            if attempt < 2:
+                time.sleep(5)
+        except Exception as e:
+            log(f"   ❌ Ошибка запроса: {e}")
+            return False
+    
+    log("   ❌ Все попытки исчерпаны")
+    return False
 
 
 def delete_document(doc_id: str) -> bool:
@@ -343,10 +364,7 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
             new_agent_kb.append(doc)
     
     # Обновляем агента
-    if update_agent_kb(new_agent_kb):
-        log("   ✅ Агент обновлён")
-    else:
-        log("   ❌ Ошибка обновления агента")
+    if not update_agent_kb(new_agent_kb):
         return
     
     # Шаг 6: Удаляем старые версии из KB
