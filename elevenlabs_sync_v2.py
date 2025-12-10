@@ -144,15 +144,26 @@ def trigger_rag_indexing(doc_id: str) -> bool:
 
 
 def check_indexing_status(doc_id: str) -> str:
-    """Проверить статус индексации документа"""
+    """Проверить статус индексации документа
+    
+    ElevenLabs API возвращает:
+    {
+        "indexes": [
+            {"status": "succeeded", "progress_percentage": 100.0, ...}
+        ]
+    }
+    """
     url = f"{BASE_URL}/convai/knowledge-base/{doc_id}/rag-index"
     
     try:
         resp = requests.get(url, headers=get_headers(), timeout=30)
         if resp.status_code == 200:
             data = resp.json()
-            # Возвращаем статус
-            return data.get('status', 'unknown')
+            # Правильный путь: indexes[0].status
+            indexes = data.get('indexes', [])
+            if indexes:
+                return indexes[0].get('status', 'unknown')
+            return 'no_index'
         return 'error'
     except:
         return 'error'
@@ -173,7 +184,8 @@ def wait_for_indexing(doc_id: str, max_wait: int = 120) -> bool:
     while time.time() - start < max_wait:
         status = check_indexing_status(doc_id)
         
-        if status in ['indexed', 'completed', 'ready']:
+        # succeeded - успешно проиндексирован (ElevenLabs API)
+        if status in ['succeeded', 'indexed', 'completed', 'ready']:
             return True
         elif status in ['error', 'failed']:
             log(f"      ❌ Ошибка индексации")
@@ -382,8 +394,8 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         
         log(f"   🔍 {name}...", )
         
-        # Ждём индексации (макс 2 минуты на документ)
-        if wait_for_indexing(doc_id, max_wait=120):
+        # Ждём индексации (макс 30 секунд — обычно очень быстро)
+        if wait_for_indexing(doc_id, max_wait=30):
             indexed.append(file_info)
             log(f"   ✅ {name} проиндексирован")
         else:
