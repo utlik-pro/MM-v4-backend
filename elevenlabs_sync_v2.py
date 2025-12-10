@@ -315,10 +315,13 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     log("\n🔍 Шаг 2: Проверка изменений...")
     
     files_to_update = []
+    files_to_update_names = set()  # Защита от дубликатов
     
     # Если передан список файлов, используем его
     if changed_files:
-        md_files = [quarters_path / f for f in changed_files if f.endswith('.md')]
+        # Убираем дубликаты из changed_files
+        unique_files = list(dict.fromkeys(changed_files))
+        md_files = [quarters_path / f for f in unique_files if f.endswith('.md')]
     else:
         md_files = list(quarters_path.glob('*.md'))
     
@@ -341,8 +344,9 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         current_hash = calculate_hash(str(md_file))
         saved_hash = state.get('quarters', {}).get(name, {}).get('content_hash', '')
         
-        # Обновляем только если хеш файла изменился
-        if current_hash != saved_hash:
+        # Обновляем только если хеш файла изменился И файл ещё не в списке
+        if current_hash != saved_hash and name not in files_to_update_names:
+            files_to_update_names.add(name)
             files_to_update.append({
                 'name': name,
                 'path': str(md_file),
