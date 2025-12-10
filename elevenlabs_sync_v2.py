@@ -322,8 +322,9 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     else:
         md_files = list(quarters_path.glob('*.md'))
     
-    # Если файлы переданы через --changed-files, считаем их изменёнными (доверяем sync-with-monitoring)
-    force_update = changed_files is not None
+    # Не используем force_update - всегда проверяем хеши
+    # Это важно для Render где quarters_state.json может быть пустым,
+    # но мы инициализируем его из агента и сравниваем с актуальными файлами
     
     for md_file in md_files:
         name = md_file.stem  # Имя без .md
@@ -340,18 +341,16 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         current_hash = calculate_hash(str(md_file))
         saved_hash = state.get('quarters', {}).get(name, {}).get('content_hash', '')
         
-        # Если передан --changed-files, принудительно обновляем (доверяем sync-with-monitoring)
-        if force_update or current_hash != saved_hash:
+        # Обновляем только если хеш файла изменился
+        if current_hash != saved_hash:
             files_to_update.append({
                 'name': name,
                 'path': str(md_file),
                 'hash': current_hash,
                 'old_doc_id': agent_docs.get(name, {}).get('id')
             })
-            if force_update:
-                log(f"   🔄 {name} (принудительное обновление)")
-            else:
-                log(f"   🔄 {name} (хеш изменился)")
+            # Показываем первые 8 символов хешей для отладки
+            log(f"   🔄 {name} (хеш: {saved_hash[:8] if saved_hash else 'empty'}→{current_hash[:8]})")
         else:
             log(f"   ✅ {name} (без изменений)")
     
