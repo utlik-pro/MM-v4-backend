@@ -89,24 +89,52 @@ def get_agent_kb() -> List[Dict]:
 
 
 def upload_document(file_path: str, name: str) -> Optional[str]:
-    """Загрузить документ в KB и запустить индексацию"""
+    """Загрузить документ в KB и запустить индексацию
+    
+    ВАЖНО: Используем HTML обёртку с UTF-8 как в старом рабочем скрипте!
+    Это необходимо для корректной работы кириллицы и индексации.
+    """
     url = f"{BASE_URL}/convai/knowledge-base"
     
-    with open(file_path, 'rb') as f:
-        files = {'file': (f"{name}.md", f, 'text/markdown')}
-        resp = requests.post(url, headers=get_headers(), files=files, timeout=120)
-    
-    if resp.status_code in [200, 201]:
-        doc_id = resp.json().get('id')
-        log(f"      📤 Загружен: {doc_id[:20]}...")
+    try:
+        # Читаем markdown контент
+        with open(file_path, 'r', encoding='utf-8') as f:
+            markdown_content = f.read()
         
-        # ВАЖНО: Запускаем RAG индексацию явно!
-        # ElevenLabs НЕ индексирует автоматически через API
-        trigger_rag_indexing(doc_id)
+        # Оборачиваем в HTML с UTF-8 (как в старом рабочем скрипте!)
+        html_wrapper = f'''<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body><pre>{markdown_content}</pre></body>
+</html>'''
         
-        return doc_id
-    else:
-        log(f"❌ Ошибка загрузки {name}: {resp.status_code}")
+        # Добавляем UTF-8 BOM для явного указания кодировки
+        content_bytes = '\ufeff'.encode('utf-8') + html_wrapper.encode('utf-8')
+        
+        # Файл как HTML + отдельное поле name
+        files = {
+            'file': (f'{name}.html', content_bytes, 'text/html')
+        }
+        data = {'name': name}  # Имя передаётся отдельно!
+        
+        headers_upload = {"xi-api-key": API_KEY}
+        resp = requests.post(url, headers=headers_upload, files=files, data=data, timeout=120)
+        
+        if resp.status_code in [200, 201]:
+            result = resp.json()
+            doc_id = result.get('knowledge_base_id', result.get('id'))
+            log(f"      📤 Загружен: {doc_id[:20]}...")
+            
+            # ВАЖНО: Запускаем RAG индексацию явно!
+            trigger_rag_indexing(doc_id)
+            
+            return doc_id
+        else:
+            log(f"❌ Ошибка загрузки {name}: {resp.status_code} - {resp.text[:100]}")
+            return None
+            
+    except Exception as e:
+        log(f"❌ Исключение при загрузке {name}: {e}")
         return None
 
 
