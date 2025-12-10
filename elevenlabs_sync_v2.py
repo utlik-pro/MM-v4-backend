@@ -89,7 +89,7 @@ def get_agent_kb() -> List[Dict]:
 
 
 def upload_document(file_path: str, name: str) -> Optional[str]:
-    """Загрузить документ в KB"""
+    """Загрузить документ в KB и запустить индексацию"""
     url = f"{BASE_URL}/convai/knowledge-base"
     
     with open(file_path, 'rb') as f:
@@ -98,21 +98,92 @@ def upload_document(file_path: str, name: str) -> Optional[str]:
     
     if resp.status_code in [200, 201]:
         doc_id = resp.json().get('id')
+        log(f"      📤 Загружен: {doc_id[:20]}...")
+        
+        # ВАЖНО: Запускаем RAG индексацию явно!
+        # ElevenLabs НЕ индексирует автоматически через API
+        trigger_rag_indexing(doc_id)
+        
         return doc_id
     else:
         log(f"❌ Ошибка загрузки {name}: {resp.status_code}")
         return None
 
 
-def wait_for_indexing(doc_id: str, max_wait: int = 5) -> bool:
-    """Минимальная пауза после загрузки
+def trigger_rag_indexing(doc_id: str) -> bool:
+    """Явно запустить RAG индексацию для документа
     
-    ElevenLabs индексирует асинхронно - документы работают сразу,
-    полная индексация не требуется для функционирования.
+    ElevenLabs НЕ индексирует автоматически через API!
+    Нужно вызвать POST /convai/knowledge-base/{id}/rag-index
     """
-    # Просто небольшая пауза чтобы API успел обработать
-    time.sleep(1)
-    return True
+    url = f"{BASE_URL}/convai/knowledge-base/{doc_id}/rag-index"
+    
+    # Используем ту же модель что у агента
+    data = {
+        "model": "multilingual_e5_large_instruct"
+    }
+    
+    try:
+        resp = requests.post(
+            url, 
+            headers={**get_headers(), "Content-Type": "application/json"},
+            json=data,
+            timeout=60
+        )
+        
+        if resp.status_code in [200, 201, 202]:
+            log(f"      ✅ Индексация запущена")
+            return True
+        else:
+            log(f"      ⚠️  Статус индексации: {resp.status_code}")
+            return False
+            
+    except Exception as e:
+        log(f"      ❌ Ошибка запуска индексации: {e}")
+        return False
+
+
+def check_indexing_status(doc_id: str) -> str:
+    """Проверить статус индексации документа"""
+    url = f"{BASE_URL}/convai/knowledge-base/{doc_id}/rag-index"
+    
+    try:
+        resp = requests.get(url, headers=get_headers(), timeout=30)
+        if resp.status_code == 200:
+            data = resp.json()
+            # Возвращаем статус
+            return data.get('status', 'unknown')
+        return 'error'
+    except:
+        return 'error'
+
+
+def wait_for_indexing(doc_id: str, max_wait: int = 120) -> bool:
+    """Дождаться завершения индексации документа
+    
+    Args:
+        doc_id: ID документа
+        max_wait: Максимальное время ожидания в секундах
+    
+    Returns:
+        True если индексация завершена, False если таймаут
+    """
+    start = time.time()
+    
+    while time.time() - start < max_wait:
+        status = check_indexing_status(doc_id)
+        
+        if status in ['indexed', 'completed', 'ready']:
+            return True
+        elif status in ['error', 'failed']:
+            log(f"      ❌ Ошибка индексации")
+            return False
+        
+        # Ждём и проверяем снова
+        time.sleep(5)
+    
+    log(f"      ⚠️  Таймаут ожидания индексации")
+    return False
 
 
 def update_agent_kb(new_kb: List[Dict]) -> bool:
@@ -301,14 +372,25 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         log("❌ Ничего не загружено")
         return
     
-    # Шаг 4: Пауза перед обновлением агента
-    log("\n⏳ Шаг 4: Подготовка к обновлению агента...")
+    # Шаг 4: Ожидание индексации документов
+    log("\n⏳ Шаг 4: Ожидание индексации...")
     
-    # ElevenLabs индексирует асинхронно - документы работают сразу
-    # Небольшая пауза чтобы API успел обработать загрузки
-    time.sleep(3)
+    indexed = []
+    for file_info in uploaded:
+        doc_id = file_info['new_doc_id']
+        name = file_info['name']
+        
+        log(f"   🔍 {name}...", )
+        
+        # Ждём индексации (макс 2 минуты на документ)
+        if wait_for_indexing(doc_id, max_wait=120):
+            indexed.append(file_info)
+            log(f"   ✅ {name} проиндексирован")
+        else:
+            # Даже если не дождались - добавляем, индексация продолжится в фоне
+            indexed.append(file_info)
+            log(f"   ⚠️  {name} - индексация в процессе (продолжим)")
     
-    indexed = uploaded  # Все загруженные готовы к использованию
     log(f"   📊 Документов для обновления: {len(indexed)}")
     
     # Шаг 5: Обновляем агента (заменяем старые ID на новые)
