@@ -154,7 +154,7 @@ def update_agent_kb(new_kb: List[Dict]) -> bool:
                 url,
                 headers={**get_headers(), "Content-Type": "application/json"},
                 json=update_data,
-                timeout=(30, 300)  # 30s connect, 300s read
+                timeout=(30, 600)  # 30s connect, 10min read (индексация может быть долгой)
             )
             
             if resp.status_code == 200:
