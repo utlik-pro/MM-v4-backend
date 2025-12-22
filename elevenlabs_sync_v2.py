@@ -4,7 +4,7 @@ ElevenLabs Sync v2 - Правильная синхронизация с аген
 
 Исправления:
 1. Правильный путь: conversation_config.agent.prompt.knowledge_base
-2. Загружает только изменённые файлы (по хешу)
+2. Загружает только изменённые файлы (stateless: по metadata.size_bytes, опционально по хешу через /content)
 3. Заменяет старые версии на новые (не добавляет)
 4. Удаляет старые версии из KB после отвязки от агента
 """
@@ -31,6 +31,7 @@ except ImportError:
 API_KEY = os.environ.get('ELEVENLABS_API_KEY')
 AGENT_ID = os.environ.get('ELEVENLABS_AGENT_ID')
 BASE_URL = "https://api.elevenlabs.io/v1"
+RAG_EMBEDDING_MODEL = os.environ.get("RAG_EMBEDDING_MODEL", "multilingual_e5_large_instruct")
 
 # Постоянные документы (не обновляем)
 PERMANENT_DOCS = {
@@ -73,6 +74,63 @@ def calculate_hash(file_path: str) -> str:
         return hashlib.md5(f.read()).hexdigest()
 
 
+def calculate_hash_text(text: str) -> str:
+    """MD5 хеш строки (UTF-8)"""
+    return hashlib.md5(text.encode("utf-8")).hexdigest()
+
+
+def read_text_file(file_path: str) -> str:
+    with open(file_path, "r", encoding="utf-8") as f:
+        return f.read()
+
+
+def utf8_size_bytes(text: str) -> int:
+    return len(text.encode("utf-8"))
+
+
+def get_kb_document_info(doc_id: str) -> Optional[Dict]:
+    """Получить метаданные документа KB (GET /knowledge-base/{id})"""
+    url = f"{BASE_URL}/convai/knowledge-base/{doc_id}"
+    try:
+        resp = requests.get(url, headers=get_headers(), timeout=60)
+        if resp.status_code == 200:
+            return resp.json()
+        return None
+    except Exception:
+        return None
+
+
+def get_kb_document_content(doc_id: str) -> Optional[str]:
+    """Получить содержимое документа KB (GET /knowledge-base/{id}/content)"""
+    url = f"{BASE_URL}/convai/knowledge-base/{doc_id}/content"
+    try:
+        resp = requests.get(url, headers=get_headers(), timeout=(30, 180))
+        if resp.status_code == 200:
+            return resp.text
+        return None
+    except Exception:
+        return None
+
+
+def create_text_document(text: str, name: str) -> Optional[str]:
+    """Создать text документ (POST /knowledge-base/text)"""
+    url = f"{BASE_URL}/convai/knowledge-base/text"
+    payload = {"text": text, "name": name}
+    try:
+        resp = requests.post(
+            url,
+            headers={**get_headers(), "Content-Type": "application/json"},
+            json=payload,
+            timeout=(30, 180),
+        )
+        if resp.status_code in [200, 201]:
+            data = resp.json()
+            return data.get("id") or data.get("knowledge_base_id")
+        return None
+    except Exception:
+        return None
+
+
 def get_agent_kb() -> List[Dict]:
     """Получить knowledge_base агента (ПРАВИЛЬНЫЙ ПУТЬ!)"""
     url = f"{BASE_URL}/convai/agents/{AGENT_ID}"
@@ -91,47 +149,20 @@ def get_agent_kb() -> List[Dict]:
 def upload_document(file_path: str, name: str) -> Optional[str]:
     """Загрузить документ в KB и запустить индексацию
     
-    ВАЖНО: Используем HTML обёртку с UTF-8 как в старом рабочем скрипте!
-    Это необходимо для корректной работы кириллицы и индексации.
+    ВАЖНО: Используем /knowledge-base/text (JSON), чтобы избежать проблем с UTF-8 и типом file.
     """
-    url = f"{BASE_URL}/convai/knowledge-base"
-    
     try:
-        # Читаем markdown контент
-        with open(file_path, 'r', encoding='utf-8') as f:
-            markdown_content = f.read()
-        
-        # Оборачиваем в HTML с UTF-8 (как в старом рабочем скрипте!)
-        html_wrapper = f'''<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"></head>
-<body><pre>{markdown_content}</pre></body>
-</html>'''
-        
-        # Добавляем UTF-8 BOM для явного указания кодировки
-        content_bytes = '\ufeff'.encode('utf-8') + html_wrapper.encode('utf-8')
-        
-        # Файл как HTML + отдельное поле name
-        files = {
-            'file': (f'{name}.html', content_bytes, 'text/html')
-        }
-        data = {'name': name}  # Имя передаётся отдельно!
-        
-        headers_upload = {"xi-api-key": API_KEY}
-        resp = requests.post(url, headers=headers_upload, files=files, data=data, timeout=120)
-        
-        if resp.status_code in [200, 201]:
-            result = resp.json()
-            doc_id = result.get('knowledge_base_id', result.get('id'))
-            log(f"      📤 Загружен: {doc_id[:20]}...")
-            
-            # ВАЖНО: Запускаем RAG индексацию явно!
-            trigger_rag_indexing(doc_id)
-            
-            return doc_id
-        else:
-            log(f"❌ Ошибка загрузки {name}: {resp.status_code} - {resp.text[:100]}")
+        markdown_content = read_text_file(file_path)
+        doc_id = create_text_document(text=markdown_content, name=name)
+        if not doc_id:
+            log(f"❌ Ошибка загрузки {name}: не удалось создать text документ")
             return None
+
+        log(f"      📤 Загружен (text): {doc_id[:20]}...")
+
+        # ВАЖНО: Запускаем RAG индексацию явно!
+        trigger_rag_indexing(doc_id)
+        return doc_id
             
     except Exception as e:
         log(f"❌ Исключение при загрузке {name}: {e}")
@@ -148,7 +179,7 @@ def trigger_rag_indexing(doc_id: str) -> bool:
     
     # Используем ту же модель что у агента
     data = {
-        "model": "multilingual_e5_large_instruct"
+        "model": RAG_EMBEDDING_MODEL
     }
     
     try:
@@ -160,7 +191,8 @@ def trigger_rag_indexing(doc_id: str) -> bool:
         )
         
         if resp.status_code in [200, 201, 202]:
-            log(f"      ✅ Индексация запущена")
+            # compute-rag-index идемпотентен: если уже индексирован — вернёт текущий статус
+            log(f"      ✅ Индексация запрошена (compute-rag-index)")
             return True
         else:
             log(f"      ⚠️  Статус индексации: {resp.status_code}")
@@ -213,10 +245,10 @@ def wait_for_indexing(doc_id: str, max_wait: int = 120) -> bool:
         status = check_indexing_status(doc_id)
         
         # succeeded - успешно проиндексирован (ElevenLabs API)
-        if status in ['succeeded', 'indexed', 'completed', 'ready']:
+        if status in ['succeeded']:
             return True
-        elif status in ['error', 'failed']:
-            log(f"      ❌ Ошибка индексации")
+        elif status in ['failed', 'rag_limit_exceeded', 'document_too_small']:
+            log(f"      ❌ Ошибка индексации: {status}")
             return False
         
         # Ждём и проверяем снова
@@ -274,8 +306,15 @@ def update_agent_kb(new_kb: List[Dict]) -> bool:
 def delete_document(doc_id: str) -> bool:
     """Удалить документ из KB"""
     url = f"{BASE_URL}/convai/knowledge-base/{doc_id}"
-    resp = requests.delete(url, headers=get_headers(), timeout=30)
-    return resp.status_code in [200, 204]
+    try:
+        resp = requests.delete(url, headers=get_headers(), timeout=30)
+        if resp.status_code in [200, 204]:
+            return True
+        # fallback: force delete
+        resp2 = requests.delete(f"{url}?force=true", headers=get_headers(), timeout=30)
+        return resp2.status_code in [200, 204]
+    except Exception:
+        return False
 
 
 def init_state_from_agent(agent_docs: dict, quarters_path: Path) -> dict:
@@ -302,7 +341,52 @@ def init_state_from_agent(agent_docs: dict, quarters_path: Path) -> dict:
     return state
 
 
-def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = None, dry_run: bool = False):
+def should_update_doc_stateless(local_text: str, existing_doc_id: Optional[str], strict_hash: bool = False) -> bool:
+    """Определить нужно ли обновлять документ без локального state.
+
+    - Быстрый путь: сравнить local_size (utf-8) с KB metadata.size_bytes
+    - Если strict_hash=True и size_bytes равны: докачать /content и сравнить хеш
+    """
+    if not existing_doc_id:
+        return True
+
+    local_size = utf8_size_bytes(local_text)
+    info = get_kb_document_info(existing_doc_id)
+    if info:
+        kb_size = (info.get("metadata") or {}).get("size_bytes")
+        if isinstance(kb_size, int):
+            if kb_size != local_size:
+                return True
+        else:
+            # если metadata.size_bytes недоступен — fallback на /content
+            kb_text = get_kb_document_content(existing_doc_id)
+            if kb_text is None:
+                return True
+            return calculate_hash_text(kb_text) != calculate_hash_text(local_text)
+    else:
+        # если не удалось получить метаданные — fallback на /content
+        kb_text = get_kb_document_content(existing_doc_id)
+        if kb_text is None:
+            return True
+        return calculate_hash_text(kb_text) != calculate_hash_text(local_text)
+
+    if strict_hash:
+        kb_text = get_kb_document_content(existing_doc_id)
+        if kb_text is None:
+            # если не смогли получить контент - безопаснее обновить, чем пропустить
+            return True
+        return calculate_hash_text(kb_text) != calculate_hash_text(local_text)
+
+    return False
+
+
+def sync_quarters(
+    quarters_dir: str = 'quarters',
+    changed_files: List[str] = None,
+    dry_run: bool = False,
+    strict_hash: bool = False,
+    index_wait: int = 120,
+):
     """
     Главная функция синхронизации
     
@@ -310,6 +394,8 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         quarters_dir: Директория с MD файлами
         changed_files: Список изменённых файлов (опционально)
         dry_run: Только показать что будет сделано
+        strict_hash: При равном size_bytes сверять контент через /content
+        index_wait: Максимальное ожидание индексации (сек)
     """
     log("=" * 60)
     log("🚀 ElevenLabs Sync v2")
@@ -321,9 +407,6 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     
     quarters_path = Path(quarters_dir)
     
-    # Загружаем state или создаём новый
-    state = load_state()
-    
     # Шаг 1: Получаем текущие документы агента
     log("\n📥 Шаг 1: Получение документов агента...")
     agent_kb = get_agent_kb()
@@ -331,13 +414,6 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     
     # Создаём словарь name → doc для агента
     agent_docs = {doc['name']: doc for doc in agent_kb}
-    
-    # Автоматическая инициализация state если пустой
-    if not state.get('quarters'):
-        log("⚠️  State пустой, инициализируем из агента...")
-        state = init_state_from_agent(agent_docs, quarters_path)
-        save_state(state)
-        log(f"   ✅ Инициализировано {len(state['quarters'])} кварталов")
     
     # Шаг 2: Определяем какие файлы изменились
     log("\n🔍 Шаг 2: Проверка изменений...")
@@ -353,10 +429,6 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
     else:
         md_files = list(quarters_path.glob('*.md'))
     
-    # Не используем force_update - всегда проверяем хеши
-    # Это важно для Render где quarters_state.json может быть пустым,
-    # но мы инициализируем его из агента и сравниваем с актуальными файлами
-    
     for md_file in md_files:
         name = md_file.stem  # Имя без .md
         
@@ -364,25 +436,22 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         if name in PERMANENT_DOCS:
             continue
         
-        # Пропускаем файлы которые НЕ привязаны к агенту
-        if name not in agent_docs:
-            log(f"   ⏭️  {name} (не в агенте, пропускаем)")
-            continue
-        
-        current_hash = calculate_hash(str(md_file))
-        saved_hash = state.get('quarters', {}).get(name, {}).get('content_hash', '')
-        
-        # Обновляем только если хеш файла изменился И файл ещё не в списке
-        if current_hash != saved_hash and name not in files_to_update_names:
+        local_text = read_text_file(str(md_file))
+        existing_doc_id = agent_docs.get(name, {}).get('id')
+
+        # Stateless сравнение с KB
+        if should_update_doc_stateless(local_text, existing_doc_id, strict_hash=strict_hash) and name not in files_to_update_names:
             files_to_update_names.add(name)
             files_to_update.append({
                 'name': name,
                 'path': str(md_file),
-                'hash': current_hash,
-                'old_doc_id': agent_docs.get(name, {}).get('id')
+                'hash': calculate_hash_text(local_text),
+                'old_doc_id': existing_doc_id
             })
-            # Показываем первые 8 символов хешей для отладки
-            log(f"   🔄 {name} (хеш: {saved_hash[:8] if saved_hash else 'empty'}→{current_hash[:8]})")
+            if existing_doc_id:
+                log(f"   🔄 {name} (обновление)")
+            else:
+                log(f"   ➕ {name} (новый документ)")
         else:
             log(f"   ✅ {name} (без изменений)")
     
@@ -425,14 +494,14 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         
         log(f"   🔍 {name}...", )
         
-        # Ждём индексации (макс 30 секунд — обычно очень быстро)
-        if wait_for_indexing(doc_id, max_wait=30):
+        # Ждём индексации (по умолчанию 120 секунд)
+        if wait_for_indexing(doc_id, max_wait=index_wait):
             indexed.append(file_info)
             log(f"   ✅ {name} проиндексирован")
         else:
             # Даже если не дождались - добавляем, индексация продолжится в фоне
             indexed.append(file_info)
-            log(f"   ⚠️  {name} - индексация в процессе (продолжим)")
+            log(f"   ⚠️  {name} - индекс не подтверждён (проверьте позже)")
     
     log(f"   📊 Документов для обновления: {len(indexed)}")
     
@@ -471,6 +540,19 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
         else:
             # Оставляем как есть
             new_agent_kb.append(doc)
+
+    # Добавляем новые документы, которых ранее не было в агенте
+    existing_names = {d.get("name") for d in new_agent_kb}
+    for upd in indexed:
+        if upd["name"] not in existing_names:
+            new_agent_kb.append({
+                "type": "text",
+                "name": upd["name"],
+                "id": upd["new_doc_id"],
+                "usage_mode": "auto",
+            })
+            existing_names.add(upd["name"])
+            log(f"   ➕ Добавлен в агента: {upd['name']}")
     
     log(f"   📊 Итого в агенте: {len(new_agent_kb)} документов")
     
@@ -489,18 +571,6 @@ def sync_quarters(quarters_dir: str = 'quarters', changed_files: List[str] = Non
             else:
                 log(f"   ⚠️  Не удалён: {old_id[:20]}...")
     
-    # Шаг 7: Сохраняем состояние
-    log("\n💾 Шаг 7: Сохранение состояния...")
-    
-    for file_info in indexed:
-        state['quarters'][file_info['name']] = {
-            'doc_id': file_info['new_doc_id'],
-            'content_hash': file_info['hash'],
-            'last_updated': datetime.now().isoformat()
-        }
-    
-    save_state(state)
-    
     # Итоги
     log("\n" + "=" * 60)
     log("📊 ИТОГИ:")
@@ -515,6 +585,8 @@ def main():
     parser.add_argument('--dir', default='quarters', help='Директория с MD файлами')
     parser.add_argument('--dry-run', action='store_true', help='Только показать изменения')
     parser.add_argument('--changed-files', type=str, help='Файл со списком изменённых файлов')
+    parser.add_argument('--strict-hash', action='store_true', help='При равном size_bytes сверять контент через /content')
+    parser.add_argument('--index-wait', type=int, default=int(os.environ.get("RAG_INDEXING_TIMEOUT", "120")), help='Ожидание индексации (сек)')
     
     args = parser.parse_args()
     
@@ -526,7 +598,9 @@ def main():
     sync_quarters(
         quarters_dir=args.dir,
         changed_files=changed_files,
-        dry_run=args.dry_run
+        dry_run=args.dry_run,
+        strict_hash=args.strict_hash,
+        index_wait=args.index_wait,
     )
 
 

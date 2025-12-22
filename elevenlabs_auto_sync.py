@@ -88,7 +88,7 @@ class ElevenLabsAutoSync:
             if age_minutes < ttl_minutes:
                 log(f"  📦 Использование кэша KB (возраст: {age_minutes:.1f} мин)")
                 try:
-                    with open(cache_file, 'r', encoding='utf-8') as f:
+                with open(cache_file, 'r', encoding='utf-8') as f:
                         cached_docs = json.load(f)
                         log(f"  ✅ Загружено из кэша: {len(cached_docs)} документов")
                         return cached_docs
@@ -115,18 +115,18 @@ class ElevenLabsAutoSync:
                 pass
         
         try:
-            docs = self.get_all_kb_documents()
+        docs = self.get_all_kb_documents()
 
-            # Кэшируем
+        # Кэшируем
             log(f"  💾 Сохранение кэша ({len(docs)} документов)...")
             try:
-                with open(cache_file, 'w', encoding='utf-8') as f:
-                    json.dump(docs, f, ensure_ascii=False, indent=2)
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump(docs, f, ensure_ascii=False, indent=2)
                 log(f"  ✅ Кэш сохранен")
             except Exception as e:
                 log(f"  ⚠️  Ошибка сохранения кэша: {e}")
 
-            return docs
+        return docs
         except Exception as e:
             log(f"  ❌ Ошибка получения документов: {type(e).__name__} - {str(e)[:200]}")
             
@@ -148,10 +148,10 @@ class ElevenLabsAutoSync:
         max_pages = 100  # Защита от бесконечного цикла
 
         log(f"   📥 Начало загрузки документов из KB (таймаут: 60с)")
-        
+
         while page < max_pages:
             url = f"{self.base_url}/convai/knowledge-base?page_size=100&page={page}"
-            
+
             try:
                 log(f"   📄 Запрос страницы {page}...")
                 response = requests.get(url, headers={"xi-api-key": self.api_key}, timeout=60)
@@ -259,7 +259,7 @@ class ElevenLabsAutoSync:
                 # Пытаемся получить дату создания из метаданных ElevenLabs
                 metadata = v.get('metadata', {})
                 created = metadata.get('created_at_unix_secs')
-                
+
                 if created:
                     versions_with_date.append((v, created))
                     if changed_files:
@@ -279,7 +279,7 @@ class ElevenLabsAutoSync:
                                     found_in_log = True
                                     if changed_files:
                                         log(f"      ✅ Дата из локального лога: {doc_name[:40]} -> {upload_date}")
-                                    break
+                            break
                                 except Exception as e:
                                     if changed_files:
                                         log(f"      ⚠️  Ошибка парсинга даты из лога: {e}")
@@ -302,7 +302,7 @@ class ElevenLabsAutoSync:
             for doc, date in versions_with_date[1:]:
                 newest_date = datetime.fromtimestamp(versions_with_date[0][1]).strftime('%Y-%m-%d')
                 doc_name = doc.get('name', 'unknown')
-                
+
                 to_delete.append({
                     'id': doc.get('id'),
                     'name': doc_name,
@@ -574,7 +574,7 @@ class ElevenLabsAutoSync:
     def update_agent_kb(self, ready_doc_ids: List[str], ids_to_remove: List[str] = None) -> bool:
         """
         Обновить Knowledge Base агента
-        
+
         КРИТИЧНО: Объединяем существующие ID с новыми, удаляя старые версии!
         Без этого инкрементальное обновление удалит все документы кроме обновленных.
 
@@ -630,7 +630,7 @@ class ElevenLabsAutoSync:
         # Объединяем: существующие (без удаленных) + новые
         # Используем dict.fromkeys для сохранения порядка и уникальности
         combined_ids = list(dict.fromkeys(filtered_existing_ids + ready_doc_ids))
-        
+
         # Лимит ElevenLabs — максимум 50 документов в KB агента
         agent_kb_ids = combined_ids[:50]
         
@@ -804,7 +804,7 @@ class ElevenLabsAutoSync:
         else:
             log("\n🔍 Шаг 2: Поиск документов для удаления...")
         
-        to_delete = self.identify_documents_to_delete(all_docs, changed_files=changed_files)
+            to_delete = self.identify_documents_to_delete(all_docs, changed_files=changed_files)
         log(f"   Документов для удаления: {len(to_delete)}")
 
         if to_delete:

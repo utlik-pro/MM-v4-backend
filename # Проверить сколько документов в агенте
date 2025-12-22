@@ -1,0 +1,56 @@
+# Проверить сколько документов в агенте
+python3 << 'EOF'
+import os
+import requests
+ 
+
+api_key = "sk_16f32b46d79b58dac03f2dba0f666a95bd2d26507553840c"
+agent_id = "agent_8901k4s5hkbkf7gsf1tk5r0a4g8t"
+
+url = f"https://api.elevenlabs.io/v1/convai/agents/{agent_id}"
+resp = requests.get(url, headers={"xi-api-key": api_key})
+data = resp.json()
+
+kb = data['conversation_config']['agent']['prompt']['knowledge_base']
+print(f"Документов в агенте: {len(kb)}")
+print()
+print("Список документов:")
+for doc in kb:
+    print(f"  - {doc['name']} (ID: {doc['id'][:20]}...)")
+EOF
+
+
+
+python3 << 'EOF'
+import os
+import requests
+from collections import Counter
+
+agent_id = "agent_8901k4s5hkbkf7gsf1tk5r0a4g8t"
+api_key = "sk_16f32b46d79b58dac03f2dba0f666a95bd2d26507553840c"
+
+
+url = f"https://api.elevenlabs.io/v1/convai/agents/{agent_id}"
+resp = requests.get(url, headers={"xi-api-key": api_key})
+data = resp.json()
+
+kb = data['conversation_config']['agent']['prompt']['knowledge_base']
+
+# Считаем дубликаты
+names = [doc['name'] for doc in kb]
+counts = Counter(names)
+
+print("=== ДУБЛИКАТЫ В АГЕНТЕ ===")
+duplicates = {name: count for name, count in counts.items() if count > 1}
+for name, count in sorted(duplicates.items()):
+    print(f"  {name}: {count} раз")
+    # Показываем ID каждого
+    for doc in kb:
+        if doc['name'] == name:
+            print(f"    → ID: {doc['id']}")
+
+print(f"\n=== ИТОГО ===")
+print(f"Всего документов: {len(kb)}")
+print(f"Уникальных имён: {len(set(names))}")
+print(f"Дубликатов: {len(kb) - len(set(names))}")
+EOF
